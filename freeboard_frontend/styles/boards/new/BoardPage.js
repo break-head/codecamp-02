@@ -41,34 +41,39 @@ export const Account = styled.div`
 export const LoginTitle = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   width: 486px;
-  height: 92px;
+  height: 110px;
 `;
+
 export const LoginInput = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
   width: 486px;
-  height: 92px;
+  height: 110px;
 `;
+
 export const Name = styled.div`
   width: 100%;
-  height: 52px;
+  margin-bottom: 16px;
 `;
+
 export const Nameinput = styled.input`
   width: 100%;
   height: 52px;
+  padding-left: 10px;
 `;
 export const Password = styled.div`
   width: 100%;
-  height: 52px;
+  margin-bottom: 16px;
 `;
 export const Passwordinput = styled.input`
   width: 100%;
   height: 52px;
+  padding-left: 10px;
 `;
-
+export const A = styled.div`
+  color: red;
+`;
 export const SubTitle = styled.div`
   display: flex;
   flex-direction: column;
@@ -82,6 +87,7 @@ export const Subject = styled.div`
 export const Subjectinput = styled.input`
   width: 100%;
   height: 52px;
+  padding-left: 10px;
 `;
 export const Content = styled.div`
   width: 100%;
@@ -157,18 +163,23 @@ export const YouTubeLink = styled.input`
   height: 45.78px;
 `;
 export const Photo = styled.div`
-  height: 118px;
+  padding-top: 10px;
+  width: 996px;
 `;
-export const PhotoTitle = styled.div``;
-export const PhotoButton = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-top: 16px;
+export const PhotoTitle = styled.div`
+  padding-bottom: 16px;
+  font-size: 16px;
+  font-weight: 500px;
 `;
 
-export const PhotoUpload = styled.input`
+export const PhotoUpload = styled.button`
   width: 78px;
   height: 78px;
+  background-color: #bdbdbd;
+  margin-right: 24px;
+  outline: none;
+  border: none;
+  cursor: pointer;
 `;
 export const Setting = styled.div``;
 export const SettingTitle = styled.div`
@@ -184,6 +195,7 @@ export const SettingCheckBox = styled.input`
 export const Register = styled.div`
   display: flex;
   justify-content: center;
+  margin-top: 30px;
 `;
 export const RegisterButton = styled.button`
   background-color: #ffd600;
