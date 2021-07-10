@@ -3,7 +3,7 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   const client = new ApolloClient({
-    uri: "http://example.codebootcamp.co.kr/graphql",
+    uri: "http://backend02.codebootcamp.co.kr/graphql",
     cache: new InMemoryCache(),
   });
 

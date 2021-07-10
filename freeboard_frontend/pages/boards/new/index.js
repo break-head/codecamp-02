@@ -37,12 +37,24 @@ import {
   RegisterButton,
 } from "../../../styles/boards/new/BoardPage";
 import { useState } from "react";
+import { useMutation, gql } from "@apollo/client";
+import { useRouter } from "next/router";
 
+const CREATE_BOARD = gql`
+  mutation createBoard($createBoardInput: CreateBoardInput!) {
+    createBoard(createBoardInput: $createBoardInput) {
+      _id
+    }
+  }
+`;
 export default function BoardPage() {
+  const router = useRouter();
   const [id, setId] = useState("");
   const [idError, setIdError] = useState("");
   const [password, setPassword] = useState("");
   const [passwordError, setPassworderror] = useState("");
+  const [title, setTitle] = useState();
+  const [contents, setContents] = useState();
 
   function aaa(event) {
     setId(event.target.value);
@@ -52,13 +64,28 @@ export default function BoardPage() {
     setPassword(event.target.value);
   }
 
-  function ccc() {
+  function ttt(event) {
+    setTitle(event.target.value);
+  }
+
+  function cont(event) {
+    setContents(event.target.value);
+  }
+
+  // function onClickSubmit() {
+
+  // }
+
+  const [createBoard] = useMutation(CREATE_BOARD);
+
+  async function onClickSubmit() {
     function ddd() {
       setIdError("아이디를 입력해주세요");
     }
     function fff() {
       setPassworderror("비밀번호를 입력해주세요");
     }
+
     if (id === "" && password !== "") {
       ddd();
     } else {
@@ -77,6 +104,18 @@ export default function BoardPage() {
     if (id === "" && password === "") {
       alert("입력해주세용");
     }
+    const result = await createBoard({
+      variables: {
+        createBoardInput: {
+          writer: id,
+          password: password,
+          title: title,
+          contents: contents,
+        },
+      },
+    });
+    alert(result.data.createBoardInput);
+    router.push(`/detail/${result.data.createBoard._id}`);
   }
 
   return (
@@ -96,7 +135,11 @@ export default function BoardPage() {
           </LoginTitle>
           <LoginInput>
             <Password>비밀번호</Password>
-            <Passwordinput type="text" onChange={bbb} placeholder="비밀번호" />
+            <Passwordinput
+              type="password"
+              onChange={bbb}
+              placeholder="비밀번호"
+            />
             <A>{passwordError}</A>
           </LoginInput>
         </Account>
@@ -105,14 +148,22 @@ export default function BoardPage() {
 
         <SubTitle>
           <Subject>제목</Subject>
-          <Subjectinput type="text" placeholder="제목을 작성해주세요." />
+          <Subjectinput
+            type="text"
+            onChange={ttt}
+            placeholder="제목을 작성해주세요."
+          />
         </SubTitle>
 
         {/* ------------------- */}
 
         <Content>
           <ContentTitle>내용</ContentTitle>
-          <Contentinput placeholder="내용을 작성해주세요." />
+          <Contentinput
+            type="text"
+            onChange={cont}
+            placeholder="내용을 작성해주세요."
+          />
         </Content>
 
         {/* ------------------- */}
@@ -164,7 +215,7 @@ export default function BoardPage() {
         {/* ------------------- */}
 
         <Register>
-          <RegisterButton onClick={ccc}>등록하기</RegisterButton>
+          <RegisterButton onClick={onClickSubmit}>등록하기</RegisterButton>
         </Register>
       </Wrapper_body>
     </Wrapper>
