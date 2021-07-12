@@ -21,6 +21,7 @@ function solution(num) {
   }
   return answer;
 }
+///
 
 ///평균 구하기
 function solution(arr) {
