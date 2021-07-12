@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # codecamp-02
 
 
