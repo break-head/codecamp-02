@@ -10,7 +10,7 @@ function solution(n) {
   }
   return rule;
 }
-//
+///
 
 ///짝수와 홀수
 function solution(num) {
