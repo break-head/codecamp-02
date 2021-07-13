@@ -1,5 +1,5 @@
 //수박수박수박수
-
+--
 function solution(n) {
   let rule = "";
   for (let i = 0; i < n; i = i + 1) {
@@ -10,7 +10,6 @@ function solution(n) {
   }
   return rule;
 }
-///
 
 ///짝수와 홀수
 function solution(num) {
@@ -22,8 +21,7 @@ function solution(num) {
   }
   return answer;
 }
-///
-///
+
 ///평균 구하기
 function solution(arr) {
   let result = 0;

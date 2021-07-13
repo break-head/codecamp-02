@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+
 export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
@@ -61,6 +62,7 @@ export const Nameinput = styled.input`
   width: 100%;
   height: 52px;
   padding-left: 10px;
+  /* color: ${(props) => (props.active ? "green" : "red")}; */
 `;
 export const Password = styled.div`
   width: 100%;
@@ -70,6 +72,7 @@ export const Passwordinput = styled.input`
   width: 100%;
   height: 52px;
   padding-left: 10px;
+  /* color: ${(props) => (props.active ? "green" : "red")}; */
 `;
 export const A = styled.div`
   color: red;
@@ -88,6 +91,7 @@ export const Subjectinput = styled.input`
   width: 100%;
   height: 52px;
   padding-left: 10px;
+  /* color: ${(props) => (props.active ? "green" : "red")}; */
 `;
 export const Content = styled.div`
   width: 100%;
@@ -105,6 +109,7 @@ export const Contentinput = styled.textarea`
   padding-top: 14px;
   padding-left: 16px;
   border: 1px solid black;
+  /* color: ${(props) => (props.active ? "green" : "red")}; */
 `;
 
 export const Address = styled.div`
@@ -199,10 +204,11 @@ export const Register = styled.div`
   margin-top: 30px;
 `;
 export const RegisterButton = styled.button`
-  background-color: #ffd600;
+  /* background-color: #ffd600; */
   width: 179px;
   height: 52px;
   border: 0;
   margin-bottom: 100px;
   font-size: 16px;
+  background-color: ${(props) => (props.active ? "#ffd600" : "")};
 `;
