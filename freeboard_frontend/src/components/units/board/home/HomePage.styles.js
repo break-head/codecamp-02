@@ -8,7 +8,7 @@ export const WrapperBody = styled.div`
   margin-top: 100px;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-`;
+`;/
 export const Row = styled.div`
   div:nth-child(1) {
     width: 10%;
