@@ -63,3 +63,6 @@ export const Title = styled.h1`
 export const Contents = styled.div`
   padding-top: 40px;
 `;
+export const WrapperButton = styled.div`
+float: center`;
+export const Button = styled.button``;

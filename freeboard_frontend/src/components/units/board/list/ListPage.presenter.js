@@ -5,10 +5,10 @@ import {
   Column,
   TitleColumn,
   Button,
-} from "./HomePage.styles";
+} from "./ListPage.styles";
 import { getDate } from "../../../../commons/libraries/utils";
 
-export default function HomePageUi(props) {
+export default function ListPageUi(props) {
   return (
     <Wrapper>
       <WrapperBody>
@@ -21,7 +21,9 @@ export default function HomePageUi(props) {
         {props.data?.fetchBoards.map((data, index) => (
           <Row key={data._id}>
             <Column>{10 - index}</Column>
-            <Column>{data.title}</Column>
+            <Column id={data._id} onClick={props.onClickMoveDetail}>
+              {data.title}
+            </Column>
             <Column>{data.writer}</Column>
             <Column>
               {getDate(data.createdAt)}

@@ -111,7 +111,7 @@ export default function BoardPage() {
         },
       });
       alert("등록되었습니다");
-      router.push(`/detail/${result.data.createBoard._id}`);
+      router.push(`/boards/${result.data.createBoard._id}`);
     }
   }
 
