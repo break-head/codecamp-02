@@ -7,4 +7,5 @@ export interface IBoardWriteUIProps {
     onClickEdit: () => void
     active: boolean
     isEdit?: boolean
+    data: any
   }

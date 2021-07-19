@@ -29,9 +29,9 @@ export default function Map2Page() {
         .filter((data) => data.number % 2 === 0)
         //  ((data) => data.number <= 5)
 
-        .map((data) => (
-          <Wrapper>
-            <Number>{data.number}. </Number> <Title>{data.title}</Title>{" "}
+        .map((data, key) => (
+          <Wrapper key={key}>
+            <Number>{data.number}. </Number> <Title> {data.title} </Title>{" "}
           </Wrapper>
         ))}
     </>

@@ -5,11 +5,10 @@ import { FETCH_BOARD } from "./BoardDetail.queries";
 
 export default function DetailPage() {
   const router = useRouter();
-  const { data } = useQuery(FETCH_BOARD, {
-    variables: {
-      boardId: router.query.boardId} }
+  const { data } = useQuery(
+      FETCH_BOARD, 
+      {variables: {boardId: router.query.boardId} }
     )
-    
 
     function onClickEdit(){
         router.push(`/detail/${router.query.boardId}/edit`)

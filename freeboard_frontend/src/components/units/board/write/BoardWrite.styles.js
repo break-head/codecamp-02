@@ -104,6 +104,7 @@ export const ContentTitle = styled.div``;
 export const Contentinput = styled.textarea`
   width: 100%;
   height: 480px;
+  resize: none;
   display: flex;
   flex-direction: column;
   padding-top: 14px;
@@ -210,5 +211,6 @@ export const RegisterButton = styled.button`
   border: 0;
   margin-bottom: 100px;
   font-size: 16px;
-  background-color: ${(props) => (props.active ? "#ffd600" : "")};
+  background-color: ${(props) => (props.active ? '#ffd600' : '')};
+
 `;

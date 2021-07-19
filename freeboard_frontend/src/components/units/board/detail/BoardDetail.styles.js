@@ -1,10 +1,12 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.div`
-  width: 1200px;
+export const Wrapper= styled.div`
+  margin: 100px;
+`
+
+export const CardWrapper = styled.div`
   /* height: 1847px; */
   border: 1px solid black;
-  margin: 100px;
   padding-top: 80px;
   padding-bottom: 100px;
   padding-left: 102px;
@@ -64,5 +66,16 @@ export const Contents = styled.div`
   padding-top: 40px;
 `;
 export const WrapperButton = styled.div`
-float: center`;
-export const Button = styled.button``;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 80px;
+`
+export const Button = styled.button`
+  width: 179px;
+  height: 45px;
+  background-color: white;
+  border: 1px solid gray;
+  cursor: pointer;  
+  margin: 0px 12px;
+`;

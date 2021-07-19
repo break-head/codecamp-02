@@ -31,6 +31,10 @@ export const Row = styled.div`
   div:nth-child(10) {
     border-bottom: none;
   }
+
+  :hover:not(:nth-of-type(1)){
+    background-color: lightgray;
+  }
 `;
 export const Column = styled.div`
   width: 25%;

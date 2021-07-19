@@ -42,7 +42,7 @@ export default function BoardPageUi(props) {
     <Wrapper>
       <Wrapper_body>
         <HeadTitle>
-          <Title>게시물 등록</Title>
+          <Title>{props.isEdit ? "게시판 수정" : "게시물 등록"}</Title>
         </HeadTitle>
 
         {/* ------------------- */}
@@ -51,22 +51,22 @@ export default function BoardPageUi(props) {
           <LoginTitle>
             <Name>작성자</Name>
             <Nameinput
+              name="writer"
               type="text"
-              onChange={props.a}
-              active={props.h}
-              placeholder="아이디"
+              onChange={props.onChangeInputs}
+              placeholder="이름을 적어주세요"
             />
-            <A>{props.f}</A>
+            <A>{props.inputsErrors.writer}</A>
           </LoginTitle>
           <LoginInput>
             <Password>비밀번호</Password>
             <Passwordinput
+              name="password"
               type="password"
-              onChange={props.b}
-              placeholder="비밀번호"
-              active={props.h}
+              onChange={props.onChangeInputs}
+              placeholder="비밀번호를 입력해주세요"
             />
-            <A>{props.g}</A>
+            <A>{props.inputsErrors.password}</A>
           </LoginInput>
         </Account>
 
@@ -76,10 +76,11 @@ export default function BoardPageUi(props) {
           <Subject>제목</Subject>
           <Subjectinput
             type="text"
-            onChange={props.c}
-            active={props.h}
+            name="title"
+            onChange={props.onChangeInputs}
             placeholder="제목을 작성해주세요."
           />
+          <A>{props.inputsErrors.title}</A>
         </SubTitle>
 
         {/* ------------------- */}
@@ -87,11 +88,11 @@ export default function BoardPageUi(props) {
         <Content>
           <ContentTitle>내용</ContentTitle>
           <Contentinput
-            type="text"
-            onChange={props.d}
-            active={props.h}
+            name="contents"
             placeholder="내용을 작성해주세요."
+            onChange={props.onChangeInputs}
           />
+          <A>{props.inputsErrors.contents}</A>
         </Content>
 
         {/* ------------------- */}
@@ -99,23 +100,23 @@ export default function BoardPageUi(props) {
         <Address>
           <AddressTitle>주소</AddressTitle>
           <AddressSearch>
-            <AddressNumber type="text" placeholder="07250" />
+            <AddressNumber name="zipcode" placeholder="07250" />
             <AddressButton>우편주소 검색</AddressButton>
           </AddressSearch>
-          <AddressMain type="text" />
-          <AddressSub type="text" />
+          <AddressMain  />
+          <AddressSub />
         </Address>
 
         {/* ------------------- */}
 
         <YouTube>
           <YouTubeTitle>유튜브</YouTubeTitle>
-          <YouTubeLink type="text" placeholder="   링크를 복사해주세요." />
+          <YouTubeLink name="youtube" placeholder="   링크를 복사해주세요." />
         </YouTube>
 
         {/* ------------------- */}
 
-        {/* ------------------- */}
+        
 
         <Setting>
           <SettingTitle>메인 설정</SettingTitle>
@@ -143,12 +144,7 @@ export default function BoardPageUi(props) {
         {/* ------------------- */}
 
         <Register>
-          <RegisterButton
-            onClick={props.e}
-            active={props.h}
-            // disabled={!props.h}
-          >
-            등록하기
+          <RegisterButton onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit} active={props.active}>  {props.isEdit ?"수정하기":"등록하기"}
           </RegisterButton>
         </Register>
       </Wrapper_body>

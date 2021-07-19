@@ -22,7 +22,7 @@ export default function Loginpage() {
     setPassworderror("비밀번호를 입력해주세요");
   }
   function ccc() {
-    //통신프로그램을 이용해서 아이디랑 패스워드를 백엔드(API) 컴퓨터에 보낸다.
+    // 통신프로그램을 이용해서 아이디랑 패스워드를 백엔드(API) 컴퓨터에 보낸다.
     if (id === "") {
       ddd();
     }

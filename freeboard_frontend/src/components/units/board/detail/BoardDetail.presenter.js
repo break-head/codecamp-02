@@ -12,6 +12,7 @@ import {
   LocationIcon,
   Title,
   Wrapper,
+  CardWrapper,
   Writer,
   WrapperButton,
   Button,
@@ -19,8 +20,8 @@ import {
 
 export default function BoardDetailUi(props) {
   return (
-    <>
-      <Wrapper>
+    <Wrapper>
+      <CardWrapper>
         <Header>
           <AvatarWrapper>
             <Avatar src="/avatar.png" />
@@ -42,12 +43,12 @@ export default function BoardDetailUi(props) {
           <Title>{props.data?.fetchBoard.title}</Title>
           <Contents>{props.data?.fetchBoard.contents}</Contents>
         </Body>
-      </Wrapper>
+      </CardWrapper>
       <WrapperButton>
         <Button onClick={props.onClickMove}> 목록으로</Button>
-        <Button>수정하기</Button>
+        <Button onClick={props.onClickMoveToEdit}>수정하기</Button>
         <Button onClick={props.onClickDelete}> 삭제하기</Button>
       </WrapperButton>
-    </>
+    </Wrapper>
   );
 }
