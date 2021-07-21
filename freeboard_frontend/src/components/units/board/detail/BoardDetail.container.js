@@ -1,11 +1,19 @@
 import { useQuery, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import BoardDetailUi from "./BoardDetail.presenter";
-import { FETCH_BOARD, DELETE_BOARD } from "./BoardDetail.queries";
+import {
+  FETCH_BOARD,
+  DELETE_BOARD,
+  LIKE_BOARD,
+  DISLIKE_BOARD,
+} from "./BoardDetail.queries";
 
 export default function DetailPage() {
   const router = useRouter();
   const [deleteBoard] = useMutation(DELETE_BOARD);
+  const [likeBoard] = useMutation(LIKE_BOARD);
+  const [dislikeBoard] = useMutation(DISLIKE_BOARD);
+
   const { data } = useQuery(FETCH_BOARD, {
     variables: { boardId: router.query.boardId },
   });
@@ -29,12 +37,32 @@ export default function DetailPage() {
     }
   }
 
+  function onClickLike() {
+    likeBoard({
+      variables: { boardId: router.query.boardId },
+      refetchQueries: [
+        { query: FETCH_BOARD, variables: { boardId: router.query.boardId } },
+      ],
+    });
+  }
+
+  function onClickDislike() {
+    dislikeBoard({
+      variables: { boardId: router.query.boardId },
+      refetchQueries: [
+        { query: FETCH_BOARD, variables: { boardId: router.query.boardId } },
+      ],
+    });
+  }
+
   return (
     <BoardDetailUi
       data={data}
       onClickDelete={onClickDelete}
       onClickMove={onClickMove}
       onClickMoveToEdit={onClickMoveToEdit}
+      onClickLike={onClickLike}
+      onClickDislike={onClickDislike}
     />
   );
 }

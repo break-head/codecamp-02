@@ -9,8 +9,14 @@ import {
   IconWrapper,
   Info,
   LinkIcon,
+  LikeCount,
+  DislikeIcon,
+  DislikeCount,
   LocationIcon,
   Title,
+  Youtube,
+  LikeWrapper,
+  LikeIcon,
   Wrapper,
   CardWrapper,
   Writer,
@@ -42,6 +48,21 @@ export default function BoardDetailUi(props) {
         <Body>
           <Title>{props.data?.fetchBoard.title}</Title>
           <Contents>{props.data?.fetchBoard.contents}</Contents>
+          <Youtube
+            url={props.data?.fetchBoard.youtubeUrl}
+            width="486px"
+            height="240px"
+          />
+          <LikeWrapper>
+            <IconWrapper>
+              <LikeIcon onClick={props.onClickLike} />
+              <LikeCount>{props.data?.fetchBoard.likeCount}</LikeCount>
+            </IconWrapper>
+            <IconWrapper>
+              <DislikeIcon onClick={props.onClickDislike} />
+              <DislikeCount>{props.data?.fetchBoard.dislikeCount}</DislikeCount>
+            </IconWrapper>
+          </LikeWrapper>
         </Body>
       </CardWrapper>
       <WrapperButton>

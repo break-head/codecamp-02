@@ -8,6 +8,7 @@ import {
   Wrapper,
   NameInput,
   PassWordInput,
+  a,
 } from "../styles/Home.styles";
 
 export default function Home() {
@@ -20,4 +21,10 @@ export default function Home() {
       <PassWordInput type="password" placeholder="비밀번호를 입력하세요" />
     </Wrapper>
   );
+}
+
+if (a) {
+  console.log(a);
+} else {
+  console.log(a);
 }

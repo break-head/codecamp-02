@@ -33,23 +33,23 @@
 //   );
 // }
 
-import { useState } from "react";
+// import { useState } from "react";
 
-export default function a() {
-  const ccc = String(Math.floor(Math.random() * 1000000)).padStart(6, 0);
-  const [token, tokenState] = useState("000000");
-  const aaa = true;
-  const [change, onoffState] = useState(false);
-  function asd() {
-    tokenState(ccc);
-    onoffState(aaa);
-  }
-  return (
-    <>
-      <div>{token}</div>
-      <button onClick={asd} disabled={change}>
-        인증번호
-      </button>
-    </>
-  );
-}
+// export default function a() {
+//   const ccc = String(Math.floor(Math.random() * 1000000)).padStart(6, 0);
+//   const [token, tokenState] = useState("000000");
+//   const aaa = true;
+//   const [change, onoffState] = useState(false);
+//   function asd() {
+//     tokenState(ccc);
+//     onoffState(aaa);
+//   }
+//   return (
+//     <>
+//       <div>{token}</div>
+//       <button onClick={asd} disabled={change}>
+//         인증번호
+//       </button>
+//     </>
+//   );
+// }

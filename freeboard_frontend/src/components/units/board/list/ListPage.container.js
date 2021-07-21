@@ -8,7 +8,6 @@ import { useRouter } from "next/router";
 
 export default function ListPage() {
   const { data } = useQuery(FETCH_BOARDS);
-
   const router = useRouter();
 
   function onClickMove() {

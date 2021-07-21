@@ -8,15 +8,15 @@ import {
   Name,
   Password,
   LoginInput,
-  Nameinput,
-  Passwordinput,
+  NameInput,
+  PasswordInput,
   A,
   SubTitle,
   Subject,
-  Subjectinput,
+  SubjectInput,
   Content,
   ContentTitle,
-  Contentinput,
+  ContentInput,
   Address,
   AddressTitle,
   AddressSearch,
@@ -24,17 +24,18 @@ import {
   AddressNumber,
   AddressMain,
   AddressSub,
-  YouTube,
+  YouTubeWrapper,
   YouTubeTitle,
-  YouTubeLink,
+  YouTube,
   Photo,
   PhotoTitle,
   PhotoUpload,
-  Setting,
-  SettingTitle,
-  SettingCheckBox,
   Register,
   RegisterButton,
+  OptionWrapper,
+  Label,
+  RadioButton,
+  RadioLabel,
 } from "./BoardWrite.styles";
 
 export default function BoardPageUi(props) {
@@ -50,7 +51,7 @@ export default function BoardPageUi(props) {
         <Account>
           <LoginTitle>
             <Name>작성자</Name>
-            <Nameinput
+            <NameInput
               name="writer"
               type="text"
               onChange={props.onChangeInputs}
@@ -60,7 +61,7 @@ export default function BoardPageUi(props) {
           </LoginTitle>
           <LoginInput>
             <Password>비밀번호</Password>
-            <Passwordinput
+            <PasswordInput
               name="password"
               type="password"
               onChange={props.onChangeInputs}
@@ -74,7 +75,7 @@ export default function BoardPageUi(props) {
 
         <SubTitle>
           <Subject>제목</Subject>
-          <Subjectinput
+          <SubjectInput
             type="text"
             name="title"
             onChange={props.onChangeInputs}
@@ -87,7 +88,7 @@ export default function BoardPageUi(props) {
 
         <Content>
           <ContentTitle>내용</ContentTitle>
-          <Contentinput
+          <ContentInput
             name="contents"
             placeholder="내용을 작성해주세요."
             onChange={props.onChangeInputs}
@@ -103,26 +104,29 @@ export default function BoardPageUi(props) {
             <AddressNumber name="zipcode" placeholder="07250" />
             <AddressButton>우편주소 검색</AddressButton>
           </AddressSearch>
-          <AddressMain  />
+          <AddressMain />
           <AddressSub />
         </Address>
 
         {/* ------------------- */}
 
-        <YouTube>
+        <YouTubeWrapper>
           <YouTubeTitle>유튜브</YouTubeTitle>
-          <YouTubeLink name="youtube" placeholder="   링크를 복사해주세요." />
-        </YouTube>
+          <YouTube
+            name="youtubeUrl"
+            placeholder="링크를 복사해주세요."
+            onChange={props.onChangeInputs}
+          />
+        </YouTubeWrapper>
 
         {/* ------------------- */}
-
-        
-
-        <Setting>
-          <SettingTitle>메인 설정</SettingTitle>
-          <SettingCheckBox type="radio" name="aaa" /> 유튜브
-          <SettingCheckBox type="radio" name="aaa" /> 사진
-        </Setting>
+        <OptionWrapper>
+          <Label>메인설정</Label>
+          <RadioButton type="radio" id="youtube" name="radio-button" />
+          <RadioLabel htmlFor="youtube">유튜브</RadioLabel>
+          <RadioButton type="radio" id="image" name="radio-button" />
+          <RadioLabel htmlFor="image">사진</RadioLabel>
+        </OptionWrapper>
 
         {/* ------------------- */}
         <Photo>
@@ -144,7 +148,12 @@ export default function BoardPageUi(props) {
         {/* ------------------- */}
 
         <Register>
-          <RegisterButton onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit} active={props.active}>  {props.isEdit ?"수정하기":"등록하기"}
+          <RegisterButton
+            onClick={props.isEdit ? props.onClickUpdate : props.onClickSubmit}
+            active={props.active}
+          >
+            {" "}
+            {props.isEdit ? "수정하기" : "등록하기"}
           </RegisterButton>
         </Register>
       </Wrapper_body>

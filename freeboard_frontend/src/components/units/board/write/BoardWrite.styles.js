@@ -58,7 +58,7 @@ export const Name = styled.div`
   margin-bottom: 16px;
 `;
 
-export const Nameinput = styled.input`
+export const NameInput = styled.input`
   width: 100%;
   height: 52px;
   padding-left: 10px;
@@ -68,7 +68,7 @@ export const Password = styled.div`
   width: 100%;
   margin-bottom: 16px;
 `;
-export const Passwordinput = styled.input`
+export const PasswordInput = styled.input`
   width: 100%;
   height: 52px;
   padding-left: 10px;
@@ -87,7 +87,7 @@ export const SubTitle = styled.div`
 export const Subject = styled.div`
   width: 100%;
 `;
-export const Subjectinput = styled.input`
+export const SubjectInput = styled.input`
   width: 100%;
   height: 52px;
   padding-left: 10px;
@@ -101,7 +101,7 @@ export const Content = styled.div`
   justify-content: space-between;
 `;
 export const ContentTitle = styled.div``;
-export const Contentinput = styled.textarea`
+export const ContentInput = styled.textarea`
   width: 100%;
   height: 480px;
   resize: none;
@@ -154,7 +154,7 @@ export const AddressSub = styled.input`
   margin-top: 30px;
 `;
 
-export const YouTube = styled.div`
+export const YouTubeWrapper = styled.div`
   width: 100%;
   height: 81px;
   display: flex;
@@ -165,7 +165,7 @@ export const YouTubeTitle = styled.div`
   font-size: 16px;
 `;
 
-export const YouTubeLink = styled.input`
+export const YouTube = styled.input`
   width: 100%;
   height: 45.78px;
 `;
@@ -188,15 +188,20 @@ export const PhotoUpload = styled.button`
   border: none;
   cursor: pointer;
 `;
-export const Setting = styled.div``;
-export const SettingTitle = styled.div`
-  display: flex;
-  flex-direction: row;
-  font-size: 16px;
+export const OptionWrapper = styled.div`
+  width: 996px;
+  padding-top: 40px;
 `;
-export const SettingCheckBox = styled.input`
-  margin-top: 16px;
-  font-size: 16px;
+
+export const RadioButton = styled.input`
+  cursor: pointer;
+`;
+
+export const RadioLabel = styled.label`
+  margin-left: 8px;
+  margin-right: 20px;
+  font-weight: 500;
+  cursor: pointer;
 `;
 
 export const Register = styled.div`
@@ -211,6 +216,10 @@ export const RegisterButton = styled.button`
   border: 0;
   margin-bottom: 100px;
   font-size: 16px;
-  background-color: ${(props) => (props.active ? '#ffd600' : '')};
-
+  background-color: ${(props) => (props.active ? "#ffd600" : "")};
+`;
+export const Label = styled.div`
+  padding-bottom: 16px;
+  font-size: 16px;
+  font-weight: 500;
 `;
