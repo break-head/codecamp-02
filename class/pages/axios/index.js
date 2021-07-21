@@ -21,7 +21,7 @@ export default function AxiosPage() {
         {data.title}
         {data.content}
       </div>
-      <hr />
+      <br />
       <div>{data2}</div>
       <hr />
       <button onClick={handleClickData}>데이터 불러오기</button>
