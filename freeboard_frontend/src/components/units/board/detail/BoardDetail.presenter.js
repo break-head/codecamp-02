@@ -42,7 +42,7 @@ export default function BoardDetailUi(props) {
               placement="topRight"
               title={`${props.data?.fetchBoard.boardAddress?.address} ${props.data?.fetchBoard.boardAddress?.addressDetail}`}
             >
-              <LocationIcon src="/images/board/detail/location.png" />
+              <LocationIcon src="/boards/detail/location.png" />
             </Tooltip>
           </IconWrapper>
         </Header>

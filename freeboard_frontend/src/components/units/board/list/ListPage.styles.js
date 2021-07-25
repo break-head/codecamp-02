@@ -1,13 +1,16 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.div``;
-// export const Wrapper
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
 export const WrapperBody = styled.div`
   width: 1200px;
   margin-left: 100px;
   margin-top: 100px;
   border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
 `;
 export const Row = styled.div`
   div:nth-child(1) {
@@ -27,12 +30,8 @@ export const Row = styled.div`
   display: flex;
   justify-content: space-between;
   text-align: center;
-  border-bottom: 1px solid #bdbdbd;
-  div:nth-child(10) {
-    border-bottom: none;
-  }
-
-  :hover:not(:nth-of-type(1)){
+  border-bottom: 1px solid #bdbd;
+  :hover:not(:nth-of-type(1)) {
     background-color: lightgray;
   }
 `;
