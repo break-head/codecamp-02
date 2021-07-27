@@ -16,9 +16,9 @@ export default function UseEffectPage() {
   //   }, []);
 
   //    주의사항2
-  //   useEffect(() => {
-  //     setCount((prev) => prev + 1);
-  //   }, []);
+  useEffect(() => {
+    setCount((prev) => prev + 1);
+  }, []);
 
   console.log("그리기 직전!!");
 
