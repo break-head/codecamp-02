@@ -1,4 +1,4 @@
-import { Tooltip } from "antd";
+import { Tooltip, Upload } from "antd";
 import {
   Avatar,
   AvatarWrapper,
@@ -22,6 +22,7 @@ import {
   Writer,
   WrapperButton,
   Button,
+  Picture,
 } from "./BoardDetail.styles";
 
 export default function BoardDetailUi(props) {
@@ -53,6 +54,9 @@ export default function BoardDetailUi(props) {
             url={props.data?.fetchBoard.youtubeUrl}
             width="486px"
             height="240px"
+          />
+          <Picture
+            src={`https://storage.googleapis.com/${props.data?.fetchBoard.images?.[0]}`}
           />
           <LikeWrapper>
             <IconWrapper>

@@ -1,4 +1,5 @@
 {
     "editor.formatOnSave": true,
-    "editor.defalutFormatter": "esbenp.prettier-vscode"
+    "editor.defalutFormatter": "esbenp.prettier-vscode",
+    "git.ignoreLimitWarning": true
 }

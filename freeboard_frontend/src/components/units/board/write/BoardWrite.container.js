@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import BoardPageUi from "./BoardWrite.presenter";
-import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
+import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
 import { Modal } from "antd";
 export const INPUTS_INIT = {
   writer: "",
@@ -23,6 +23,9 @@ export default function BoardPage(props) {
   const [zipcode, setZipcode] = useState("");
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
+  const [imageUrl, setImageurl] = useState("");
+  const [uploadFile] = useMutation(UPLOAD_FILE);
+  const fileRef = useRef();
 
   function onChangeAddressDetail(event) {
     setAddressDetail(event.target.value);
@@ -33,8 +36,8 @@ export default function BoardPage(props) {
     setInputs(newInputs);
     setActive(Object.values(inputs).every((data) => data));
     setInputsErrors({ ...inputsErrors, [event.target.name]: "" });
-    console.log(Object);
   }
+
   async function onClickSubmit() {
     setInputsErrors({
       writer: inputs.writer ? "" : "작성자를 입력해주세요.",
@@ -52,6 +55,7 @@ export default function BoardPage(props) {
           variables: {
             createBoardInput: {
               ...inputs,
+              images: [imageUrl],
               boardAddress: {
                 zipcode: zipcode,
                 address: address,
@@ -89,6 +93,7 @@ export default function BoardPage(props) {
               title: inputs.title,
               contents: inputs.contents,
               youtubeUrl: inputs.youtubeUrl,
+              images: [imageUrl],
             },
           },
         });
@@ -102,9 +107,41 @@ export default function BoardPage(props) {
     }
   }
 
-  function onClickAddressSearch() {
-    setIsOpen(true);
+  async function onChangeFile(event) {
+    const file = event.target.files?.[0];
+    console.log(event.target.files);
+    if (!file?.size) {
+      alert("파일이 없습니다.");
+      return;
+    }
+    if (!file?.size > 5 * 1024 * 1024) {
+      alert("파일사이즈가 너무 큽니다(제한: 5MB)");
+      return;
+    }
+    if (!file.type.includes("png") && !file.type.includes("jpeg")) {
+      alert("png 또는 jpeg 파일만 전송이 가능합니다");
+      return;
+    }
+    try {
+      const result = await uploadFile({
+        variables: {
+          aaa: file,
+        },
+      });
+      setImageurl(result.data.uploadFile.url);
+    } catch (error) {
+      alert(error.message);
+    }
   }
+
+  function onClickGreyBox() {
+    fileRef.current?.click();
+  }
+
+  function onClickAddressSearch(bool) {
+    setIsOpen(bool);
+  }
+
   function onCompleteAddressSearch(data) {
     setAddress(data.address);
     setZipcode(data.zonecode);
@@ -113,9 +150,11 @@ export default function BoardPage(props) {
 
   return (
     <BoardPageUi
+      isOpen={isOpen}
       isEdit={props.isEdit}
       active={active}
       zipcode={zipcode}
+      address={address}
       inputsErrors={inputsErrors}
       onChangeInputs={onChangeInputs}
       onClickSubmit={onClickSubmit}
@@ -123,6 +162,9 @@ export default function BoardPage(props) {
       onClickAddressSearch={onClickAddressSearch}
       onCompleteAddressSearch={onCompleteAddressSearch}
       onChangeAddressDetail={onChangeAddressDetail}
+      onChangeFile={onChangeFile}
+      onClickGreyBox={onClickGreyBox}
+      fileRef={fileRef}
     />
   );
 }

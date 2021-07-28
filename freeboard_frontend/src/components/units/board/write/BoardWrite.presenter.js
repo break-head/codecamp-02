@@ -37,10 +37,22 @@ import {
   RadioButton,
   RadioLabel,
 } from "./BoardWrite.styles";
+import { Modal } from "antd";
+import DaumPostcode from "react-daum-postcode";
 
 export default function BoardPageUi(props) {
   return (
     <Wrapper>
+      {props.isOpen && (
+        <Modal
+          title="주소검색"
+          visible={true}
+          onOk={() => props.onClickAddressSearch(false)}
+          onCancel={() => props.onClickAddressSearch(false)}
+        >
+          <DaumPostcode onComplete={props.onCompleteAddressSearch} autoClose />
+        </Modal>
+      )}
       <Wrapper_body>
         <HeadTitle>
           <Title>{props.isEdit ? "게시판 수정" : "게시물 등록"}</Title>
@@ -101,11 +113,16 @@ export default function BoardPageUi(props) {
         <Address>
           <AddressTitle>주소</AddressTitle>
           <AddressSearch>
-            <AddressNumber name="zipcode" placeholder="07250" />
-            <AddressButton>우편주소 검색</AddressButton>
+            <AddressNumber value={props.zipcode} placeholder="07250" readOnly />
+            <AddressButton onClick={() => props.onClickAddressSearch(true)}>
+              우편주소 검색
+            </AddressButton>
           </AddressSearch>
-          <AddressMain />
-          <AddressSub />
+          <AddressMain value={props.address} readOnly />
+          <AddressSub
+            onChange={props.onChangeAddressDetail}
+            readOnly={props.address === ""}
+          />
         </Address>
 
         {/* ------------------- */}
@@ -131,18 +148,24 @@ export default function BoardPageUi(props) {
         {/* ------------------- */}
         <Photo>
           <PhotoTitle> 사진 첨부</PhotoTitle>
-          <PhotoUpload>
+          <PhotoUpload onClick={props.onClickGreyBox}>
             <div>+</div>
             <div>Upload</div>
           </PhotoUpload>
-          <PhotoUpload>
+          <PhotoUpload onClick={props.onClickGreyBox}>
             <div>+</div>
             <div>Upload</div>
           </PhotoUpload>
-          <PhotoUpload>
+          <PhotoUpload onClick={props.onClickGreyBox}>
             <div>+</div>
             <div>Upload</div>
           </PhotoUpload>
+          <input
+            ref={props.fileRef}
+            type="file"
+            onChange={props.onChangeFile}
+            /* multiple */ style={{ display: "none" }}
+          />
         </Photo>
 
         {/* ------------------- */}

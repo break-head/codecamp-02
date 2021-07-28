@@ -6,6 +6,8 @@ import styled from "@emotion/styled";
 
 const Body = styled.div`
   height: 500px;
+
+  overflow: scroll;
 `;
 const Wrapper = styled.div`
   display: flex;

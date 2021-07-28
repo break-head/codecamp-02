@@ -54,6 +54,7 @@ export default function DetailPage() {
       ],
     });
   }
+  console.log(data);
 
   return (
     <BoardDetailUi
