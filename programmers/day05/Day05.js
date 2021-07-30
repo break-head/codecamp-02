@@ -1,5 +1,5 @@
 //약수의합 
-function solution(n) {야
+function solution(n) {
     const answer = [];
     for(let i = 0; i <= n; i = i + 1){
         if(n % i === 0){

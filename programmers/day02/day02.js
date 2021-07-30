@@ -1,5 +1,4 @@
 //수박수박수박수
---
 function solution(n) {
   let rule = "";
   for (let i = 0; i < n; i = i + 1) {
