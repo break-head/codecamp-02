@@ -72,7 +72,7 @@ export const Contents = styled.div`
 export const Youtube = styled(ReactPlayer)`
   margin: auto;
 `;
-
+export const PictuerWrapper = styled.div``;
 export const Picture = styled.img``;
 export const WrapperButton = styled.div`
   display: flex;

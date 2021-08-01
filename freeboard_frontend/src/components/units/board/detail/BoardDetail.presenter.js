@@ -23,6 +23,7 @@ import {
   WrapperButton,
   Button,
   Picture,
+  PictuerWrapper,
 } from "./BoardDetail.styles";
 
 export default function BoardDetailUi(props) {
@@ -55,9 +56,15 @@ export default function BoardDetailUi(props) {
             width="486px"
             height="240px"
           />
-          <Picture
-            src={`https://storage.googleapis.com/${props.data?.fetchBoard.images?.[0]}`}
-          />
+          <PictuerWrapper>
+            {props.data?.fetchBoard.images?.map((data) => (
+              <Picture
+                key={data}
+                src={`https://storage.googleapis.com/${data}`}
+              />
+            ))}
+          </PictuerWrapper>
+
           <LikeWrapper>
             <IconWrapper>
               <LikeIcon onClick={props.onClickLike} />
