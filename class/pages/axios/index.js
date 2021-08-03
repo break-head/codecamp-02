@@ -1,30 +1,28 @@
-import axios from "axios";
-import { useState } from "react";
+import axios from 'axios'
+import { useState } from 'react'
 
-export default function AxiosPage() {
-  const [data, setData] = useState("");
-  const [data2, setData2] = useState("");
+export default function AxiosPage(){
 
-  // async function handleClickData() {
-  const handleClickData = async () => {
-    // const aaa = await axios.get("https://koreanjson.com/posts");
-    // setData(aaa.data.title);
-    // setData2(aaa.data.content);
-    const aaa = await axios.get("https://koreanjson.com/posts");
-    setData(aaa.data[5]);
-    setData2(aaa.data[5].content);
-  };
+    const [data, setData] = useState('')
+    const [data2, setData2] = useState('')
 
-  return (
-    <>
-      <div>
-        {data.title}
-        {data.content}
-      </div>
-      <br />
-      <div>{data2}</div>
-      <hr />
-      <button onClick={handleClickData}>데이터 불러오기</button>
-    </>
-  );
+    const handleClickData = async () => {
+        const aaa = await axios.get('https://koreanjson.com/posts')
+        // console.log(aaa.data)
+        // console.log(aaa.data[0])
+        // console.log(aaa.data[1])
+        setData(aaa.data[3].title) 
+        setData2(aaa.data[3].content)
+    }
+
+    return (
+        <>
+            <div>{data}</div>
+            <hr />
+            <div>{data2}</div>
+            <hr />
+            <button onClick={handleClickData}>데이터 불러오기</button>
+        </>
+    )
+
 }

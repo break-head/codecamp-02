@@ -1,8 +1,8 @@
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
 
-export default function LayoutBannerUI() {
+export default function LayoutBannerUI(props) {
   const settings = {
     dots: true,
     infinite: true,
@@ -12,9 +12,8 @@ export default function LayoutBannerUI() {
   };
 
   return (
-    <>
-      <div style={{ backgroundColor: "green", height: "300px" }}>
-        banner 영역입니다.
+    <div style={{ backgroundColor: "green", height: "300px" }}>
+      <div style={{ width: "500px", height: "500px" }}>
         <Slider {...settings}>
           <div>
             <h3>1</h3>
@@ -36,6 +35,6 @@ export default function LayoutBannerUI() {
           </div>
         </Slider>
       </div>
-    </>
+    </div>
   );
 }

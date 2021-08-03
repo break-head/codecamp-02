@@ -1,16 +1,17 @@
 export default function StatePage() {
-  let count = 0;
 
-  function aaa() {
-    count = count + 1;
-    // document.getElementById("rrr").innerText = count
-    console.log(count);
-  }
+    let count = 7
 
-  return (
-    <div>
-      <div>{count}</div>
-      <button onClick={aaa}>+1</button>
-    </div>
-  );
+    function aaa() {
+        count = count + 1
+        console.log(count)
+    }
+
+    return (
+        <>
+            <div id="rrr">{count}</div>
+            <button onClick={aaa}>+1</button>
+        </>
+    )
+
 }

@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import firebase from "firebase";
+import firebase from "firebase/app";
 
 export default function FirebasePage() {
   const [writer, setWriter] = useState("");

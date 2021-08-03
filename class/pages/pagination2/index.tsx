@@ -1,10 +1,11 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 import { IQuery } from "../../src/commons/types/generated/types";
 import styled from "@emotion/styled";
 import { useState } from "react";
+
 const FETCH_BOARDS = gql`
-  query fetchBoards($aaa: Int) {
-    fetchBoards(page: $aaa) {
+  query fetchBoards($page: Int) {
+    fetchBoards(page: $page) {
       _id
       writer
       title
@@ -13,29 +14,32 @@ const FETCH_BOARDS = gql`
 `;
 
 const Column = styled.span`
-  margin: 0px 10px;
+  margin: 0px 50px;
 `;
 
 const Page = styled.span`
   margin: 0px 10px;
   cursor: pointer;
 `;
-export default function paginationPage() {
+
+export default function PaginationPage() {
   const [startPage, setStartPage] = useState(1);
   const { data, refetch } = useQuery<IQuery>(FETCH_BOARDS, {
-    variables: { aaa: startPage },
+    variables: { page: startPage },
   });
 
-  function onClickPage(event: any) {
-    refetch({ aaa: Number(event.target.id) });
+  function onClickPage(event) {
+    refetch({ page: Number(event.target.id) });
   }
 
   function onClickPrevPage() {
     setStartPage((prev) => prev - 10);
   }
+
   function onClickNextPage() {
     setStartPage((prev) => prev + 10);
   }
+
   return (
     <div>
       {data?.fetchBoards.map((data) => (
@@ -49,7 +53,7 @@ export default function paginationPage() {
         <Page
           key={startPage + index}
           onClick={onClickPage}
-          id={String(startPage + index)}
+          id={startPage + index}
         >
           {startPage + index}
         </Page>

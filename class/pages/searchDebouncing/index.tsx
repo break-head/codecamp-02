@@ -10,6 +10,7 @@ import _ from "lodash";
 const FETCH_BOARDS = gql`
   query fetchBoards($search: String, $page: Int) {
     fetchBoards(search: $search, page: $page) {
+      _id
       writer
       title
       createdAt
@@ -18,7 +19,7 @@ const FETCH_BOARDS = gql`
 `;
 
 const Column = styled.span`
-  padding: 0px 40px;
+  padding: 0px 50px;
 `;
 
 const Page = styled.span`
@@ -39,21 +40,21 @@ export default function SearchPage() {
   }, 500);
 
   function onChangeSearch(event: ChangeEvent<HTMLInputElement>) {
-    // setSearch(event.target.value);
     getDebounce(event.target.value);
   }
 
-  //   function onClickSearch() {
-  //     refetch({ search: search });
-  //   }
+  // function onClickSearch() {
+  //   refetch({ search: search });
+  // }
 
   function onClickPage(event: MouseEvent<HTMLSpanElement>) {
     refetch({ search: search, page: Number((event.target as Element).id) });
   }
+
   return (
     <>
       <input type="text" onChange={onChangeSearch} />
-      <button>검색하기</button>
+      {/* <button onClick={onClickSearch}>검색하기</button> */}
       {data?.fetchBoards.map((data) => (
         <div key={data._id}>
           <Column>{data.writer}</Column>

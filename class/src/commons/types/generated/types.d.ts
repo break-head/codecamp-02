@@ -43,6 +43,12 @@ export type IBoardAddress = {
   deletedAt?: Maybe<Scalars['DateTime']>;
 };
 
+export type IBoardAddressInput = {
+  zipcode: Scalars['String'];
+  address: Scalars['String'];
+  addressDetail?: Maybe<Scalars['String']>;
+};
+
 export type IBoardComment = {
   __typename?: 'BoardComment';
   _id: Scalars['ID'];
@@ -68,6 +74,7 @@ export type ICreateBoardInput = {
   title: Scalars['String'];
   contents: Scalars['String'];
   youtubeUrl?: Maybe<Scalars['String']>;
+  boardAddress?: Maybe<IBoardAddressInput>;
   images?: Maybe<Array<Scalars['String']>>;
 };
 
@@ -385,6 +392,7 @@ export type IUpdateBoardInput = {
   title?: Maybe<Scalars['String']>;
   contents?: Maybe<Scalars['String']>;
   youtubeUrl?: Maybe<Scalars['String']>;
+  boardAddress?: Maybe<IBoardAddressInput>;
   images?: Maybe<Array<Scalars['String']>>;
 };
 

@@ -1,5 +1,4 @@
-
-import { ChangeEvent} from "react";
+import { ChangeEvent } from "react";
 
 export interface IBoardWriteUIProps {
     onChangeInputs: (event: ChangeEvent<HTMLInputElement>) => void
@@ -8,4 +7,4 @@ export interface IBoardWriteUIProps {
     active: boolean
     isEdit?: boolean
     data: any
-  }
+}

@@ -1,10 +1,12 @@
-import DaumPostcode from "react-daum-postcode";
 import { useState } from "react";
+import DaumPostcode from "react-daum-postcode";
 import { Modal } from "antd";
+
 export default function DaumPostcodePage() {
-  const [address, setAddress] = useState("");
-  const [zoneCode, setZoneCode] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [zoneCode, setZoneCode] = useState("");
+  const [address, setAddress] = useState("");
+  // const [addressDetail, setAddressDetail] = useState("");
 
   function onComplete(data: any) {
     setAddress(data.address);
@@ -15,9 +17,11 @@ export default function DaumPostcodePage() {
   function onClickOpenModal() {
     setIsOpen(true);
   }
+
   function onClickCancel() {
     setIsOpen(false);
   }
+
   return (
     <>
       {isOpen && (
@@ -25,11 +29,11 @@ export default function DaumPostcodePage() {
           {/* <input type="text" />
           <br />
           <input type="password" /> */}
-          <DaumPostcode onComplete={onComplete} animation={true} />
+          <DaumPostcode onComplete={onComplete} animation />
         </Modal>
       )}
       <button onClick={onClickOpenModal}>주소검색하기</button>
-
+      <br />
       <input value={address} readOnly />
       <br />
       <input value={zoneCode} readOnly />

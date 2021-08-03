@@ -1,55 +1,35 @@
-// import { useState } from "react";
+// import {useState} from 'react'
 
 // export default function StatePage() {
-//   const [count, setCount] = useState(0);
+//     const [count, setCount] = useState(0)
 
-//   function aaa() {
-//     setCount(count + 1);
-//     console.log(count);
-//   }
+//     const [hello, setHello] = useState('안녕하세요123')
 
-//   return (
-//     <div>
-//       <div>{count}</div>
-//       <button onClick={aaa}>+1</button>
-//     </div>
-//   );
-// }
+//     function aaa() {
+//         setCount(count + 1)
+//         console.log(count)
+//     }
 
-// import { useState } from "react";
+//     function qqq(){
+//         setHello('반갑습니다~')
+//     }
 
-// export default function StatePage() {
-//   const [state, setState] = useState("하이");
+//     function ccc(){
+//         setToken()
+//         setActive()
+//     }
 
-//   function aaa() {
-//     setState("안녕");
-//   }
+//     return (
+//         <>
+//             <div>{count}</div>
+//             <button onClick={aaa}>+1</button>
 
-//   return (
-//     <>
-//       <div>{state}</div>
-//       <button onClick={aaa}>클릭</button>
-//     </>
-//   );
-// }
+//             <div>{hello}</div>
+//             <button onClick={qqq}>클릭</button>
 
-// import { useState } from "react";
+//             <div>000000</div>
+//             <button onClick={ccc} disabled={false}>인증번호받기</button>
+//         </>
+//     )
 
-// export default function a() {
-//   const ccc = String(Math.floor(Math.random() * 1000000)).padStart(6, 0);
-//   const [token, tokenState] = useState("000000");
-//   const aaa = true;
-//   const [change, onoffState] = useState(false);
-//   function asd() {
-//     tokenState(ccc);
-//     onoffState(aaa);
-//   }
-//   return (
-//     <>
-//       <div>{token}</div>
-//       <button onClick={asd} disabled={change}>
-//         인증번호
-//       </button>
-//     </>
-//   );
 // }

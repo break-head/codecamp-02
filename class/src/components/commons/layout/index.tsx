@@ -6,9 +6,8 @@ import styled from "@emotion/styled";
 
 const Body = styled.div`
   height: 500px;
-
-  overflow: scroll;
 `;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -26,7 +25,6 @@ export default function Layout(props: any) {
         </div>
         <Body>{props.children}</Body>
       </Wrapper>
-
       <LayoutFooter />
     </>
   );

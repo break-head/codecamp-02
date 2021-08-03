@@ -1,17 +1,18 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery, gql } from "@apollo/client";
 import { IQuery } from "../../src/commons/types/generated/types";
 import styled from "@emotion/styled";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 
 const FETCH_BOARDS = gql`
-  query fetchBoards($aaa: Int) {
-    fetchBoards(page: $aaa) {
+  query fetchBoards($page: Int) {
+    fetchBoards(page: $page) {
       _id
       writer
       title
     }
   }
 `;
+
 const FETCH_BOARDS_COUNT = gql`
   query fetchBoardsCount {
     fetchBoardsCount
@@ -19,33 +20,37 @@ const FETCH_BOARDS_COUNT = gql`
 `;
 
 const Column = styled.span`
-  margin: 0px 10px;
+  margin: 0px 50px;
 `;
 
 const Page = styled.span`
   margin: 0px 10px;
   cursor: pointer;
 `;
-export default function paginationPage() {
+
+export default function PaginationPage() {
   const [startPage, setStartPage] = useState(1);
   const { data, refetch } = useQuery<IQuery>(FETCH_BOARDS, {
-    variables: { aaa: startPage },
+    variables: { page: startPage },
   });
+
   const { data: dataBoardsCount } = useQuery<IQuery>(FETCH_BOARDS_COUNT);
   const lastPage = Math.ceil(Number(dataBoardsCount?.fetchBoardsCount) / 10);
 
-  function onClickPage(event: any) {
-    refetch({ aaa: Number((event.target as Element).id) });
+  function onClickPage(event: MouseEvent<HTMLSpanElement>) {
+    refetch({ page: Number((event.target as Element).id) });
   }
 
   function onClickPrevPage() {
     if (startPage <= 1) return;
     setStartPage((prev) => prev - 10);
   }
+
   function onClickNextPage() {
     if (startPage + 10 > lastPage) return;
     setStartPage((prev) => prev + 10);
   }
+
   return (
     <div>
       {data?.fetchBoards.map((data) => (
@@ -55,16 +60,16 @@ export default function paginationPage() {
         </div>
       ))}
       <Page onClick={onClickPrevPage}>이전</Page>
-      {new Array(10).fill(10).map((_, index) => {
+      {new Array(10).fill(1).map((_, index) => {
         const currentPage = startPage + index;
         return (
           currentPage <= lastPage && (
             <Page
-              key={startPage + index}
+              key={currentPage}
               onClick={onClickPage}
-              id={String(startPage + index)}
+              id={String(currentPage)}
             >
-              {startPage + index}
+              {currentPage}
             </Page>
           )
         );

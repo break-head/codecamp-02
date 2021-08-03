@@ -9,11 +9,11 @@ export default function State4Page() {
     setState((prev) => prev + 3);
     setState((prev) => prev + 4);
   }
-
+  // {isOpen&&()}
   return (
     <>
       <div>{state}</div>
-      <button onClick={onClickState}>스테이트 테스트하기</button>;
+      <button onClick={onClickState}>스테이트 테스트하기</button>
     </>
   );
 }

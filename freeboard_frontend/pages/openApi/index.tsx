@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import styled from "@emotion/styled";
+// import styled from "@emotion/styled";
 import axios from "axios";
 // import Image from 'next/image'
 
@@ -12,16 +12,14 @@ export default function OpenApi() {
   useEffect(() => {
     const getImg = async () => {
       const result = await axios.get("https://randomfox.ca/floof/");
-
       setImgUrl(result.data.image);
     };
-
     getImg();
   }, []);
 
   return (
     <>
-      <img src={imgUrl} alt="afasfs" />
+      <img src={imgUrl} />
     </>
   );
 }

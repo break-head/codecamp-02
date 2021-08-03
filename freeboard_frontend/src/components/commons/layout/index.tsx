@@ -5,7 +5,7 @@ import styled from "@emotion/styled";
 
 const Body = styled.div`
   display: flex;
-  flex-direction: column;
+  justify-content: center;
 `;
 
 export default function Layout(props: any) {
