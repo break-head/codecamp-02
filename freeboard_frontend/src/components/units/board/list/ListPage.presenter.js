@@ -1,3 +1,5 @@
+import Paginations01 from "../../../commons/paginations/01/Paginations01.container";
+import Searchbars01 from "../../../commons/searchbars/Searchbars01.container";
 import {
   Wrapper,
   WrapperBody,
@@ -5,6 +7,8 @@ import {
   Column,
   TitleColumn,
   Button,
+  PencilIcon,
+  Footer,
 } from "./ListPage.styles";
 import { getDate } from "../../../../commons/libraries/utils";
 
@@ -12,6 +16,10 @@ export default function ListPageUi(props) {
   return (
     <Wrapper>
       <WrapperBody>
+        <Searchbars01
+          refetch={props.refetch}
+          onChangeKeyword={props.onChangeKeyword}
+        />
         <Row>
           <TitleColumn>번호</TitleColumn>
           <TitleColumn>제목</TitleColumn>
@@ -26,16 +34,22 @@ export default function ListPageUi(props) {
                 {data.title}
               </Column>
               <Column>{data.writer}</Column>
-              <Column>
-                {getDate(data.createdAt)}
-                {/* {new Date(data.createdAt).getFullYear()} -
-          {String(new Date(data.createdAt).getMonth() + 1).padStart(2, "0")}-
-          {new Date(data.createdAt).getDate()} */}
-              </Column>
+              <Column>{getDate(data.createdAt)}</Column>
             </Row>
           </>
         ))}
-        <Button onClick={props.onClickMove}>게시물등록하기</Button>
+        <Footer>
+          <Paginations01
+            refetch={props.refetch}
+            count={props.dataBoardsCount?.fetchBoardsCount}
+            startPage={props.startPage}
+            setStartPage={props.setStartPage}
+          />
+          <Button onClick={props.onClickMove}>
+            <PencilIcon src="/images/board/list/write.png" />
+            게시물 등록하기
+          </Button>
+        </Footer>
       </WrapperBody>
     </Wrapper>
   );

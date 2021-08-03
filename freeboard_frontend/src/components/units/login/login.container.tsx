@@ -1,39 +1,41 @@
-import { useState } from "react";
-import LoginIU from "./login.presenter";
-export default function Login() {
-  const [id, setId] = useState("");
-  const [idError, setIdError] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordError, setPassworderror] = useState("");
+import { useRouter } from "next/router";
+import { useContext, useState } from "react";
+import LoginUI from "./login.presenter";
 
-  function aaa(event) {
-    setId(event.target.value);
+export default function Login() {
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { setAccessToken } = useContext(GlobalContext);
+  const [loginUser] = useMutation<
+    Pick<IMutation, "loginUser">,
+    IMutationLoginUserArgs
+  >(LOGIN_USER);
+
+  function onChangeEmail(event: ChangeEvent<HTMLInputElement>) {
+    setEmail(event.target.value);
   }
 
-  function bbb(event) {
+  function onChangePassword(event: ChangeEvent<HTMLInputElement>) {
     setPassword(event.target.value);
   }
 
-  function ddd() {
-    setIdError("아이디를 입력해주세요");
-  }
-
-  function fff() {
-    setPassworderror("비밀번호를 입력해주세요");
-  }
-  function ccc() {
-    if (id === "") {
-      ddd();
-    }
-    if (password === "") {
-      fff();
-    }
-    if (id !== "" && password !== "") {
-      alert("로그인할까용");
+  async function onClickLogin() {
+    try {
+      const result = await loginUser({
+        variables: {
+          email: email,
+          password: password,
+        },
+      });
+      setAccessToken(result.data?.loginUser.accessToken);
+      router.push("/22-login-success");
+    } catch (error) {
+      alert(error.message);
     }
   }
   return (
-    <LoginIU
+    <LoginUI
       idError={idError}
       passwordError={passwordError}
       aaa={aaa}

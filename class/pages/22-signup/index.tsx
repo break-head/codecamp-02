@@ -46,6 +46,7 @@ export default function SignupLoginPage() {
         },
       });
       console.log(result.data?.createUser._id);
+      alert("회원가입되었습니다");
     } catch (error) {
       alert(error.message);
     }

@@ -44,7 +44,13 @@ export const TitleColumn = styled.div`
   font-size: 18px;
   font-weight: bold;
 `;
-
+export const Footer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 50px;
+`;
+export const PencilIcon = styled.img``;
 export const Button = styled.button`
   float: right;
   background-color: #ffffff;

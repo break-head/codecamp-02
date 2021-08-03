@@ -41,7 +41,8 @@ export default function Login() {
           password: password,
         },
       });
-      setAccessToken(result.data?.loginUser.accessToken);
+      console.log(result.data?.loginUser.accessToken);
+      setAccessToken(result.data?.loginUser.accessToken || "");
       router.push("/22-login-success");
     } catch (error) {
       alert(error.message);

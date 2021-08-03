@@ -5,9 +5,17 @@ export default function LayoutNavigation(props: any) {
   const router = useRouter();
   function onClickMove() {
     // console.log(router);
-    router.push("/boards/openApi");
+    router.push("/openApi");
     // router.reload();
     // window.location.href = "/boards/openApi";
   }
-  return <LayoutNavigationUI onClickMove={onClickMove} />;
+  function onClickMoveBoards() {
+    router.push("/bords/new");
+  }
+  return (
+    <LayoutNavigationUI
+      onClickMove={onClickMove}
+      onClickMoveBoards={onClickMoveBoards}
+    />
+  );
 }

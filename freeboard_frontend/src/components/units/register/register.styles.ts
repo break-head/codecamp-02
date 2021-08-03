@@ -2,10 +2,22 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  width: 1920px;
-  height: 100%;
-  padding-top: 159px;
+  width: 100%;
+  height: 100vh;
+  /* padding-top: 159px; */
   background-image: url("../market/login/BG.png");
+  background-size: cover;
+`;
+export const SubWrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.7;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-size: cover;
+  padding-top: 159px;
 `;
 export const Title = styled.div`
   font-size: 28px;
@@ -31,7 +43,6 @@ export const ErrorTextDiv = styled.div`
 export const TextDiv = styled.div`
   padding-top: 20px;
   padding-bottom: 12px;
-
   color: #ffffff;
   ::placeholder {
     color: white;

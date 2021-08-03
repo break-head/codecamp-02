@@ -1,8 +1,8 @@
 import {
   ApolloClient,
-  ApolloLink,
-  InMemoryCache,
   ApolloProvider,
+  InMemoryCache,
+  ApolloLink,
 } from "@apollo/client";
 import { AppProps } from "next/dist/next-server/lib/router/router";
 import "../styles/globals.css";
@@ -11,25 +11,21 @@ import Layout from "../src/components/commons/layout";
 import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
 import { createUploadLink } from "apollo-upload-client";
+// import firebase from "firebase/app";
+// import "firebase/firestore";
+import { createContext, useState } from "react";
 
-import firebase from "firebase/app";
-import "firebase/firestore";
-import { createContext, Dispatch, SetStateAction, useState } from "react";
+// if (typeof window !== "undefined") {
+//   firebase.initializeApp({
+//     apiKey: "AIzaSyB2AZodzgw35GmS8qlyy3Z22jFI3Du2GH8",
+//     authDomain: "codecamp-01.firebaseapp.com",
+//     databaseURL: "https://codecamp-01.firebaseio.com",
+//     projectId: "codecamp-01",
+//     storageBucket: "codecamp-01.appspot.com",
+//   });
+// }
 
-if (typeof window !== "undefined") {
-  firebase.initializeApp({
-    apiKey: "AIzaSyB2AZodzgw35GmS8qlyy3Z22jFI3Du2GH8",
-    authDomain: "codecamp-01.firebaseapp.com",
-    databaseURL: "https://codecamp-01.firebaseio.com",
-    projectId: "codecamp-01",
-    storageBucket: "codecamp-01.appspot.com",
-  });
-}
-interface IContext {
-  accessToken: string;
-  setAccessToken: Dispatch<SetStateAction<string>>;
-}
-export const GlobalContext = createContext<IContext>({});
+export const GlobalContext = createContext({});
 function MyApp({ Component, pageProps }: AppProps) {
   const [accessToken, setAccessToken] = useState();
   const uploadLink = createUploadLink({
@@ -44,11 +40,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     link: ApolloLink.from([uploadLink as unknown as ApolloLink]),
     cache: new InMemoryCache(),
   });
-
   return (
     <GlobalContext.Provider value={{ accessToken, setAccessToken }}>
       <ApolloProvider client={client}>
-        <Layout aaa={true}>
+        <Layout>
           <Global styles={globalStyles} />
           <Component {...pageProps} />
         </Layout>

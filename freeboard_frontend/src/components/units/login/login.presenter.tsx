@@ -1,50 +1,39 @@
+import { Checkbox } from "@material-ui/core";
 import {
   Wrapper,
-  CancelWrapper,
-  Cancel,
-  LoginWrapper,
-  Banner,
-  LoginInput,
-  LoginStatus,
-  StatusButton,
+  Img,
+  InputWrapper,
+  EmailInput,
+  PasswordInput,
+  ErrorText,
+  KeepLonin,
   LoginButton,
-  LoginSetting,
-  EmailFindButton,
-  PasswordFindButton,
-  SingUpButton,
+  FindWrapper,
+  Clickdiv,
 } from "./login.styles";
 
-export default function LoginIU(props) {
+export default function LoginUI(props) {
   return (
     <Wrapper>
-      <CancelWrapper>
-        <Cancel />
-      </CancelWrapper>
-      <LoginWrapper>
-        <Banner />
-        <LoginInput
-          placeholder="이메일을 입력해주세요."
-          type="text"
-          onChange={props.aaa}
-        />
-        <div>{props.idError}</div>
-        <LoginInput
-          placeholder="비밀번호를 입력해주세요."
-          type="password"
-          onChange={props.bbb}
-        />
-        <div>{props.passwordError}</div>
-        <LoginStatus>
-          <StatusButton />
-          로그인 상태유지
-        </LoginStatus>
-        <LoginButton onClick={props.ccc}>로그인하기</LoginButton>
-        <LoginSetting>
-          <EmailFindButton>이메일찾기</EmailFindButton>
-          <PasswordFindButton>비밀번호찾기</PasswordFindButton>
-          <SingUpButton>회원가입</SingUpButton>
-        </LoginSetting>
-      </LoginWrapper>
+      <Img></Img>
+      <InputWrapper>
+        <EmailInput type="text" placeholder="이메일을 입력해주세요" />
+        <ErrorText>이메일은 필수 입력 입니다.</ErrorText>
+        <PasswordInput type="password" placeholder="비밀번호를 입력해주세요" />
+        <ErrorText>비밀번호는 필수 입력 입니다.</ErrorText>
+      </InputWrapper>
+      <KeepLonin>
+        <Checkbox style={{ color: "#142B12" }} />
+        로그인 상태 유지
+      </KeepLonin>
+      <LoginButton>로그인하기</LoginButton>
+      <FindWrapper>
+        <Clickdiv>이메일 찾기</Clickdiv>
+        <>|</>
+        <Clickdiv>비밀번호 찾기</Clickdiv>
+        <>|</>
+        <Clickdiv onClick={props.onClickSignUp}>회원가입</Clickdiv>
+      </FindWrapper>
     </Wrapper>
   );
 }

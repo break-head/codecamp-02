@@ -1,4 +1,4 @@
-import { Tooltip, Upload } from "antd";
+import { Tooltip } from "antd";
 import {
   Avatar,
   AvatarWrapper,
