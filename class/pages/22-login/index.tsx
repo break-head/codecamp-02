@@ -43,7 +43,7 @@ export default function Login() {
       });
       console.log(result.data?.loginUser.accessToken);
       setAccessToken(result.data?.loginUser.accessToken || "");
-      router.push("/22-login-success");
+      router.push("/23-hoc");
     } catch (error) {
       alert(error.message);
     }

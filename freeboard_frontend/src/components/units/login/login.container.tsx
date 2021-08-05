@@ -1,6 +1,9 @@
+import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
+import { GlobalContext } from "../../../../pages/_app";
 import LoginUI from "./login.presenter";
+import { LOGIN_USER } from "./login.queries";
 
 export default function Login() {
   const router = useRouter();
@@ -13,6 +16,7 @@ export default function Login() {
   >(LOGIN_USER);
 
   function onChangeEmail(event: ChangeEvent<HTMLInputElement>) {
+    console.log(event.target.value);
     setEmail(event.target.value);
   }
 
@@ -28,19 +32,20 @@ export default function Login() {
           password: password,
         },
       });
-      setAccessToken(result.data?.loginUser.accessToken);
-      router.push("/22-login-success");
+      console.log(result.data?.loginUser.accessToken);
+      setAccessToken(result.data?.loginUser.accessToken || "");
+      router.push("/boards/new");
+      alert("하이");
     } catch (error) {
       alert(error.message);
     }
   }
+
   return (
     <LoginUI
-      idError={idError}
-      passwordError={passwordError}
-      aaa={aaa}
-      bbb={bbb}
-      ccc={ccc}
+      onChangeEmail={onChangeEmail}
+      onChangePassword={onChangePassword}
+      onClickLogin={onClickLogin}
     />
   );
 }

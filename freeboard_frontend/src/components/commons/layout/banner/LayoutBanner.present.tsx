@@ -8,21 +8,24 @@ export default function LayoutBannerUI() {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+    // cssEase: "linear",
   };
 
   return (
     <Wrapper>
       <Slider {...setting}>
         <div>
-          <SliderItem src="/images/Layout/banner1.png" />
+          <SliderItem src="/images/Layout/KakaoTalk_20200305_212308763.gif" />
         </div>
         <div>
-          <SliderItem src="/images/Layout/banner2.png" />
+          <SliderItem src="/images/Layout/KakaoTalk_20200305_212308763.gif" />
         </div>
         <div>
-          <SliderItem src="/images/Layout/banner3.png" />
+          <SliderItem src="/images/Layout/KakaoTalk_20200305_212308763.gif" />
         </div>
       </Slider>
     </Wrapper>

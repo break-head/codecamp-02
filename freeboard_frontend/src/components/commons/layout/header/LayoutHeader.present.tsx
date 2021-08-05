@@ -11,7 +11,7 @@ export default function LayoutHeaderUI(props: any) {
       <InnerWrapper>
         <InnerLogo
           onClick={props.onClickBoards}
-          src="/images/Layout/logo.png"
+          src="/images/Layout/peng.png"
         />
         <div>
           <InnerButton onClick={props.onClickLogin}>로그인</InnerButton>

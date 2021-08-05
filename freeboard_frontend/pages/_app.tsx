@@ -5,7 +5,6 @@ import {
   ApolloLink,
 } from "@apollo/client";
 import { AppProps } from "next/dist/next-server/lib/router/router";
-import "../styles/globals.css";
 import "antd/dist/antd.css";
 import Layout from "../src/components/commons/layout";
 import { Global } from "@emotion/react";
@@ -25,13 +24,18 @@ import { createContext, useState } from "react";
 //   });
 // }
 
-export const GlobalContext = createContext({});
+export const GlobalContext = createContext<IContext>({});
 function MyApp({ Component, pageProps }: AppProps) {
-  const [accessToken, setAccessToken] = useState();
+  const [accessToken, setAccessToken] = useState("");
+  const value = {
+    accessToken: accessToken,
+    setAccessToken: setAccessToken,
+  };
+
   const uploadLink = createUploadLink({
     uri: "http://backend02.codebootcamp.co.kr/graphql",
     headers: {
-      authorization: `bearer ${accessToken}`,
+      authorization: `Bearer ${accessToken}`,
     },
   });
 
@@ -41,7 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     cache: new InMemoryCache(),
   });
   return (
-    <GlobalContext.Provider value={{ accessToken, setAccessToken }}>
+    <GlobalContext.Provider value={value}>
       <ApolloProvider client={client}>
         <Layout>
           <Global styles={globalStyles} />

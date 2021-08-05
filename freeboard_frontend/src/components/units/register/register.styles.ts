@@ -5,13 +5,13 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   /* padding-top: 159px; */
-  background-image: url("../market/login/BG.png");
+  background-image: url("../market/login/102750939.1.jpg");
   background-size: cover;
 `;
 export const SubWrapper = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: black;
+  /* background-color: black; */
   opacity: 0.7;
   position: relative;
   display: flex;

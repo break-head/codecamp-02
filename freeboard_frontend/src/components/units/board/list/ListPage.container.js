@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import ListPageUi from "./ListPage.presenter";
 import { FETCH_BOARDS, FETCH_BOARDS_COUNT } from "./ListPage.queries";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ListPage() {
   const { data, refetch } = useQuery(FETCH_BOARDS);
@@ -10,6 +10,13 @@ export default function ListPage() {
   const router = useRouter();
   const [startPage, setStartPage] = useState(1);
   const [keyword, setKeyword] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      alert("여기는 펭수왕국이다!");
+    }
+  }, []);
+
   function onClickMove() {
     router.push("/boards/new");
   }
@@ -19,6 +26,7 @@ export default function ListPage() {
   function onChangeKeyword(value) {
     setKeyword(value);
   }
+
   return (
     <ListPageUi
       data={data}
