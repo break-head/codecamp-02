@@ -20,19 +20,18 @@ interface IContext {
   data?: Pick<IQuery, "fetchBoard">;
 }
 export const BoardsEditPageContext = createContext<IContext>({});
-export default function BoardsEditPage(){
-    const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardsArgs>(
-        FETCH_BOARD
-      );
-      const value = {
-        isEdit: true,
-        data,
-      };
-    
-      return (
-        <BoardsEditPageContext.Provider value={value}>
-          <BoardWrite />
-        </BoardsEditPageContext.Provider>
-      );
-    return <BoardWrite isEdit={true} />
+export default function BoardsEditPage() {
+  const { data } = useQuery<Pick<IQuery, "fetchBoard">, IQueryFetchBoardsArgs>(
+    FETCH_BOARD
+  );
+  const value = {
+    isEdit: true,
+    data,
+  };
+
+  return (
+    <BoardsEditPageContext.Provider value={value}>
+      <BoardWrite />
+    </BoardsEditPageContext.Provider>
+  );
 }

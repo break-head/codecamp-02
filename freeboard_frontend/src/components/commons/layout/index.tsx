@@ -12,11 +12,11 @@ const Body = styled.div`
 
 export default function Layout(props: any) {
   return (
-    <div style={{ height: "100%" }}>
+    <>
       <LayoutHeader />
       <LayoutBanner />
       <LayoutNavigation />
       <Body>{props.children}</Body>
-    </div>
+    </>
   );
 }

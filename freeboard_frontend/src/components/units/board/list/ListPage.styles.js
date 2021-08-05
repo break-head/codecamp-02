@@ -10,6 +10,7 @@ export const WrapperBody = styled.div`
   margin-left: 100px;
   margin-top: 100px;
   border-top: 1px solid black;
+  padding-top: 20px;
   /* border-bottom: 1px solid black; */
 `;
 export const Row = styled.div`

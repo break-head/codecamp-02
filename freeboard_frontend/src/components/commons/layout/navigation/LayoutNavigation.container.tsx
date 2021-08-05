@@ -10,7 +10,7 @@ export default function LayoutNavigation(props: any) {
     // window.location.href = "/boards/openApi";
   }
   function onClickMoveBoards() {
-    router.push("/bords/new");
+    router.push("/boards");
   }
   return (
     <LayoutNavigationUI
