@@ -25,17 +25,29 @@ if (typeof window !== "undefined") {
     storageBucket: "codecamp-01.appspot.com",
   });
 }
+
 interface IContext {
   accessToken: string;
   setAccessToken: Dispatch<SetStateAction<string>>;
+  userInfo: any;
+  setUserInfo: any;
 }
 export const GlobalContext = createContext<IContext>({});
 function MyApp({ Component, pageProps }: AppProps) {
-  const [accessToken, setAccessToken] = useState();
+  const [accessToken, setAccessToken] = useState("");
+  const [userInfo, setUserInfo] = useState({});
+
+  const value = {
+    accessToken: accessToken,
+    setAccessToken: setAccessToken,
+    userInfo: userInfo,
+    setUserInfo: setUserInfo,
+  };
+
   const uploadLink = createUploadLink({
     uri: "http://backend02.codebootcamp.co.kr/graphql",
     headers: {
-      authorization: `bearer ${accessToken}`,
+      authorization: `Bearer ${accessToken}`,
     },
   });
 
@@ -46,7 +58,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   });
 
   return (
-    <GlobalContext.Provider value={{ accessToken, setAccessToken }}>
+    <GlobalContext.Provider value={value}>
       <ApolloProvider client={client}>
         <Layout aaa={true}>
           <Global styles={globalStyles} />
