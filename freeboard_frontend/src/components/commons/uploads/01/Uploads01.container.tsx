@@ -1,4 +1,3 @@
-import { Modal } from "antd";
 import { ChangeEvent, useRef, useState } from "react";
 import { checkValidationFile } from "../../../../commons/libraries/validations";
 import Uploads01UI from "./Uploads01.presenter";

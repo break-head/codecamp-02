@@ -15,7 +15,6 @@ export const Title = styled.div`
   font-weight: bold;
   font-size: 36px;
   line-height: 53px;
-  margin-bottom: 80px;
 `;
 export const Input = styled.input`
   width: 100%;
@@ -23,10 +22,8 @@ export const Input = styled.input`
   margin-top: 16px;
 `;
 export const Label = styled.div`
-  height: 24px;
-  font-weight: 500;
+  font-weight: bold;
   font-size: 16px;
-  line-height: 24px;
 `;
 export const Contents = styled.div`
   width: 100%;
@@ -49,6 +46,10 @@ export const ContentsTextArea = styled.textarea`
   height: 268px;
   padding: 14px 16px;
   font-size: 16px;
+`;
+export const ErrorMessage = styled.div`
+  color: red;
+  text-align: center;
 `;
 export const Location = styled.div`
   width: 100%;

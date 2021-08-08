@@ -7,3 +7,10 @@ export const CREATE_USED_ITEM = gql`
     }
   }
 `;
+export const UPLOAD_FILE = gql`
+  mutation uploadFile($file: Upload!) {
+    uploadFile(file: $file) {
+      url
+    }
+  }
+`;
