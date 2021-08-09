@@ -34,7 +34,7 @@ export default function Login() {
       });
       console.log(result.data?.loginUser.accessToken);
       setAccessToken(result.data?.loginUser.accessToken || "");
-      router.push("/boards/new");
+      router.push("/market/new");
       alert("하이");
     } catch (error) {
       alert(error.message);

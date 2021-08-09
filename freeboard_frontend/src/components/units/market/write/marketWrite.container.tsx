@@ -16,11 +16,16 @@ export default function MarketWrite() {
   const [uploadFile] = useMutation(UPLOAD_FILE);
   const [files, setFiles] = useState<(File | null)[]>([null, null, null]);
 
-  async function onSubmit(data) {
+  function onChangeFiles(file: File, index: number) {
+    const newFiles = [...files];
+    newFiles[index] = file;
+    setFiles(newFiles);
+  }
+  async function onSubmit(data: any) {
     try {
       const uploadFiles = files
         .filter((data) => data)
-        .map((data) => uploadFiles({ variables: { file: data } }));
+        .map((data) => uploadFile({ variables: { file: data } }));
       const results = await Promise.all(uploadFiles);
       const images = results.map((data) => data.data.uploadFile.url);
 
@@ -30,23 +35,19 @@ export default function MarketWrite() {
             name: data.name,
             remarks: data.remarks,
             contents: data.contents,
-            price: Number(data.price),
+            price: data.price,
             tags: data.tags,
             images: images,
           },
         },
       });
       console.log(result.data?.createUseditem);
-      Modal.info({ content: "로그인 완료!!" });
+      Modal.info({ content: "게시물등록완료!!" });
     } catch (error) {
       Modal.error({ content: error.message });
     }
   }
-  function onChangeFiles(file: File, index: number) {
-    const newFiles = [...files];
-    newFiles[index] = file;
-    setFiles(newFiles);
-  }
+
   return (
     <MarketWriteUI
       register={register}
