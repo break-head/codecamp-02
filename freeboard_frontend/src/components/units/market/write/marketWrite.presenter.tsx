@@ -25,7 +25,7 @@ import {
 } from "./marketWrite.styles";
 import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
 import Input01 from "../../../commons/inputs/Input01";
-export default function MarketWriteUI(props) {
+export default function MarketWriteUI(props: any) {
   return (
     <form onSubmit={props.handleSubmit(props.onSubmit)}>
       <Wrapper>
@@ -110,9 +110,7 @@ export default function MarketWriteUI(props) {
             <Label>사진 2</Label>
           </Setting>
         </Settings>
-        <Button type="submit" isActive="props.isActive">
-          등록하기
-        </Button>
+        <Button type="submit">등록하기</Button>
       </Wrapper>
     </form>
   );

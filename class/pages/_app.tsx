@@ -8,8 +8,8 @@ import { AppProps } from "next/dist/next-server/lib/router/router";
 import "../styles/globals.css";
 import "antd/dist/antd.css";
 import Layout from "../src/components/commons/layout";
-import { Global } from "@emotion/react";
-import { globalStyles } from "../src/commons/styles/globalStyles";
+// import { Global } from "@emotion/react";
+// import { globalStyles } from "../src/commons/styles/globalStyles";
 import { createUploadLink } from "apollo-upload-client";
 
 import firebase from "firebase/app";
@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <GlobalContext.Provider value={value}>
       <ApolloProvider client={client}>
         <Layout aaa={true}>
-          <Global styles={globalStyles} />
+          {/* <Global styles={globalStyles} /> */}
           <Component {...pageProps} />
         </Layout>
       </ApolloProvider>

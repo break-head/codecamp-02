@@ -14,7 +14,7 @@ import {
   Var,
 } from "./login.styles";
 
-export default function LoginUI(props) {
+export default function LoginUI(props: any) {
   return (
     <Wrapper>
       <SubWrapper>

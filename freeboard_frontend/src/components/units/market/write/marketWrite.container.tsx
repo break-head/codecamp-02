@@ -18,17 +18,18 @@ export default function MarketWrite() {
 
   function onChangeFiles(file: File, index: number) {
     const newFiles = [...files];
+
     newFiles[index] = file;
     setFiles(newFiles);
   }
-  async function onSubmit(data: any) {
-    try {
-      const uploadFiles = files
-        .filter((data) => data)
-        .map((data) => uploadFile({ variables: { file: data } }));
-      const results = await Promise.all(uploadFiles);
-      const images = results.map((data) => data.data.uploadFile.url);
 
+  async function onSubmit(data: any) {
+    const uploadFiles = files
+      .filter((data) => data)
+      .map((data) => uploadFile({ variables: { file: data } }));
+    const results = await Promise.all(uploadFiles);
+    const images = results.map((data) => data.data.uploadFile.url);
+    try {
       const result = await createUseditem({
         variables: {
           createUseditemInput: {

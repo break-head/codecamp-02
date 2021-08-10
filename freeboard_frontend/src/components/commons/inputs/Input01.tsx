@@ -18,7 +18,7 @@ const ErrorMessage = styled.div`
   color: red;
 `;
 
-export default function Input01(props) {
+export default function Input01(props: any) {
   return (
     <>
       <Title>{props.inputName}</Title>

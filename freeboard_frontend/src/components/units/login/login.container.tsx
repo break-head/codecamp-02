@@ -25,6 +25,15 @@ export default function Login() {
   }
 
   async function onClickLogin() {
+    // const newInputsErrors = {
+    //   email: /\w+@\w+\.\w+/.test(email) ? "" : "이메일을 확인해주세요",
+    //   password:
+    //     /^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/.test(
+    //       password
+    //     )
+    //       ? ""
+    //       : "비밀번호 입력해주세요",
+    //     }
     try {
       const result = await loginUser({
         variables: {

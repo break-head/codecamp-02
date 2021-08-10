@@ -1,72 +1,94 @@
-// import { Tooltip } from "antd";
+import { Tooltip } from "antd";
 import {
   Wrapper,
-  CardWrapper,
   Header,
   AvatarWrapper,
   Avatar,
-  Info,
+  InfoWrapper,
+  LinkIconWrapper,
   Writer,
   CreatedAt,
-  IconWrapper,
   LinkIcon,
   LocationIcon,
   Body,
-  InfoWrapper,
-  TextInfoWrapper,
+  TitleWrapper,
+  ItemInfoWrapper,
   SubTitle,
   Title,
   Price,
-  LikeIconWrapper,
+  IconWrapper,
   LikeIcon,
   LikeCount,
-  ImageWrapper,
-  Image,
+  PictureWrapper,
+  Picture,
   Contents,
-  Tag,
-  Location,
+  TagsWrapper,
+  Tags,
+  MapsWrapper,
+  Maps,
+  ButtonWrapper,
+  Button,
 } from "./MarketDetail.styles";
-export default function MarketDetailUI() {
+import { getDate } from "../../../../commons/libraries/utils";
+export default function MarketDetailUI(props: any) {
   return (
     <Wrapper>
-      <CardWrapper>
-        <Header>
-          <AvatarWrapper>
-            <Avatar />
-            <Info>
-              <Writer></Writer>
-              <CreatedAt></CreatedAt>
-            </Info>
-          </AvatarWrapper>
-          <IconWrapper>
-            <LinkIcon />
-            {/* <Tooltip placement="topRight"> */}
-            <LocationIcon />
-            {/* </Tooltip> */}
-          </IconWrapper>
-        </Header>
-        <Body>
+      <Header>
+        <AvatarWrapper>
+          <Avatar src="/avatar.png" />
           <InfoWrapper>
-            <TextInfoWrapper>
-              <SubTitle></SubTitle>
-              <Title></Title>
-              <Price></Price>
-            </TextInfoWrapper>
-            <LikeIconWrapper>
-              <LikeIcon />
-              <LikeCount></LikeCount>
-            </LikeIconWrapper>
+            <Writer>{props.data?.fetchUseditem.seller.name}</Writer>
+            <CreatedAt>
+              {getDate(props.data?.fetchUseditem.createdAt)}
+            </CreatedAt>
           </InfoWrapper>
-          <ImageWrapper>
-            <Image />
-          </ImageWrapper>
-          <Contents></Contents>
-          <Tag></Tag>
-          <Location></Location>
-        </Body>
-      </CardWrapper>
-      {/* <Button />
-      <Button /> */}
+        </AvatarWrapper>
+        <LinkIconWrapper>
+          <LinkIcon src="/boards/detail/link.png" />
+          <Tooltip
+            placement="topRight"
+            title={`${props.data?.fetchUseditem.useditemAddress?.address}${props.data?.fetchUseditem.useditemAddress?.addressDetail}`}
+          >
+            <LocationIcon src="/boards/detail/location.png" />
+          </Tooltip>
+        </LinkIconWrapper>
+      </Header>
+      <Body>
+        <TitleWrapper>
+          <ItemInfoWrapper>
+            <SubTitle>{props.data?.fetchUseditem.remarks}</SubTitle>
+            <Title>{props.data?.fetchUseditem.name}</Title>
+            <Price>{props.data?.fetchUseditem.price}</Price>
+          </ItemInfoWrapper>
+          <IconWrapper>
+            <LikeIcon />
+            <LikeCount></LikeCount>
+          </IconWrapper>
+        </TitleWrapper>
+        <PictureWrapper>
+          {props.data?.fetchUseditem.images?.map((data: any) => (
+            <Picture
+              key={data}
+              src={`https;//storage.googleapis.com/${data}`}
+            />
+          ))}
+        </PictureWrapper>
+        <Contents>
+          <br />
+          {props.data?.fetchUseditem.contents}
+        </Contents>
+        <TagsWrapper>
+          <Tags>{props.data?.fetchUseditem.tags}</Tags>
+        </TagsWrapper>
+        <MapsWrapper>
+          <Maps></Maps>
+        </MapsWrapper>
+      </Body>
+
+      <ButtonWrapper>
+        <Button>a</Button>
+        <Button>b</Button>
+      </ButtonWrapper>
     </Wrapper>
   );
 }

@@ -32,10 +32,13 @@ function MyApp({ Component, pageProps }: AppProps) {
     setAccessToken: setAccessToken,
   };
 
+  console.log(accessToken);
   const uploadLink = createUploadLink({
     uri: "http://backend02.codebootcamp.co.kr/graphql",
     headers: {
       authorization: `Bearer ${accessToken}`,
+      // authorization:
+      //   "Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTBjYTRjNDljYTM0OTAwMjlhZGI0OTgiLCJwZXJtaXNzaW9uIjowLCJpYXQiOjE2Mjg1MDAyMzgsImV4cCI6MTYyODUwMzgzOCwic3ViIjoiYWNjZXNzVG9rZW4ifQ.kxJLLSwSQ1NDxKs6BzbOAhV5hBnMW3TW64iKR3JiDsusW06A_7FjoSbGoeCLrcaCP3aJZ0Zf3XFE-lBlOhh20Q",
     },
   });
 

@@ -15,6 +15,7 @@ export default function Uploads01(props: IUploads01Props) {
     const file = event.target.files?.[0];
     if (!checkValidationFile(file)) return;
 
+    if (!file) return;
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = (data) => {

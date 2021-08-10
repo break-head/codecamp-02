@@ -1,3 +1,4 @@
+import Register from "../../../units/register/register.container";
 import {
   UploadButton,
   UploadFileHidden,
@@ -11,11 +12,12 @@ export default function Uploads01UI(props: IUploads01UIProps) {
       {props.fileUrl ? (
         <UploadImage onClick={props.onClickUpload} src={props.fileUrl} />
       ) : (
-        <UploadButton onClick={props.onClickUpload}>
+        <UploadButton onClick={props.onClickUpload} type="button">
           <>+</>
           <>Upload</>
         </UploadButton>
       )}
+
       <UploadFileHidden
         type="file"
         ref={props.fileRef}
