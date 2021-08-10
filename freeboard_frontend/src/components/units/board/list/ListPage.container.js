@@ -20,9 +20,10 @@ export default function ListPage() {
   function onClickMove() {
     router.push("/boards/new");
   }
-  function onClickMoveDetail(event) {
-    router.push(`/boards/${event.target.id}`);
-  }
+  const onClickMoveDetail = (id) => (event) => {
+    console.log(id);
+    router.push(`/boards/${id}`);
+  };
   function onChangeKeyword(value) {
     setKeyword(value);
   }

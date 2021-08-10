@@ -28,11 +28,13 @@ export default function ListPageUi(props) {
         </Row>
         {props.data?.fetchBoards.map((data, index) => (
           <>
-            <Row key={data._id}>
+            <Row
+              key={data._id}
+              id={data._id}
+              onClick={props.onClickMoveDetail(data._id)}
+            >
               <Column>{10 - index}</Column>
-              <Column id={data._id} onClick={props.onClickMoveDetail}>
-                {data.title}
-              </Column>
+              <Column>{data.title}</Column>
               <Column>{data.writer}</Column>
               <Column>{getDate(data.createdAt)}</Column>
             </Row>

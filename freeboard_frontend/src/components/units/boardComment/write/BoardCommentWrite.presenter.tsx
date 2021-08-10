@@ -16,10 +16,16 @@ export default function BoardCommentWriteUI(props: IBoardCommentWriteUIProps) {
   return (
     <Wrapper>
       {!props.isEdit && (
-        <>
+        <div
+          style={{
+            width: "80%",
+            display: "flex",
+            justifyContent: "flex-start",
+          }}
+        >
           <PencilIcon src="/images/boardComment/write/pencil.png" />
-          <span>댓글</span>
-        </>
+          <span style={{ marginLeft: "20px" }}>댓글</span>
+        </div>
       )}
       <InputWrapper>
         <Input

@@ -9,6 +9,7 @@ import "antd/dist/antd.css";
 import Layout from "../src/components/commons/layout";
 import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalStyles";
+// import "../styles/globals.css";
 import { createUploadLink } from "apollo-upload-client";
 // import firebase from "firebase/app";
 // import "firebase/firestore";

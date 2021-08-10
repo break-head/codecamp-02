@@ -3,6 +3,9 @@ import {
   PageTitle,
   BestProductWrapper,
   Column,
+  ContentsWrapper,
+  ContentsTextWrapper,
+  ContentsIconWrapper,
   Image,
   Title,
   Remarks,
@@ -39,12 +42,18 @@ export default function MarketListUI() {
       <PageTitle>베스트상품</PageTitle>
       <BestProductWrapper>
         <Column>
-          <Image></Image>
-          <Title></Title>
-          <Remarks></Remarks>
-          <LikeIcon></LikeIcon>
-          <Price></Price>
-          <LikeCount></LikeCount>
+          <Image alt={"포도사진"}></Image>
+          <ContentsWrapper>
+            <ContentsTextWrapper>
+              <Title>게시물제목</Title>
+              <Remarks>리마크입니다.</Remarks>
+              <Price>240000</Price>
+            </ContentsTextWrapper>
+            <ContentsIconWrapper>
+              <LikeIcon></LikeIcon>
+              <LikeCount>20</LikeCount>
+            </ContentsIconWrapper>
+          </ContentsWrapper>
         </Column>
       </BestProductWrapper>
       <Body>

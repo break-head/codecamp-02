@@ -1,4 +1,5 @@
-export default function marketListPage() {
+import MarketList from "../../src/components/units/market/list/marketList.container";
 
-    return<>
+export default function MarketListPage() {
+  return <MarketList />;
 }

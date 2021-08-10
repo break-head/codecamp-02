@@ -3,11 +3,15 @@ import { LikeOutlined, DislikeOutlined } from "@ant-design/icons";
 import ReactPlayer from "react-player";
 
 export const Wrapper = styled.div`
-  margin: 100px;
+  padding-top: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const CardWrapper = styled.div`
-  /* height: 1847px; */
+  width: 80%;
   border: 1px solid black;
   padding-top: 80px;
   padding-bottom: 100px;

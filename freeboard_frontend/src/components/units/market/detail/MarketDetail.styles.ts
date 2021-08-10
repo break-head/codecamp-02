@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
 export const Wrapper = styled.div`
-  width: 1200px;
-  height: 1800px;
-  border: 1px solid black;
+  width: 100%;
+  /* height: 1800px; */
+  /* border: 1px solid black; */
   padding: 80px;
   display: flex;
   flex-direction: column;
@@ -48,7 +48,7 @@ export const LocationIcon = styled.img`
   height: 24px;
 `;
 export const Body = styled.div`
-  width: 100%;
+  width: 80%;
   height: 100%;
   display: flex;
   flex-direction: column;

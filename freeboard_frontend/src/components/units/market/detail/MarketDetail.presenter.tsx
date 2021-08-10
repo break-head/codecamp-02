@@ -69,7 +69,7 @@ export default function MarketDetailUI(props: any) {
           {props.data?.fetchUseditem.images?.map((data: any) => (
             <Picture
               key={data}
-              src={`https;//storage.googleapis.com/${data}`}
+              src={`https://storage.googleapis.com/${data}`}
             />
           ))}
         </PictureWrapper>
