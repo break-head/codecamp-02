@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 
-export const Wrapper =styled.div`
-height: 400px;
-width: 100%;
-`
+export const Wrapper = styled.div`
+  min-height: 400px;
+  min-width: 100%;
+`;
 
 export const SliderItem = styled.img`
-height: 350px;
-width: 100%;
-margin: auto;
-`
+  min-height: 350px;
+  min-width: 100%;
+  margin: auto;
+`;

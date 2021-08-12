@@ -1,19 +1,21 @@
 import styled from "@emotion/styled";
 export const Wrapper = styled.div`
-  width: 100%;
-  /* height: 1800px; */
-  /* border: 1px solid black; */
-  padding: 80px;
+  /* width: 70%; */
+  /* height: 100vh; */
+  border: 1px solid #bdbdbd;
+  padding: 100px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: center; */
+  align-items: center;
 `;
 export const Header = styled.div`
-  width: 100%;
-  height: 5%;
+  width: 66%;
+  height: 15%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #bdbdbd;
 `;
 export const AvatarWrapper = styled.div`
@@ -28,6 +30,7 @@ export const Avatar = styled.img`
 export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
 `;
 export const LinkIconWrapper = styled.div`
   display: flex;
@@ -48,12 +51,12 @@ export const LocationIcon = styled.img`
   height: 24px;
 `;
 export const Body = styled.div`
-  width: 80%;
-  height: 100%;
+  width: 66%;
+  height: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: center;
+  /* align-items: center; */
 `;
 export const TitleWrapper = styled.div`
   width: 100%;
@@ -109,8 +112,8 @@ export const MapsWrapper = styled.div`
 `;
 export const Maps = styled.div``;
 export const ButtonWrapper = styled.div`
-  width: 100%;
-  height: 10%;
+  width: 66%;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -12,17 +12,11 @@ const Body = styled.div`
 
 export default function Layout(props: any) {
   return (
-    <div
-      style={{
-        // width: "100%",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <>
       <LayoutHeader />
       <LayoutBanner />
       <LayoutNavigation />
       <Body>{props.children}</Body>
-    </div>
+    </>
   );
 }

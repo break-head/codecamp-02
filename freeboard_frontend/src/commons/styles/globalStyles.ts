@@ -2,16 +2,17 @@ import { css } from "@emotion/react";
 
 export const globalStyles = css`
   html {
+    /* height: 100vh; */
     /* background-color: black; */
   }
 
   body {
-    /* background-color: red; */
+    /* background-color: black; */
   }
 
-  #__next {
-    /* background-color: blue; */
-  }
+  /* #__next {
+    background-color: blue;
+  } */
 
   * {
     margin: 0px;

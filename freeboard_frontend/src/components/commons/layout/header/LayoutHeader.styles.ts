@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   flex-direction: row;
   /* justify-content: center; */
   /* align-items: center; */
-  width: 100%;
+  min-width: 100%;
 `;
 
 export const InnerWrapper = styled.div`

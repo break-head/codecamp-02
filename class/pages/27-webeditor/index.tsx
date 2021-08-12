@@ -15,7 +15,7 @@ const CREATE_BOARD = gql`
 `;
 export default function WebEditorPage() {
   const router = useRouter();
-  const { handleSubmit, register, setValue } = useForm();
+  const { handleSubmit, register, setValue, trigger } = useForm();
   const [createBoard] = useMutation(CREATE_BOARD);
   const onClickButton = async (data: any) => {
     try {
@@ -36,7 +36,9 @@ export default function WebEditorPage() {
   };
 
   const onChangeContents = (value: any) => {
-    setValue("contents", value);
+    const isBlack = "<p><br><p>";
+    setValue("contents", value === isBlack ? "" : value);
+    trigger("contents");
   };
   return (
     <form onSubmit={handleSubmit(onClickButton)}>

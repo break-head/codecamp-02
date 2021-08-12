@@ -84,10 +84,9 @@ export default function MarketDetailUI(props: any) {
           <Maps></Maps>
         </MapsWrapper>
       </Body>
-
       <ButtonWrapper>
-        <Button>a</Button>
-        <Button>b</Button>
+        <Button>목록으로</Button>
+        <Button>구매하기</Button>
       </ButtonWrapper>
     </Wrapper>
   );
