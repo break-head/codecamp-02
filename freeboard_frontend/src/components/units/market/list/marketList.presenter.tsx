@@ -41,27 +41,38 @@ import {
   CreateProductButton,
   SideWrapper,
   TodayWatchedWrapper,
+  WatchedTitle,
+  WatchedContents,
+  WatchedIconWrapper,
+  WatchedIcon,
+  WatcedPicked,
+  WatchedImage,
+  WatchedRemark,
+  WatchedPrice,
+  WatchedTags,
+
+
 } from "./marketList.styles";
 
 export default function MarketListUI(props) {
  
   return (
-    <TotalWrapper>
+  <TotalWrapper>
     <Wrapper>
       <div>
         <audio controls autoPlay={true} muted="muted">
            <source src="/자이언트펭TV_오프닝.mp3" type="audio/mp3"/>
         </audio>
-     </div>
+      </div>
      
       {/* // <video src="/자이언트펭TV_오프닝.mp3" autoPlay={true}></video> */}
       <PageTitle>베스트상품</PageTitle>    
       <BestProductWrapper>
         {props.dataBestUsedItems?.fetchUseditemsOfTheBest.map((data) => (
             <Column
-              // key={data._id}
+              key={data._id}
               // id={data._id}
-              onClick={props.onClickMoveDetail(data._id)}
+              onClick={props.onClickMoveDetail(data)} 
             >
               <Image src={`https://storage.googleapis.com/${data.images.[0]}`} />
               <ContentsWrapper>
@@ -76,7 +87,6 @@ export default function MarketListUI(props) {
                 </ContentsIconWrapper>
               </ContentsWrapper>
             </Column>
-         
         ))}
       </BestProductWrapper>
       <Body>
@@ -93,9 +103,10 @@ export default function MarketListUI(props) {
         </SettingWrapper>
         {props.data?.fetchUseditems.map((data)=>(
         <Row
-          onClick={props.onClickMoveDetail(data._id)}>
+          onClick={props.onClickMoveDetail(data)}>
+          {/* // onClick={props.onClickBasket(data)}> */}
           <ColumnImage 
-          src={`https://storage.googleapis.com/${data.images.[0]}`}/>
+          src={`https://storage.googleapis.com/${data.images?.[0]}`}/>
           <ColumnProductWrapper>
             <ColumnInfo>
               <ColumnTitle>{data.title}</ColumnTitle>
@@ -119,8 +130,26 @@ export default function MarketListUI(props) {
       </ButtonWrapper>
     </Wrapper>
     <SideWrapper>
-          <TodayWatchedWrapper></TodayWatchedWrapper>
+    {/* props.getLocal.length >6 ? props.getLocal.pop() :  */}
+      <TodayWatchedWrapper>
+        <WatchedTitle>오늘본상품</WatchedTitle>
+        {props.getLocal.map((data)=>( 
+        <WatchedContents key={data._id}>
+        <WatchedIconWrapper>
+          <WatchedIcon/>
+          <WatcedPicked>{data.pickedCount}</WatcedPicked>
+        </WatchedIconWrapper>
+        <WatchedImage
+         src={`https://storage.googleapis.com/${data.images?.[0]}`}
+         />
+        <WatchedRemark>{data.remark}</WatchedRemark>
+        <WatchedPrice>{data.price}</WatchedPrice>
+        <WatchedTags>{data.tags}</WatchedTags>
+        </WatchedContents>
+      ))}    
+     
+        </TodayWatchedWrapper>    
     </SideWrapper>
-    </TotalWrapper>
+  </TotalWrapper>
   );
 }

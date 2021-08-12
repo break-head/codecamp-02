@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 export const TotalWrapper = styled.div`
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -9,11 +8,11 @@ export const TotalWrapper = styled.div`
 `;
 export const Wrapper = styled.div`
   width: 70%;
-  height: 100vh;
+  /* height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding-right: none; */
+  margin-right: 30px;
 `;
 export const PageTitle = styled.div`
   width: 100%;
@@ -187,14 +186,45 @@ export const CreateProductButton = styled.button`
 `;
 
 export const SideWrapper = styled.div`
-  min-width: 10%;
-  height: 2000px;
+  width: 10%;
+  height: 100%;
+  padding-top: 120px;
+  border: 1px solid black;
   /* background-color: ; */
 `;
 export const TodayWatchedWrapper = styled.div`
   width: 100%;
-  height: 500px;
+  height: 50%;
   position: sticky;
-  top: 400px;
+  top: 10px;
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  overflow: scroll;
 `;
+
+export const WatchedTitle = styled.div`
+  width: 100%;
+  font-size: 10px;
+  /* border: 1px solid black; */
+`;
+export const WatchedContents = styled.div`
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+`;
+export const WatchedIconWrapper = styled.div``;
+export const WatchedIcon = styled.img``;
+export const WatcedPicked = styled.div``;
+export const WatchedImage = styled.img`
+  width: 100px;
+  height: 100px;
+`;
+export const WatchedRemark = styled.div``;
+export const WatchedPrice = styled.div``;
+export const WatchedTags = styled.div``;
