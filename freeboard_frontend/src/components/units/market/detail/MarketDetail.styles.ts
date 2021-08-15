@@ -1,17 +1,14 @@
 import styled from "@emotion/styled";
+
 export const Wrapper = styled.div`
-  /* width: 70%; */
-  /* height: 100vh; */
   border: 1px solid #bdbdbd;
   padding: 100px;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 `;
 export const Header = styled.div`
-  width: 66%;
-  /* height: 5%; */
+  width: 50%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -51,18 +48,14 @@ export const LocationIcon = styled.img`
   height: 24px;
 `;
 export const Body = styled.div`
-  width: 66%;
-  height: 80%;
+  width: 50%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* align-items: center; */
 `;
 export const TitleWrapper = styled.div`
   width: 100%;
-  height: 20%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
 `;
 export const ItemInfoWrapper = styled.div`
@@ -82,41 +75,19 @@ export const IconWrapper = styled.div``;
 export const LikeIcon = styled.img``;
 export const LikeCount = styled.img``;
 export const PictureWrapper = styled.div`
-  width: 100%;
-  /* height: 100%; */
-  /* display: flex;
-  justify-content: center;
+  margin-bottom: 100px;
+  /* width: 100%; */
+  /* height: 1000px; */
+  /* display: flex; */
+  /* flex-direction: column;
   align-items: center; */
-  /* height: 50%; */
-  /* height: 10%; */
-  /* display: flex;
-  flex-direction: row; */
-  /* justify-content: center; */
-  /* align-items: center; */
 `;
-export const AAA = styled.ul`
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 78px;
-  }
-`;
-export const SliderImage = styled.img`
-  width: 25%;
-  height: 10%;
-`;
-// export const Picture = styled.img`
-//   width: 100%;
-//   border: solid 1px black;
+
+// export const SliderImage = styled.img`
+//   width: 50%;
 // `;
 export const Contents = styled.div`
   width: 100%;
-  height: 30%;
   font-size: 18px;
 `;
 export const TagsWrapper = styled.div`
@@ -130,15 +101,15 @@ export const Tags = styled.div`
   font-size: 16px;
 `;
 export const MapsWrapper = styled.div`
-  height: 40%;
   width: 100%;
   border-top: 1px solid #bdbdbd;
   border-bottom: solid 1px #bdbdbd;
+  padding-top: "80px";
+  padding-bottom: "80px";
 `;
-export const Maps = styled.div``;
+
 export const ButtonWrapper = styled.div`
-  width: 66%;
-  height: 80px;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;

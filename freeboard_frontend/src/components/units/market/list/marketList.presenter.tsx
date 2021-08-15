@@ -104,7 +104,7 @@ export default function MarketListUI(props) {
         {props.data?.fetchUseditems.map((data)=>(
         <Row
           onClick={props.onClickMoveDetail(data)}>
-          {/* // onClick={props.onClickBasket(data)}> */}
+          
           <ColumnImage 
           src={`https://storage.googleapis.com/${data.images?.[0]}`}/>
           <ColumnProductWrapper>

@@ -20,68 +20,19 @@ import {
   LikeIcon,
   LikeCount,
   PictureWrapper,
-  SliderImage,
-  AAA,
-  // SliderItem,
-  // Picture,
   Contents,
   TagsWrapper,
   Tags,
   MapsWrapper,
-  Maps,
   ButtonWrapper,
   Button,
 } from "./MarketDetail.styles";
 import { getDate } from "../../../../commons/libraries/utils";
 import DOMPurify from "dompurify";
-import Slider from "react-slick";
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-export default function MarketDetailUI(props: any) {
-  const settings = {
-    dots: true,
-    dotsClass: "slick-dots slick-thumb",
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    appendDots: (dots) => (
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "centerc",
-        }}
-      >
-        <div
-          style={{
-            backgroundColor: "#ddd",
-            borderRadius: "10px",
-            padding: "10px",
-            width: "50%",
-          }}
-        >
-          <AAA style={{ margin: "0px" }}> {dots} </AAA>
-        </div>
-      </div>
-    ),
-    customPaging: (i) => (
-      <div
-      // style={{
-      //   width: "30px",
-      //   color: "blue",
-      //   border: "1px blue solid",
-      // }}
-      >
-        <img
-          style={{ width: "78px", height: "78px" }}
-          src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[i]}`}
-        />
-      </div>
-    ),
-  };
+import KakaoMap from "../../../commons/map/mapRead";
+import Picture from "../../../commons/uploadImage";
 
+export default function MarketDetailUI(props: any) {
   if (typeof window === "undefined") return <></>;
   return (
     <Wrapper>
@@ -118,13 +69,9 @@ export default function MarketDetailUI(props: any) {
           </IconWrapper>
         </TitleWrapper>
         <PictureWrapper>
-          <Slider {...settings}>
-            {props.data?.fetchUseditem.images?.map((data: any) => (
-              <div key={data}>
-                <SliderImage src={`https://storage.googleapis.com/${data}`} />
-              </div>
-            ))}
-          </Slider>
+          {/* {props.data?.fetchUseditem.images.length && ( */}
+          <Picture data={props.data} />
+          {/* )} */}
         </PictureWrapper>
         <Contents
           dangerouslySetInnerHTML={{
@@ -135,7 +82,7 @@ export default function MarketDetailUI(props: any) {
           <Tags>{props.data?.fetchUseditem.tags}</Tags>
         </TagsWrapper>
         <MapsWrapper>
-          <Maps></Maps>
+          <KakaoMap />
         </MapsWrapper>
       </Body>
       <ButtonWrapper>

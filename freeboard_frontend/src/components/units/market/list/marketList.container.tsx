@@ -27,13 +27,15 @@ export default function MarketList() {
     const baskets = JSON.parse(localStorage.getItem("baskets") || "[]").filter(
       (el) => el._id !== news._id
     );
+    console.log(baskets);
     const newBaskets = [];
     newBaskets.push(news);
     localStorage.setItem("baskets", JSON.stringify(newBaskets.concat(baskets)));
   };
+
   useEffect(() => {
-    const NewBaskets = JSON.parse(localStorage.getItem("baskets") || "[]");
-    setGetLocal(NewBaskets);
+    const newBaskets = JSON.parse(localStorage.getItem("baskets") || "[]");
+    setGetLocal(newBaskets);
   }, []);
 
   return (
