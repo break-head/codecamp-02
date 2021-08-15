@@ -10,7 +10,7 @@ export default function MarketDetail() {
   });
 
   function onClickMoveToList() {
-    router.push("");
+    router.push("/market");
   }
   function onClickMoveToEdit() {
     router.push(`/market/${router.query.useditemId}/edit`);

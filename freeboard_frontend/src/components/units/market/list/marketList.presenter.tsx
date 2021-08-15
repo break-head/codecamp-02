@@ -133,7 +133,7 @@ export default function MarketListUI(props) {
     {/* props.getLocal.length >6 ? props.getLocal.pop() :  */}
       <TodayWatchedWrapper>
         <WatchedTitle>오늘본상품</WatchedTitle>
-        {props.getLocal.map((data)=>( 
+        {props.getLocal.map((data) => (
         <WatchedContents key={data._id}>
         <WatchedIconWrapper>
           <WatchedIcon/>

@@ -20,7 +20,10 @@ import {
   LikeIcon,
   LikeCount,
   PictureWrapper,
-  Picture,
+  SliderImage,
+  AAA,
+  // SliderItem,
+  // Picture,
   Contents,
   TagsWrapper,
   Tags,
@@ -30,7 +33,56 @@ import {
   Button,
 } from "./MarketDetail.styles";
 import { getDate } from "../../../../commons/libraries/utils";
+import DOMPurify from "dompurify";
+import Slider from "react-slick";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 export default function MarketDetailUI(props: any) {
+  const settings = {
+    dots: true,
+    dotsClass: "slick-dots slick-thumb",
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    appendDots: (dots) => (
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "centerc",
+        }}
+      >
+        <div
+          style={{
+            backgroundColor: "#ddd",
+            borderRadius: "10px",
+            padding: "10px",
+            width: "50%",
+          }}
+        >
+          <AAA style={{ margin: "0px" }}> {dots} </AAA>
+        </div>
+      </div>
+    ),
+    customPaging: (i) => (
+      <div
+      // style={{
+      //   width: "30px",
+      //   color: "blue",
+      //   border: "1px blue solid",
+      // }}
+      >
+        <img
+          style={{ width: "78px", height: "78px" }}
+          src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[i]}`}
+        />
+      </div>
+    ),
+  };
+
+  if (typeof window === "undefined") return <></>;
   return (
     <Wrapper>
       <Header>
@@ -66,17 +118,19 @@ export default function MarketDetailUI(props: any) {
           </IconWrapper>
         </TitleWrapper>
         <PictureWrapper>
-          {props.data?.fetchUseditem.images?.map((data: any) => (
-            <Picture
-              key={data}
-              src={`https://storage.googleapis.com/${data}`}
-            />
-          ))}
+          <Slider {...settings}>
+            {props.data?.fetchUseditem.images?.map((data: any) => (
+              <div key={data}>
+                <SliderImage src={`https://storage.googleapis.com/${data}`} />
+              </div>
+            ))}
+          </Slider>
         </PictureWrapper>
-        <Contents>
-          <br />
-          {props.data?.fetchUseditem.contents}
-        </Contents>
+        <Contents
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(props.data?.fetchUseditem.contents),
+          }}
+        />
         <TagsWrapper>
           <Tags>{props.data?.fetchUseditem.tags}</Tags>
         </TagsWrapper>
@@ -85,7 +139,7 @@ export default function MarketDetailUI(props: any) {
         </MapsWrapper>
       </Body>
       <ButtonWrapper>
-        <Button>목록으로</Button>
+        <Button onClick={props.onClickMoveToList}>목록으로</Button>
         <Button>구매하기</Button>
       </ButtonWrapper>
     </Wrapper>

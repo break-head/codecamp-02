@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
 `;
 export const Header = styled.div`
   width: 66%;
-  height: 15%;
+  /* height: 5%; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -60,6 +60,7 @@ export const Body = styled.div`
 `;
 export const TitleWrapper = styled.div`
   width: 100%;
+  height: 20%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -82,16 +83,40 @@ export const LikeIcon = styled.img``;
 export const LikeCount = styled.img``;
 export const PictureWrapper = styled.div`
   width: 100%;
-  height: 40%;
-  display: flex;
-  flex-direction: row;
+  /* height: 100%; */
+  /* display: flex;
   justify-content: center;
+  align-items: center; */
+  /* height: 50%; */
+  /* height: 10%; */
+  /* display: flex;
+  flex-direction: row; */
+  /* justify-content: center; */
+  /* align-items: center; */
 `;
-export const Picture = styled.img`
+export const AAA = styled.ul`
   width: 100%;
-  border: solid 1px black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 78px;
+  }
 `;
+export const SliderImage = styled.img`
+  width: 25%;
+  height: 10%;
+`;
+// export const Picture = styled.img`
+//   width: 100%;
+//   border: solid 1px black;
+// `;
 export const Contents = styled.div`
+  width: 100%;
+  height: 30%;
   font-size: 18px;
 `;
 export const TagsWrapper = styled.div`

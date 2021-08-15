@@ -8,7 +8,7 @@ import { schema } from "./marketWrite.validations";
 import { ChangeEvent, useState } from "react";
 
 export default function MarketWrite() {
-  const { register, handleSubmit, formState } = useForm({
+  const { register, handleSubmit, formState, setValue, trigger } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
   });
@@ -18,10 +18,15 @@ export default function MarketWrite() {
 
   function onChangeFiles(file: File, index: number) {
     const newFiles = [...files];
-
     newFiles[index] = file;
     setFiles(newFiles);
   }
+
+  const onChangeContents = (value) => {
+    const isBlank = "<p><br></p>";
+    setValue("contents", value === isBlank ? "" : value);
+    trigger("contents");
+  };
 
   async function onSubmit(data: any) {
     const uploadFiles = files
@@ -29,6 +34,7 @@ export default function MarketWrite() {
       .map((data) => uploadFile({ variables: { file: data } }));
     const results = await Promise.all(uploadFiles);
     const images = results.map((data) => data.data.uploadFile.url);
+
     try {
       const result = await createUseditem({
         variables: {
@@ -57,6 +63,7 @@ export default function MarketWrite() {
       isActive={formState.isValid}
       errors={formState.errors}
       onChangeFiles={onChangeFiles}
+      onChangeContents={onChangeContents}
     />
   );
 }

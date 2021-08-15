@@ -4,8 +4,8 @@ import {
   Contents,
   Label,
   ContentsEditor,
-  ContentsEdit,
-  ContentsTextArea,
+  // ContentsEdit,
+  // ContentsTextArea,
   ErrorMessage,
   Location,
   LocationMap,
@@ -25,6 +25,11 @@ import {
 } from "./marketWrite.styles";
 import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
 import Input01 from "../../../commons/inputs/Input01";
+import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
+
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+
 export default function MarketWriteUI(props: any) {
   return (
     <form onSubmit={props.handleSubmit(props.onSubmit)}>
@@ -49,11 +54,9 @@ export default function MarketWriteUI(props: any) {
         <Contents>
           <Label>상품설명</Label>
           <ContentsEditor>
-            <ContentsEdit></ContentsEdit>
-            <ContentsTextArea
-              placeholder="상품을 설명해주세요"
-              type="text"
-              {...props.register("contents")}
+            <ReactQuill
+              onChange={props.onChangeContents}
+              // {...props.register("contents")}
             />
             <ErrorMessage>{props.errors.contents?.message}</ErrorMessage>
           </ContentsEditor>

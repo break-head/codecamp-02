@@ -18,7 +18,7 @@ export default function LayoutBannerUI() {
   return (
     <Wrapper>
       <Slider {...setting}>
-        <div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <SliderItem src="/images/Layout/KakaoTalk_20200305_212308763.gif" />
         </div>
         <div>

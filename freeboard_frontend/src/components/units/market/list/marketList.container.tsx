@@ -11,7 +11,7 @@ import {
 export default function MarketList() {
   const { data } = useQuery(FETCH_USED_ITEMS);
   const { data: dataBestUsedItems } = useQuery(FETCH_USED_ITEMS_OF_THE_BEST);
-  const [getLocal, setGetLocal] = useState([""]);
+  const [getLocal, setGetLocal] = useState([" "]);
   const router = useRouter();
 
   const onClickMoveDetail = (data) => () => {
@@ -24,21 +24,16 @@ export default function MarketList() {
   }
 
   const onClickBasket = (news) => {
-    const baskets = JSON.parse(localStorage.getItem("baskets") || "[]");
-    // let isExists = false;
-    baskets.forEach((data) => {
-      if (data._id === news._id) {
-        localStorage.removeItem("baskets");
-      } else {
-        baskets.push(news);
-      }
-      // console.log("baskets");
-      localStorage.setItem("baskets", JSON.stringify(baskets));
-    });
+    const baskets = JSON.parse(localStorage.getItem("baskets") || "[]").filter(
+      (el) => el._id !== news._id
+    );
+    const newBaskets = [];
+    newBaskets.push(news);
+    localStorage.setItem("baskets", JSON.stringify(newBaskets.concat(baskets)));
   };
-
   useEffect(() => {
-    setGetLocal(JSON.parse(localStorage.getItem("baskets") || "[]"));
+    const NewBaskets = JSON.parse(localStorage.getItem("baskets") || "[]");
+    setGetLocal(NewBaskets);
   }, []);
 
   return (
