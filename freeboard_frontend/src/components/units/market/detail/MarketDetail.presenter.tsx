@@ -46,7 +46,7 @@ export default function MarketDetailUI(props: any) {
     slidesToShow: 1,
     slidesToScroll: 1,
     appendDots: (dots) => (
-      <divㅁㅁ
+      <div
         style={{
           width: "100%",
           display: "flex",
@@ -64,7 +64,7 @@ export default function MarketDetailUI(props: any) {
         >
           <AAA style={{ margin: "0px" }}> {dots} </AAA>
         </div>
-      </divㅁㅁ>
+      </div>
     ),
     customPaging: (i) => (
       <div
