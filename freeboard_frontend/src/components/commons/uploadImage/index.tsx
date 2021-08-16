@@ -2,7 +2,8 @@ import Slider from "react-slick";
 import styled from "@emotion/styled";
 
 const Ul = styled.ul`
-  background-color: red;
+  width: 100%;
+  /* padding-top: 50px; */
 
   > li {
     width: 100px;
@@ -35,20 +36,22 @@ export default function Picture(props) {
   return (
     <div
       style={{
-        width: "600px",
-        height: "600px",
-        margin: "auto",
+        width: "650px",
+        height: "700px",
+        // display: "flex",
+        // flexDirection: "column",
+        // justifyContent: "space-around",
       }}
     >
       <Slider {...settings}>
         {props.data?.fetchUseditem.images.map((data) => (
-          <div key={data}>
+          <div key={data} style={{ width: "600px" }}>
             <img
               style={{
-                width: "400px",
-                height: "400px",
+                width: "600px",
+                height: "500px",
                 margin: "auto",
-                marginBottom: "80px",
+                marginBottom: "150px",
               }}
               src={`https://storage.googleapis.com/${data}`}
             />

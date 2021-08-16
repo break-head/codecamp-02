@@ -5,9 +5,8 @@ import styled from "@emotion/styled";
 
 const Body = styled.div`
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
-  height: 100vh;
+  align-items: center;
 `;
 
 export default function Layout(props: any) {

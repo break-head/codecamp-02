@@ -1,19 +1,20 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  border: 1px solid #bdbdbd;
-  padding: 100px;
+  width: 1200px;
+  padding: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 export const Header = styled.div`
-  width: 50%;
+  width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #bdbdbd;
+  padding-bottom: 20px;
 `;
 export const AvatarWrapper = styled.div`
   display: flex;
@@ -48,7 +49,7 @@ export const LocationIcon = styled.img`
   height: 24px;
 `;
 export const Body = styled.div`
-  width: 50%;
+  width: 80%;
   display: flex;
   flex-direction: column;
 `;
@@ -75,17 +76,11 @@ export const IconWrapper = styled.div``;
 export const LikeIcon = styled.img``;
 export const LikeCount = styled.img``;
 export const PictureWrapper = styled.div`
-  margin-bottom: 100px;
-  /* width: 100%; */
-  /* height: 1000px; */
-  /* display: flex; */
-  /* flex-direction: column;
-  align-items: center; */
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
-// export const SliderImage = styled.img`
-//   width: 50%;
-// `;
 export const Contents = styled.div`
   width: 100%;
   font-size: 18px;
@@ -102,17 +97,22 @@ export const Tags = styled.div`
 `;
 export const MapsWrapper = styled.div`
   width: 100%;
-  border-top: 1px solid #bdbdbd;
-  border-bottom: solid 1px #bdbdbd;
-  padding-top: "80px";
-  padding-bottom: "80px";
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 100px 0 100px;
 `;
 
 export const ButtonWrapper = styled.div`
-  width: 50%;
+  width: 80%;
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding-top: 100px;
+  padding-bottom: 100px;
 `;
 export const Button = styled.button`
   width: 179px;

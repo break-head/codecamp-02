@@ -36,17 +36,17 @@ export default function KakaoMap() {
         // 마커가 지도 위에 표시되도록 설정합니다
         marker.setMap(map);
 
-        window.kakao.maps.event.addListener(
-          map,
-          "click",
-          function (mouseEvent) {
-            // 클릭한 위도, 경도 정보를 가져옵니다
-            const latlng = mouseEvent.latLng;
+        // window.kakao.maps.event.addListener(
+        //   map,
+        //   "click",
+        //   function (mouseEvent) {
+        //     // 클릭한 위도, 경도 정보를 가져옵니다
+        //     const latlng = mouseEvent.latLng;
 
-            // 마커 위치를 클릭한 위치로 옮깁니다
-            marker.setPosition(latlng);
-          }
-        );
+        //     // 마커 위치를 클릭한 위치로 옮깁니다
+        //     marker.setPosition(latlng);
+        //   }
+        // );
       });
     };
   }, []);
@@ -56,9 +56,7 @@ export default function KakaoMap() {
         id="map"
         style={{
           width: "100%",
-          height: "300px",
-          marginTop: "80px",
-          marginBottom: "80px",
+          height: "500px",
         }}
       ></div>
     </>

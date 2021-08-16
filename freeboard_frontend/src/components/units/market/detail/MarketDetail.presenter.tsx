@@ -69,9 +69,7 @@ export default function MarketDetailUI(props: any) {
           </IconWrapper>
         </TitleWrapper>
         <PictureWrapper>
-          {/* {props.data?.fetchUseditem.images.length && ( */}
           <Picture data={props.data} />
-          {/* )} */}
         </PictureWrapper>
         <Contents
           dangerouslySetInnerHTML={{

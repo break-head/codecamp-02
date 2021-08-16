@@ -24,12 +24,10 @@ export default function MarketList() {
   }
 
   const onClickBasket = (news) => {
+    const newBaskets = [news];
     const baskets = JSON.parse(localStorage.getItem("baskets") || "[]").filter(
-      (el) => el._id !== news._id
+      (el, i) => i < 4 && el._id !== news._id
     );
-    console.log(baskets);
-    const newBaskets = [];
-    newBaskets.push(news);
     localStorage.setItem("baskets", JSON.stringify(newBaskets.concat(baskets)));
   };
 

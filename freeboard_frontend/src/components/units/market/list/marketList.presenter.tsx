@@ -40,7 +40,7 @@ import {
   ButtonWrapper,
   CreateProductButton,
   SideWrapper,
-  TodayWatchedWrapper,
+
   WatchedTitle,
   WatchedContents,
   WatchedIconWrapper,
@@ -130,8 +130,7 @@ export default function MarketListUI(props) {
       </ButtonWrapper>
     </Wrapper>
     <SideWrapper>
-    {/* props.getLocal.length >6 ? props.getLocal.pop() :  */}
-      <TodayWatchedWrapper>
+      
         <WatchedTitle>오늘본상품</WatchedTitle>
         {props.getLocal.map((data) => (
         <WatchedContents key={data._id}>
@@ -148,7 +147,7 @@ export default function MarketListUI(props) {
         </WatchedContents>
       ))}    
      
-        </TodayWatchedWrapper>    
+        
     </SideWrapper>
   </TotalWrapper>
   );

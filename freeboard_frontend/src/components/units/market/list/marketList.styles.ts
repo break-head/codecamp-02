@@ -4,6 +4,7 @@ export const TotalWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
   padding: 20px;
 `;
 export const Wrapper = styled.div`
@@ -187,34 +188,27 @@ export const CreateProductButton = styled.button`
 
 export const SideWrapper = styled.div`
   width: 10%;
-  height: 100%;
-  padding-top: 120px;
-  border: 1px solid black;
-  /* background-color: ; */
-`;
-export const TodayWatchedWrapper = styled.div`
-  width: 100%;
-  height: 50%;
   position: sticky;
-  top: 10px;
-  border: 1px solid black;
+  top: 50px;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  overflow: scroll;
+  /* background-color: ; */
 `;
 
 export const WatchedTitle = styled.div`
   width: 100%;
-  font-size: 10px;
+  font-size: 15px;
+  text-align: center;
   /* border: 1px solid black; */
 `;
 export const WatchedContents = styled.div`
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
+  align-items: center;
   border: 1px solid black;
+
+  /* border: 1px solid black; */
   width: 100%;
   height: 100%;
 `;
@@ -222,8 +216,8 @@ export const WatchedIconWrapper = styled.div``;
 export const WatchedIcon = styled.img``;
 export const WatcedPicked = styled.div``;
 export const WatchedImage = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
 `;
 export const WatchedRemark = styled.div``;
 export const WatchedPrice = styled.div``;

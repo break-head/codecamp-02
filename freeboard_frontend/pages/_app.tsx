@@ -64,14 +64,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <GlobalContext.Provider value={value}>
       <ApolloProvider client={client}>
-        {/* <Head>
-          <script
-            type="text/javascript"
-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=46a088defe4208f8cfd94b08223db61a"
-          ></script>
-        </Head> */}
         <Layout aaa={true}>
-          {/* <Global styles={globalStyles} /> */}
           <Component {...pageProps} />
         </Layout>
       </ApolloProvider>
