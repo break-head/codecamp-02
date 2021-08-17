@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 
 const LOGIN_USER = gql`
   mutation loginUser($email: String!, $password: String!) {
-    loginUser(email: $email, password: $password) {
+    loginUserExample(email: $email, password: $password) {
       accessToken
     }
   }
@@ -41,13 +41,11 @@ export default function Login() {
           password: password,
         },
       });
-      console.log(result.data?.loginUser.accessToken);
-      setAccessToken(result.data?.loginUser.accessToken || "");
-      localStorage.setItem(
-        "accessToken",
-        result.data?.loginUser.accessToken || ""
-      );
-      router.push("/23-hoc");
+      // console.log(result.data?.loginUser.accessToken);
+      setAccessToken(result.data?.loginUserExample.accessToken || "");
+      localStorage.setItem("refreshToken", "true");
+      // localStorage.setItem("accessToken",result.data?.loginUser.accessToken || "");
+      router.push("/22-login-success");
     } catch (error) {
       alert(error.message);
     }

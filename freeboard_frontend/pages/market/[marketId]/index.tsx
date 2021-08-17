@@ -1,5 +1,6 @@
 import MarketDetail from "../../../src/components/units/market/detail/MarketDetail.container";
 import MarketCommentWrite from "../../../src/components/units/marketComment/write/MarketCommentWrite.container";
+import MarketCommentList from "../../../src/components/units/marketComment/list/MarketCommentList.container";
 // import withAuth from "../../../src/components/commons/hocs/withAuth";
 
 export default function MarketDetailPage() {
@@ -7,6 +8,7 @@ export default function MarketDetailPage() {
     <>
       <MarketDetail />
       <MarketCommentWrite />
+      <MarketCommentList />
     </>
   );
 }
