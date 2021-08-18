@@ -52,6 +52,7 @@ export const Body = styled.div`
   width: 80%;
   display: flex;
   flex-direction: column;
+  padding-top: 30px;
 `;
 export const TitleWrapper = styled.div`
   width: 100%;

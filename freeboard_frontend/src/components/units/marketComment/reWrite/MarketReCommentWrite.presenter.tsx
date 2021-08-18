@@ -5,9 +5,9 @@ import {
   ContentsLength,
   ContentsWrapper,
   Wrapper,
-} from "./MarketCommentWrite.styles";
+} from "./MarketReCommentWrite.styles";
 
-export default function MarketCommentWriteUI(props) {
+export default function MarketReCommentWriteUI(props) {
   return (
     <Wrapper>
       <ContentsWrapper>
@@ -21,9 +21,11 @@ export default function MarketCommentWriteUI(props) {
           <ContentsLength>0/100</ContentsLength>
           <Button
             // id={props.data?.id}
-            onClick={props.isEdit ? props.onClickUpdate : props.onClickWrite}
+            // onClick={props.isEdit ? props.onClickUpdate : props.onClickWrite}
+            onClick={props.onClickWrite}
           >
-            {props.isEdit ? "수정하기" : "등록하기"}
+            {/* {props.isEdit ? "수정하기" : "등록하기"} */}
+            {"답글등록"}
           </Button>
         </BottomWrapper>
       </ContentsWrapper>

@@ -20,7 +20,7 @@ import {
   OptionWrapper,
   UpdateIcon,
 } from "./MarketCommentList.styles";
-
+import MarketReCommentWrite from "../reWrite/MarketReCommentWrite.container";
 export default function MarketCommentListUIItem(
   props: IBoardCommentListUIItemProps
 ) {
@@ -119,6 +119,7 @@ export default function MarketCommentListUIItem(
           data={props.data}
         />
       )}
+      <MarketReCommentWrite data={props.data} />
     </>
   );
 }

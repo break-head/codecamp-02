@@ -33,7 +33,6 @@ import KakaoMap from "../../../commons/map/mapRead";
 import Picture from "../../../commons/uploadImage";
 
 export default function MarketDetailUI(props: any) {
-  if (typeof window === "undefined") return <></>;
   return (
     <Wrapper>
       <Header>
@@ -71,11 +70,13 @@ export default function MarketDetailUI(props: any) {
         <PictureWrapper>
           <Picture data={props.data} />
         </PictureWrapper>
-        <Contents
-          dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(props.data?.fetchUseditem.contents),
-          }}
-        />
+        {typeof window !== "undefined" && (
+          <Contents
+            dangerouslySetInnerHTML={{
+              __html: DOMPurify.sanitize(props.data?.fetchUseditem.contents),
+            }}
+          />
+        )}
         <TagsWrapper>
           <Tags>{props.data?.fetchUseditem.tags}</Tags>
         </TagsWrapper>

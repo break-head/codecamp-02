@@ -2,23 +2,21 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 1200px;
-
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   padding-top: 50px;
 `;
 
 export const ContentsWrapper = styled.div`
-  width: 100%;
-
+  width: 90%;
   border: 1px solid lightgray;
 `;
 
 export const Contents = styled.textarea`
   width: 100%;
-  height: 150px;
+  min-height: 108px;
   padding: 20px;
   border: none;
   border-bottom: 1px solid lightgray;
