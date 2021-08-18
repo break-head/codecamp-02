@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from "@apollo/client";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { ChangeEvent, MouseEvent, useState } from "react";
 import MarketReCommentWriteUI from "./MarketReCommentWrite.presenter";
 import {
@@ -12,7 +12,7 @@ export default function MarketReCommentWrite(props: IBoardCommentWriteProps) {
   const COMMENT_INPUT = {
     contents: "",
   };
-  const router = useRouter();
+  // const router = useRouter();
   const [inputs, setInputs] = useState(COMMENT_INPUT);
   const [createUseditemQuestionAnswer] = useMutation(
     CREATE_USEDITEM_QUESTION_ANSWER
@@ -33,7 +33,7 @@ export default function MarketReCommentWrite(props: IBoardCommentWriteProps) {
       await createUseditemQuestionAnswer({
         variables: {
           createUseditemQuestionAnswerInput: { ...inputs },
-          useditemQuestionId: router.query.marketId,
+          useditemQuestionId: props.data._id,
         },
         refetchQueries: [
           {
@@ -53,7 +53,7 @@ export default function MarketReCommentWrite(props: IBoardCommentWriteProps) {
       inputs={inputs}
       onChangeInput={onChangeInput}
       onClickWrite={onClickWrite}
-      // isEdit={props.isEdit}
+      reEdit={props.reEdit}
       data={data}
     />
   );

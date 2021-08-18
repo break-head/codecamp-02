@@ -21,11 +21,11 @@ export default function MarketReCommentWriteUI(props) {
           <ContentsLength>0/100</ContentsLength>
           <Button
             // id={props.data?.id}
-            // onClick={props.isEdit ? props.onClickUpdate : props.onClickWrite}
-            onClick={props.onClickWrite}
+            onClick={props.reEdit ? props.onClickUpdate : props.onClickWrite}
+            // onClick={props.onClickWrite}
           >
-            {/* {props.isEdit ? "수정하기" : "등록하기"} */}
-            {"답글등록"}
+            {props.isEdit ? "수정하기" : "답글등록"}
+            {/* {"답글등록"} */}
           </Button>
         </BottomWrapper>
       </ContentsWrapper>

@@ -6,9 +6,13 @@ export const ItemWrapper = styled.div`
   padding-top: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid lightgray;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 `;
 
 export const FlexWrapper = styled.div`
+  width: 1000px;
   display: flex;
   flex-direction: row;
 `;
@@ -22,7 +26,6 @@ export const MainWrapper = styled.div`
   width: 100%;
   padding-left: 10px;
 `;
-
 export const NameWrapper = styled.div`
   display: flex;
   flex-direction: row;
@@ -53,10 +56,4 @@ export const DateString = styled.div`
   color: lightgray;
   padding-top: 15px;
   padding-left: 60px;
-`;
-
-export const RecommentIcon = styled.img`
-  width: 24px;
-  height: 24px;
-  cursor: pointer;
 `;

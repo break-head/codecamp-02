@@ -1,14 +1,13 @@
 import { useMutation } from "@apollo/client";
 import { Modal } from "antd";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
 import { getDate } from "../../../../commons/libraries/utils";
-import MarketCommentWriteUI from "../write/MarketCommentWrite.presenter";
+import { DELETE_USEDITEM_QUESTION_ANSWER } from "./MarketReCommentList.queries";
 import {
-  FETCH_USEDITEM_QUESTIONS,
-  DELETE_USEDITEM_QUESTION,
-} from "./MarketCommentList.queries";
-import { UPDATE_USEDITEM_QUESTION } from "../write/MarketCommentWrite.queries";
+  UPDATE_USEDITEM_QUESTION_ANSWER,
+  FETCH_USEDITEM_QUESTION_ANSWERS,
+} from "../reWrite/MarketReCommentWrite.queries";
 import {
   Avatar,
   NameWrapper,
@@ -21,24 +20,25 @@ import {
   MainWrapper,
   OptionWrapper,
   UpdateIcon,
-  RecommentIcon,
-} from "./MarketCommentList.styles";
-import MarketReCommentWrite from "../reWrite/MarketReCommentWrite.container";
-import MarketReCommentList from "../reList/MarketReCommentList.container";
-
-export default function MarketCommentListUIItem(
+} from "./MarketReCommentList.styles";
+import MarketReCommentWriteUI from "../reWrite/MarketReCommentWrite.presenter";
+export default function MarketReCommentListUIItem(
   props: IBoardCommentListUIItemProps
 ) {
-  const router = useRouter();
-  const [isEdit, setIsEdit] = useState(false);
-  const [openRecomment, setOpenRecomment] = useState(false);
-  const [deleteUseditemQuestion] = useMutation(DELETE_USEDITEM_QUESTION);
-  const [updateMarketComment] = useMutation(UPDATE_USEDITEM_QUESTION);
+  // const router = useRouter();
+  const [reEdit, setreEdit] = useState(false);
+  const [deleteUseditemQuestionAnswer] = useMutation(
+    DELETE_USEDITEM_QUESTION_ANSWER
+  );
+  const [updateUseditemQuestionAnswer] = useMutation(
+    UPDATE_USEDITEM_QUESTION_ANSWER
+  );
 
   const COMMENT_INPUT = {
     contents: "",
   };
   const [inputs, setInputs] = useState(COMMENT_INPUT);
+
   function onChangeInput(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
@@ -46,11 +46,7 @@ export default function MarketCommentListUIItem(
     // console.log(inputs.contents);
   }
   function onClickMoveEdit() {
-    setIsEdit(true);
-  }
-
-  function onClickMoveRecomment() {
-    setOpenRecomment(true);
+    setreEdit(true);
   }
 
   async function onClickUpdate() {
@@ -60,15 +56,15 @@ export default function MarketCommentListUIItem(
     }
     // setIsEdit(true);
     try {
-      await updateMarketComment({
+      await updateUseditemQuestionAnswer({
         variables: {
-          updateUseditemQuestionInput: { contents: inputs.contents },
-          useditemQuestionId: props.data?._id,
+          updateUseditemQuestionAnswerInput: { contents: inputs.contents },
+          useditemQuestionAnswerId: props.data?._id,
         },
         refetchQueries: [
           {
-            query: FETCH_USEDITEM_QUESTIONS,
-            variables: { useditemId: router.query.marketId },
+            query: FETCH_USEDITEM_QUESTION_ANSWERS,
+            variables: { useditemQuestionId: props.questionId },
           },
         ],
       });
@@ -77,19 +73,19 @@ export default function MarketCommentListUIItem(
       alert(error.message);
     }
     setInputs(COMMENT_INPUT);
-    setIsEdit(false);
+    setreEdit(false);
   }
 
   async function onClickDelete() {
     try {
-      await deleteUseditemQuestion({
+      await deleteUseditemQuestionAnswer({
         variables: {
-          useditemQuestionId: props.data?._id,
+          useditemQuestionAnswerId: props.data?._id,
         },
         refetchQueries: [
           {
-            query: FETCH_USEDITEM_QUESTIONS,
-            variables: { useditemId: router.query.marketId },
+            query: FETCH_USEDITEM_QUESTION_ANSWERS,
+            variables: { useditemQuestionId: props.questionId },
           },
         ],
       });
@@ -100,7 +96,7 @@ export default function MarketCommentListUIItem(
 
   return (
     <>
-      {!isEdit && (
+      {!reEdit && (
         <ItemWrapper>
           <FlexWrapper>
             <Avatar src="/avatar.png" />
@@ -119,27 +115,20 @@ export default function MarketCommentListUIItem(
                 src="/boardComment/list/option_delete_icon.png/"
                 onClick={onClickDelete}
               />
-              <RecommentIcon src="/Vector.jpg" onClick={onClickMoveRecomment} />
             </OptionWrapper>
           </FlexWrapper>
           <DateString>{getDate(props.data.createdAt)}</DateString>
         </ItemWrapper>
       )}
-      {isEdit && (
-        <MarketCommentWriteUI
+      {reEdit && (
+        <MarketReCommentWriteUI
           onChangeInput={onChangeInput}
           onClickUpdate={onClickUpdate}
-          isEdit={isEdit}
-          setIsEdit={setIsEdit}
-          data={props.data}
+          reEdit={reEdit}
+          setIsEdit={setreEdit}
+          data={props.questionId}
         />
       )}
-      {openRecomment && (
-        <>
-          <MarketReCommentWrite data={props.data} />
-        </>
-      )}
-      <MarketReCommentList data={props.data} />
     </>
   );
 }
