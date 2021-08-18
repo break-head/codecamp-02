@@ -11,17 +11,16 @@ export default function ListPage() {
   const [startPage, setStartPage] = useState(1);
   const [keyword, setKeyword] = useState("");
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      alert("여기는 펭수왕국이다!");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== "undefined") {
+  //     alert("여기는 펭수왕국이다!");
+  //   }
+  // }, []);
 
   function onClickMove() {
     router.push("/boards/new");
   }
   const onClickMoveDetail = (id) => (event) => {
-    console.log(id);
     router.push(`/boards/${id}`);
   };
   function onChangeKeyword(value) {

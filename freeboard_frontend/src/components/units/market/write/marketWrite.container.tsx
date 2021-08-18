@@ -15,6 +15,10 @@ export default function MarketWrite() {
   const [createUseditem] = useMutation(CREATE_USED_ITEM);
   const [uploadFile] = useMutation(UPLOAD_FILE);
   const [files, setFiles] = useState<(File | null)[]>([null, null, null]);
+  const [lat, setLat] = useState(33.450701);
+  const [lng, setLng] = useState(126.570667);
+  const [address, setAddress] = useState("");
+  const [detailAddress, setDetailAddress] = useState("");
 
   function onChangeFiles(file: File, index: number) {
     const newFiles = [...files];
@@ -45,6 +49,12 @@ export default function MarketWrite() {
             price: data.price,
             tags: data.tags,
             images: images,
+            useditemAddress: {
+              address: data.address,
+              addressDetail: data.adressDetail,
+              // lat:,
+              // lng:,
+            },
           },
         },
       });
@@ -64,6 +74,10 @@ export default function MarketWrite() {
       errors={formState.errors}
       onChangeFiles={onChangeFiles}
       onChangeContents={onChangeContents}
+      lat={lat}
+      setLat={setLat}
+      lng={lng}
+      setLng={setLng}
     />
   );
 }

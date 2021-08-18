@@ -18,14 +18,13 @@ export default function MarketReCommentWrite(props: IBoardCommentWriteProps) {
     CREATE_USEDITEM_QUESTION_ANSWER
   );
   const { data } = useQuery(FETCH_USEDITEM_QUESTION_ANSWERS, {
-    variables: { useditemQuestionId: props.data._id },
+    variables: { useditemQuestionId: props.data?._id },
   });
 
   function onChangeInput(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
     setInputs({ ...inputs, [event.target.name]: event.target.value });
-    console.log(inputs.contents);
   }
 
   async function onClickWrite() {
@@ -50,10 +49,11 @@ export default function MarketReCommentWrite(props: IBoardCommentWriteProps) {
 
   return (
     <MarketReCommentWriteUI
-      inputs={inputs}
-      onChangeInput={onChangeInput}
+      onClickUpdate={props.onClickUpdate}
       onClickWrite={onClickWrite}
       reEdit={props.reEdit}
+      inputs={inputs}
+      onChangeInput={onChangeInput}
       data={data}
     />
   );

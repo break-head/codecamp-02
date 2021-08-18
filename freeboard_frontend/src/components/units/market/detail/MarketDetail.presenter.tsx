@@ -29,7 +29,7 @@ import {
 } from "./MarketDetail.styles";
 import { getDate } from "../../../../commons/libraries/utils";
 import DOMPurify from "dompurify";
-import KakaoMap from "../../../commons/map/mapRead";
+import KakaoMapRead from "../../../commons/map/mapRead";
 import Picture from "../../../commons/uploadImage";
 
 export default function MarketDetailUI(props: any) {
@@ -81,7 +81,10 @@ export default function MarketDetailUI(props: any) {
           <Tags>{props.data?.fetchUseditem.tags}</Tags>
         </TagsWrapper>
         <MapsWrapper>
-          <KakaoMap />
+          <KakaoMapRead
+            lat={props.data?.fetchUseditem.useditemAddress?.lat}
+            lng={props.data?.fetchUseditem.useditemAddress?.lng}
+          />
         </MapsWrapper>
       </Body>
       <ButtonWrapper>

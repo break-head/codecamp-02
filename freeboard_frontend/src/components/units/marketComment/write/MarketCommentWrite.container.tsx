@@ -46,6 +46,7 @@ export default function MarketCommentWrite(props: IBoardCommentWriteProps) {
     } catch (error) {
       alert(error.message);
     }
+    // props.setIsEdit?.(false);
   }
 
   return (

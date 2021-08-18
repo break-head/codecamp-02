@@ -9,6 +9,7 @@ import {
   FETCH_USEDITEM_QUESTION_ANSWERS,
 } from "../reWrite/MarketReCommentWrite.queries";
 import {
+  Arrow,
   Avatar,
   NameWrapper,
   Name,
@@ -26,7 +27,7 @@ export default function MarketReCommentListUIItem(
   props: IBoardCommentListUIItemProps
 ) {
   // const router = useRouter();
-  const [reEdit, setreEdit] = useState(false);
+  const [reEdit, setReEdit] = useState(false);
   const [deleteUseditemQuestionAnswer] = useMutation(
     DELETE_USEDITEM_QUESTION_ANSWER
   );
@@ -37,16 +38,16 @@ export default function MarketReCommentListUIItem(
   const COMMENT_INPUT = {
     contents: "",
   };
-  const [inputs, setInputs] = useState(COMMENT_INPUT);
 
+  const [inputs, setInputs] = useState(COMMENT_INPUT);
   function onChangeInput(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
     setInputs({ ...inputs, [event.target.name]: event.target.value });
-    // console.log(inputs.contents);
+    // console.log(inps.contents);
   }
   function onClickMoveEdit() {
-    setreEdit(true);
+    setReEdit((prev) => !prev);
   }
 
   async function onClickUpdate() {
@@ -73,7 +74,7 @@ export default function MarketReCommentListUIItem(
       alert(error.message);
     }
     setInputs(COMMENT_INPUT);
-    setreEdit(false);
+    setReEdit(false);
   }
 
   async function onClickDelete() {
@@ -99,9 +100,11 @@ export default function MarketReCommentListUIItem(
       {!reEdit && (
         <ItemWrapper>
           <FlexWrapper>
+            <Arrow src="/화살표.jpg" />
             <Avatar src="/avatar.png" />
             <NameWrapper>
               <Name>{props.data.user.name}</Name>
+              <DateString>{getDate(props.data.createdAt)}</DateString>
             </NameWrapper>
             <MainWrapper>
               <Contents>{props.data.contents}</Contents>
@@ -117,16 +120,14 @@ export default function MarketReCommentListUIItem(
               />
             </OptionWrapper>
           </FlexWrapper>
-          <DateString>{getDate(props.data.createdAt)}</DateString>
         </ItemWrapper>
       )}
       {reEdit && (
         <MarketReCommentWriteUI
-          onChangeInput={onChangeInput}
           onClickUpdate={onClickUpdate}
           reEdit={reEdit}
-          setIsEdit={setreEdit}
-          data={props.questionId}
+          setReEdit={setReEdit}
+          onChangeInput={onChangeInput}
         />
       )}
     </>

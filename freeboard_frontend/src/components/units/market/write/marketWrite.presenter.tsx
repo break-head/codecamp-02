@@ -9,7 +9,7 @@ import {
   ErrorMessage,
   Location,
   LocationMap,
-  Map,
+  // Map,
   LocationDetail,
   GPS,
   Geography,
@@ -27,6 +27,7 @@ import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
 import Input01 from "../../../commons/inputs/Input01";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
+import KakaoMapWrite from "../../../commons/map/mapWrite";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -78,21 +79,26 @@ export default function MarketWriteUI(props: any) {
         <Location>
           <LocationMap>
             <Label>거래위치</Label>
-            <Map></Map>
+            <KakaoMapWrite
+              Lat={props.Lat}
+              Lng={props.Lng}
+              setLat={props.setLat}
+              setLng={props.Lng}
+            ></KakaoMapWrite>
           </LocationMap>
           <LocationDetail>
             <GPS>
               <Label>GPS</Label>
               <Geography>
-                <GeographyInput placeholder="위도(LAT)" />
+                <GeographyInput readOnly={props?.lat} />
                 <LocationOnIcon src="/images/ic_location_on-24px.svg" />
-                <GeographyInput placeholder="경도(LNG)" />
+                <GeographyInput readOnly={props?.lng} />
               </Geography>
             </GPS>
             <Address>
               <Label>주소</Label>
-              <AddressInput></AddressInput>
-              <AddressInput></AddressInput>
+              <AddressInput type="text" {...props.register("address")} />
+              <AddressInput type="text" {...props.register("addressDetail")} />
             </Address>
           </LocationDetail>
         </Location>

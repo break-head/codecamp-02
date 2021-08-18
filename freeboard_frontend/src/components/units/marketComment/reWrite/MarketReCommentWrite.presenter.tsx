@@ -24,7 +24,7 @@ export default function MarketReCommentWriteUI(props) {
             onClick={props.reEdit ? props.onClickUpdate : props.onClickWrite}
             // onClick={props.onClickWrite}
           >
-            {props.isEdit ? "수정하기" : "답글등록"}
+            {props.reEdit ? "수정하기" : "답글등록"}
             {/* {"답글등록"} */}
           </Button>
         </BottomWrapper>

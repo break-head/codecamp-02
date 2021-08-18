@@ -26,13 +26,13 @@ export default function Register() {
 
   async function onClickSignup() {
     const newInputsErrors = {
-      email: /\w+@\w+\.\w+/.test(inputs.email) ? "" : "이메일을 확인해주세요",
+      // email: /\w+@\w+\.\w+/.test(inputs.email) ? "" : "이메일을 확인해주세요",
+      email: inputs.email ? "" : "이메일을 확인해주세요",
       password:
-        /^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/.test(
-          inputs.password
-        )
-          ? ""
-          : "비밀번호 입력해주세요",
+        // /^(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,20}$/.test(
+        //   inputs.password
+        // )
+        inputs.password ? "" : "비밀번호 입력해주세요",
       name: inputs.name ? "" : "이름을 입력해주세요",
     };
     setInputsErrors(newInputsErrors);

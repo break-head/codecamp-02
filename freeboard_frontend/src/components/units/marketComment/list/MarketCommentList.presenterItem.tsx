@@ -46,11 +46,11 @@ export default function MarketCommentListUIItem(
     // console.log(inputs.contents);
   }
   function onClickMoveEdit() {
-    setIsEdit(true);
+    setIsEdit((prev) => !prev);
   }
 
   function onClickMoveRecomment() {
-    setOpenRecomment(true);
+    setOpenRecomment((prev) => !prev);
   }
 
   async function onClickUpdate() {
@@ -58,7 +58,6 @@ export default function MarketCommentListUIItem(
       alert("내용을 모두 입력해 주세요.");
       return;
     }
-    // setIsEdit(true);
     try {
       await updateMarketComment({
         variables: {
@@ -106,6 +105,7 @@ export default function MarketCommentListUIItem(
             <Avatar src="/avatar.png" />
             <NameWrapper>
               <Name>{props.data.user.name}</Name>
+              <DateString>{getDate(props.data.createdAt)}</DateString>
             </NameWrapper>
             <MainWrapper>
               <Contents>{props.data.contents}</Contents>
@@ -122,7 +122,6 @@ export default function MarketCommentListUIItem(
               <RecommentIcon src="/Vector.jpg" onClick={onClickMoveRecomment} />
             </OptionWrapper>
           </FlexWrapper>
-          <DateString>{getDate(props.data.createdAt)}</DateString>
         </ItemWrapper>
       )}
       {isEdit && (
@@ -136,7 +135,10 @@ export default function MarketCommentListUIItem(
       )}
       {openRecomment && (
         <>
-          <MarketReCommentWrite data={props.data} />
+          <MarketReCommentWrite
+            data={props.data}
+            setOpenRecomment={setOpenRecomment}
+          />
         </>
       )}
       <MarketReCommentList data={props.data} />

@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   height: 100vh;
   /* padding-top: 159px; */
@@ -15,26 +16,28 @@ export const SubWrapper = styled.div`
   opacity: 0.7;
   position: relative;
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   background-size: cover;
   padding-top: 159px;
 `;
 export const Title = styled.div`
   font-size: 28px;
   text-align: center;
-  color: #ffffff;
+  color: black;
 `;
 export const SingUpWrapper = styled.div`
   width: 384px;
 `;
 export const InputWrapper = styled.div`
   ::placeholder {
-    color: white;
+    color: blakc;
   }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: #ffffff;
+  color: black;
 `;
 export const ErrorTextDiv = styled.div`
   color: red;
@@ -43,9 +46,11 @@ export const ErrorTextDiv = styled.div`
 export const TextDiv = styled.div`
   padding-top: 20px;
   padding-bottom: 12px;
-  color: #ffffff;
+  color: black;
+  font-size: 28px;
+  font-weight: bold;
   ::placeholder {
-    color: white;
+    color: black;
   }
 `;
 export const EmailInput = styled.input`
@@ -55,7 +60,7 @@ export const EmailInput = styled.input`
   background: rgba(255, 255, 255, 0.05);
   padding-left: 20px;
   ::placeholder {
-    color: white;
+    color: black;
   }
 `;
 export const NameInput = styled.input`
@@ -65,7 +70,7 @@ export const NameInput = styled.input`
   background: rgba(255, 255, 255, 0.05);
   padding-left: 20px;
   ::placeholder {
-    color: white;
+    color: black;
   }
 `;
 export const PasswordInput = styled.input`
@@ -75,7 +80,7 @@ export const PasswordInput = styled.input`
   background: rgba(255, 255, 255, 0.05);
   padding-left: 20px;
   ::placeholder {
-    color: white;
+    color: black;
   }
 `;
 export const KeepLonin = styled.div`
@@ -83,7 +88,7 @@ export const KeepLonin = styled.div`
 `;
 export const SignUpButton = styled.button`
   background: rgba(255, 255, 255, 0.05);
-  color: white;
+  color: black;
   font-size: 20px;
   height: 64px;
   border-radius: 16px;

@@ -15,7 +15,7 @@ export default function MarketDetail() {
   function onClickMoveToEdit() {
     router.push(`/market/${router.query.useditemId}/edit`);
   }
-
+  console.log(data?.fetchUseditem.useditemAddress?.lng);
   return (
     <MarketDetailUI
       data={data}
