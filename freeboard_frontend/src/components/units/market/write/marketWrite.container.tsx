@@ -8,10 +8,11 @@ import { schema } from "./marketWrite.validations";
 import { ChangeEvent, useState } from "react";
 
 export default function MarketWrite() {
-  const { register, handleSubmit, formState, setValue, trigger } = useForm({
-    mode: "onChange",
-    resolver: yupResolver(schema),
-  });
+  const { register, handleSubmit, formState, setValue, trigger, watch } =
+    useForm({
+      mode: "onChange",
+      resolver: yupResolver(schema),
+    });
   const [createUseditem] = useMutation(CREATE_USED_ITEM);
   const [uploadFile] = useMutation(UPLOAD_FILE);
   const [files, setFiles] = useState<(File | null)[]>([null, null, null]);
@@ -19,13 +20,23 @@ export default function MarketWrite() {
   const [lng, setLng] = useState(126.570667);
   const [address, setAddress] = useState("");
   const [detailAddress, setDetailAddress] = useState("");
-
+  const [isOpen, setIsOpen] = useState(false);
   function onChangeFiles(file: File, index: number) {
     const newFiles = [...files];
     newFiles[index] = file;
     setFiles(newFiles);
   }
+  function onClickAddressSearch(bool) {
+    console.log(bool);
+    setIsOpen(bool);
+  }
 
+  function onCompleteAddressSearch(data) {
+    setAddress(data.address);
+    setDetailAddress(data.detailAddress);
+    setIsOpen(false);
+  }
+  console.log(address);
   const onChangeContents = (value) => {
     const isBlank = "<p><br></p>";
     setValue("contents", value === isBlank ? "" : value);
@@ -50,10 +61,10 @@ export default function MarketWrite() {
             tags: data.tags,
             images: images,
             useditemAddress: {
-              address: data.address,
-              addressDetail: data.adressDetail,
-              // lat:,
-              // lng:,
+              address: address,
+              addressDetail: detailAddress,
+              lat: lat,
+              lng: lng,
             },
           },
         },
@@ -75,9 +86,14 @@ export default function MarketWrite() {
       onChangeFiles={onChangeFiles}
       onChangeContents={onChangeContents}
       lat={lat}
-      setLat={setLat}
       lng={lng}
+      setLat={setLat}
       setLng={setLng}
+      address={address}
+      detailAddress={detailAddress}
+      onCompleteAddressSearch={onCompleteAddressSearch}
+      onClickAddressSearch={onClickAddressSearch}
+      isOpen={isOpen}
     />
   );
 }

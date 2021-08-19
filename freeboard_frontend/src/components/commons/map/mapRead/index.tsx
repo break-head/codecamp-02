@@ -5,26 +5,33 @@ declare const window: typeof globalThis & {
 };
 
 export default function KakaoMapRead(props) {
-  const lat = props.lat;
-  const lng = props.lng;
   useEffect(() => {
+    if (!(props.lat && props.lng)) return;
+    console.log("=====================");
+    console.log("props.lat", props.lat);
+    console.log("props.lng", props.lng);
+    console.log("실행!!!");
+    console.log("=====================");
+
     const script = document.createElement("script");
     script.src =
       "//dapi.kakao.com/v2/maps/sdk.js?appkey=46a088defe4208f8cfd94b08223db61a&autoload=false";
     document.head.appendChild(script);
     script.onload = () => {
       window.kakao.maps.load(() => {
-        const container = document.getElementById("map"); //지도를 담을 영역의 DOM 레퍼런스
-        const options = {
-          //지도를 생성할 때 필요한 기본 옵션
-          center: new window.kakao.maps.LatLng(lat, lng), //지도의 중심좌표.
-          level: 3, //지도의 레벨(확대, 축소 정도)
+        const mapContainer = document.getElementById("map2"); // 지도를 표시할 div
+        const mapOption = {
+          center: new window.kakao.maps.LatLng(props.lat, props.lng), // 지도의 중심좌표
+          level: 3, // 지도의 확대 레벨
         };
 
-        const map = new window.kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+        const map = new window.kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
         // 마커가 표시될 위치입니다
-        const markerPosition = new window.kakao.maps.LatLng(lat, lng);
+        const markerPosition = new window.kakao.maps.LatLng(
+          props.lat,
+          props.lng
+        );
 
         // 마커를 생성합니다
         const marker = new window.kakao.maps.Marker({
@@ -33,27 +40,15 @@ export default function KakaoMapRead(props) {
 
         // 마커가 지도 위에 표시되도록 설정합니다
         marker.setMap(map);
-
-        window.kakao.maps.event.addListener(
-          map,
-          "click",
-          function (mouseEvent) {
-            // 클릭한 위도, 경도 정보를 가져옵니다
-            const latlng = mouseEvent.latLng;
-
-            // 마커 위치를 클릭한 위치로 옮깁니다
-            marker.setPosition(latlng);
-          }
-        );
       });
     };
-  }, [lat]);
+  }, [props.lat, props.lng]);
   return (
     <>
       <div
-        id="map"
+        id="map2"
         style={{
-          width: "100%",
+          width: "500px",
           height: "500px",
         }}
       ></div>

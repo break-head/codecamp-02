@@ -70,12 +70,14 @@ export default function MarketDetailUI(props: any) {
         <PictureWrapper>
           <Picture data={props.data} />
         </PictureWrapper>
-        {typeof window !== "undefined" && (
+        {typeof window !== "undefined" ? (
           <Contents
             dangerouslySetInnerHTML={{
               __html: DOMPurify.sanitize(props.data?.fetchUseditem.contents),
             }}
           />
+        ) : (
+          <div></div>
         )}
         <TagsWrapper>
           <Tags>{props.data?.fetchUseditem.tags}</Tags>
@@ -84,6 +86,7 @@ export default function MarketDetailUI(props: any) {
           <KakaoMapRead
             lat={props.data?.fetchUseditem.useditemAddress?.lat}
             lng={props.data?.fetchUseditem.useditemAddress?.lng}
+            address={props.data?.fetchUseditem.useditemAddress?.address}
           />
         </MapsWrapper>
       </Body>

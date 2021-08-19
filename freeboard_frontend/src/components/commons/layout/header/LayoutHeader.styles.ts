@@ -35,3 +35,14 @@ export const InnerButton = styled.span`
   cursor: pointer;
   margin-right: 50px;
 `;
+
+export const ProfileWrapper = styled.div`
+  width: 200px;
+  display: flex;
+  justify-content: center;
+`;
+
+export const UserLogo = styled.img`
+  width: 70px;
+  height: 70px;
+`;

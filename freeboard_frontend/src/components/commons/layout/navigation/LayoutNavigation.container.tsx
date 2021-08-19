@@ -13,11 +13,15 @@ export default function LayoutNavigation(props: any) {
   function onClickMoveMarket() {
     router.push("/market");
   }
+  function onClick() {
+    router.push("/market/new");
+  }
   return (
     <LayoutNavigationUI
       onClickMove={onClickMove}
       onClickMoveBoards={onClickMoveBoards}
       onClickMoveMarket={onClickMoveMarket}
+      onClick={onClick}
     />
   );
 }

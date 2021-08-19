@@ -3,13 +3,11 @@ export const TotalWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: center;
   padding: 20px;
 `;
 export const Wrapper = styled.div`
-  width: 70%;
-  /* height: 100vh; */
+  width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -187,13 +185,15 @@ export const CreateProductButton = styled.button`
 `;
 
 export const SideWrapper = styled.div`
-  width: 10%;
+  width: 200px;
+  height: 100%;
+  margin-top: 100px;
+  margin-bottom: 80px;
   position: sticky;
   top: 50px;
-  /* height: 100%; */
   display: flex;
   flex-direction: column;
-  /* background-color: ; */
+  align-items: flex-end;
 `;
 
 export const WatchedTitle = styled.div`
@@ -216,8 +216,10 @@ export const WatchedIconWrapper = styled.div``;
 export const WatchedIcon = styled.img``;
 export const WatcedPicked = styled.div``;
 export const WatchedImage = styled.img`
-  width: 150px;
+  width: 100%;
   height: 150px;
+  padding-left: 5px;
+  padding-right: 5px;
 `;
 export const WatchedRemark = styled.div``;
 export const WatchedPrice = styled.div``;

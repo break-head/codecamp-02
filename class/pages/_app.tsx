@@ -16,9 +16,19 @@ import { createUploadLink } from "apollo-upload-client";
 
 import firebase from "firebase/app";
 import "firebase/firestore";
-import { createContext, Dispatch, SetStateAction, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useState,
+  useEffect,
+} from "react";
 import { getAccessToken } from "../src/commons/libraries/getAccessToken";
-import { useEffect } from "react";
+import * as Sentry from "@sentry/nextjs";
+Sentry.init({
+  dsn: "https://0f85b5e981834e92a1d676c8a84a863f@o965498.ingest.sentry.io/5916350",
+});
+
 // import Head from "next/head";
 if (typeof window !== "undefined") {
   firebase.initializeApp({
@@ -81,6 +91,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     // uri: "http://backend02.codebootcamp.co.kr/graphql",
     link: ApolloLink.from([errorLink, uploadLink as unknown as ApolloLink]),
     cache: new InMemoryCache(),
+    connectToDevTools: true,
   });
 
   return (

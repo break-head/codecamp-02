@@ -6,68 +6,53 @@ declare const window: typeof globalThis & {
 
 export default function KakaoMapWrite(props) {
   useEffect(() => {
+    console.log("=====================");
+    console.log("props.address", props.address);
+    console.log("props.lat", props.lat);
+    console.log("props.lng", props.lng);
+    console.log("실행!!!");
+    console.log("=====================");
+
     const script = document.createElement("script");
     script.src =
-      "//dapi.kakao.com/v2/maps/sdk.js?appkey=46a088defe4208f8cfd94b08223db61a&autoload=false";
+      "//dapi.kakao.com/v2/maps/sdk.js?appkey=46a088defe4208f8cfd94b08223db61a&autoload=false&libraries=services";
     document.head.appendChild(script);
     script.onload = () => {
       window.kakao.maps.load(() => {
-        // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
-        var infowindow = new window.kakao.maps.InfoWindow({ Index: 1 });
-        var mapContainer = document.getElementById("map"), // 지도를 표시할 div
-          mapOption = {
-            center: new window.kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-            level: 3, // 지도의 확대 레벨
-          };
-
+        const mapContainer = document.getElementById("map");
+        // 지도를 표시할 div
+        const mapOption = {
+          center: new window.kakao.maps.LatLng(props.lat, props.lng), // 지도의 중심좌표
+          level: 3, // 지도의 확대 레벨
+        };
         // 지도를 생성합니다
-        var map = new window.kakao.maps.Map(mapContainer, mapOption);
+        const map = new window.kakao.maps.Map(mapContainer, mapOption);
 
-        // 장소 검색 객체를 생성합니다
-        var ps = new window.kakao.maps.services.Places();
+        // 주소-좌표 변환 객체를 생성합니다
+        const geocoder = new window.kakao.maps.services.Geocoder();
 
-        // 키워드로 장소를 검색합니다
-        ps.keywordSearch("이태원 맛집", placesSearchCB);
+        // 주소로 좌표를 검색합니다
+        geocoder.addressSearch(props.address, function (result, status) {
+          // 정상적으로 검색이 완료됐으면
 
-        // 키워드 검색 완료 시 호출되는 콜백함수 입니다
-        function placesSearchCB(data, status, pagination) {
           if (status === window.kakao.maps.services.Status.OK) {
-            // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-            // LatLngBounds 객체에 좌표를 추가합니다
-            var bounds = new window.kakao.maps.LatLngBounds();
+            console.log(result);
+            props.setLat(Number(result[0].y));
+            props.setLng(Number(result[0].x));
+            const coords = new window.kakao.maps.LatLng(props.lat, props.lng);
 
-            for (var i = 0; i < data.length; i++) {
-              displayMarker(data[i]);
-              bounds.extend(new window.kakao.maps.LatLng(data[i].y, data[i].x));
-            }
-
-            // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-            map.setBounds(bounds);
+            console.log(coords);
+            // 결과값으로 받은 위치를 마커로 표시합니다
+            const marker = new window.kakao.maps.Marker({
+              position: coords,
+            });
+            // 마커가 지도 위에 표시되도록 설정합니다
+            marker.setMap(map);
           }
-        }
-
-        // 지도에 마커를 표시하는 함수입니다
-        function displayMarker(place) {
-          // 마커를 생성하고 지도에 표시합니다
-          var marker = new kakao.maps.Marker({
-            map: map,
-            position: new kakao.maps.LatLng(place.y, place.x),
-          });
-
-          // 마커에 클릭이벤트를 등록합니다
-          window.kakao.maps.event.addListener(marker, "click", function () {
-            // 마커를 클릭하면 장소명이 인포윈도우에 표출됩니다
-            infowindow.setContent(
-              '<div style="padding:5px;font-size:12px;">' +
-                place.place_name +
-                "</div>"
-            );
-            infowindow.open(map, marker);
-          });
-        }
+        });
       });
     };
-  }, []);
+  }, [props.address, props.lat, props.lng]);
 
   return (
     <>
@@ -75,7 +60,7 @@ export default function KakaoMapWrite(props) {
         id="map"
         style={{
           width: "100%",
-          height: "100%",
+          height: "500px",
         }}
       ></div>
     </>

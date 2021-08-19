@@ -41,14 +41,10 @@ export default function Login() {
           password: password,
         },
       });
-      console.log(result.data?.loginUser.accessToken);
+      console.log(result.data?.loginUser.accessToken || "");
       setAccessToken(result.data?.loginUser.accessToken || "");
-      localStorage.setItem(
-        "accessToken",
-        result.data?.loginUser.accessToken || ""
-      );
-      router.push("/market/new");
-      alert("하이");
+      localStorage.setItem("refreshToken", "true");
+      router.push("/market");
     } catch (error) {
       alert(error.message);
     }
