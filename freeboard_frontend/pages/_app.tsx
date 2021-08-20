@@ -60,6 +60,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   useEffect(() => {
     if (localStorage.getItem("refreshToken")) getAccessToken(setAccessToken);
+    const localUserInfo = localStorage.getItem("userInfo");
+    if (localUserInfo) setUserInfo(JSON.parse(localUserInfo));
   }, []);
 
   const errorLink = onError(({ graphQLErrors, operation, forward }) => {

@@ -1,15 +1,16 @@
-import { useMutation } from "@apollo/client";
+import { useApolloClient, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useContext, useState } from "react";
 import { GlobalContext } from "../../../../pages/_app";
 import LoginUI from "./login.presenter";
-import { LOGIN_USER } from "./login.queries";
+import { FETCH_USER_LOGGED_IN, LOGIN_USER } from "./login.queries";
 
 export default function Login() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setAccessToken } = useContext(GlobalContext);
+  const { setAccessToken, setUserInfo } = useContext(GlobalContext);
+  const client = useApolloClient();
   const [loginUser] = useMutation<
     Pick<IMutation, "loginUser">,
     IMutationLoginUserArgs
@@ -23,7 +24,6 @@ export default function Login() {
   function onChangePassword(event: ChangeEvent<HTMLInputElement>) {
     setPassword(event.target.value);
   }
-
   async function onClickLogin() {
     // const newInputsErrors = {
     //   email: /\w+@\w+\.\w+/.test(email) ? "" : "이메일을 확인해주세요",
@@ -41,9 +41,23 @@ export default function Login() {
           password: password,
         },
       });
-      console.log(result.data?.loginUser.accessToken || "");
+
+      const resultUser = await client.query({
+        query: FETCH_USER_LOGGED_IN,
+        context: {
+          headers: {
+            authorization: `Bearer ${result.data?.loginUser.accessToken}`,
+          },
+        },
+      });
+      console.log(resultUser);
       setAccessToken(result.data?.loginUser.accessToken || "");
       localStorage.setItem("refreshToken", "true");
+      setUserInfo(resultUser?.data.fetchUserLoggedIn || "");
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify(resultUser.data.fetchUserLoggedIn)
+      );
       router.push("/market");
     } catch (error) {
       alert(error.message);

@@ -40,7 +40,6 @@ import {
   ButtonWrapper,
   CreateProductButton,
   SideWrapper,
-
   WatchedTitle,
   WatchedContents,
   WatchedIconWrapper,
@@ -97,9 +96,10 @@ export default function MarketListUI(props) {
         {props.data?.fetchUseditems.map((data)=>(
         <Row
           onClick={props.onClickMoveDetail(data)}>
-          
-          <ColumnImage 
-          src={`https://storage.googleapis.com/${data.images?.[0]}`}/>
+                     
+           {data.images?.[0] ?
+           <ColumnImage src={`https://storage.googleapis.com/${data.images?.[0]}`}/> :<ColumnImage src="/market/login/102750939.1.jpg"/>            
+           }                     
           <ColumnProductWrapper>
             <ColumnInfo>
               <ColumnTitle>{data.title}</ColumnTitle>
@@ -128,13 +128,14 @@ export default function MarketListUI(props) {
         {props.getLocal.map((data) => (
         <WatchedContents key={data._id}>
         <WatchedIconWrapper>
-          <WatchedIcon/>
+          <WatchedIcon src="/Picked.jpg"/>
           <WatcedPicked>{data.pickedCount}</WatcedPicked>
         </WatchedIconWrapper>
-        <WatchedImage
-         src={`https://storage.googleapis.com/${data.images?.[0]}`}
-         />
-        <WatchedRemark>{data.remark}</WatchedRemark>
+        {data.images?.[0] ?
+        <WatchedImage src={`https://storage.googleapis.com/${data.images?.[0]}`}/> :
+        <WatchedImage src="/market/login/102750939.1.jpg"/> 
+        }
+        <WatchedRemark>{data.remarks}</WatchedRemark>
         <WatchedPrice>{data.price}</WatchedPrice>
         <WatchedTags>{data.tags}</WatchedTags>
         </WatchedContents>

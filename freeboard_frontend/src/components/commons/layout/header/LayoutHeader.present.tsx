@@ -20,7 +20,7 @@ import { DownOutlined } from "@ant-design/icons";
 import PaymentPage from "../../payment";
 
 export default function LayoutHeaderUI(props: any) {
-  const { accessToken } = useContext(GlobalContext);
+  const { accessToken, userInfo } = useContext(GlobalContext);
   const menu = (
     <Menu
       style={{
@@ -34,8 +34,8 @@ export default function LayoutHeaderUI(props: any) {
         <UserWrapper>
           <UserLogo src="/market/login/대표이미지.png" />
           <UserInfoWrapper>
-            <UserName>펭수</UserName>
-            <UserPoint>100,000 P</UserPoint>
+            <UserName>{userInfo.name}</UserName>
+            <UserPoint>{userInfo.userPoint?.amount} p</UserPoint>
           </UserInfoWrapper>
         </UserWrapper>
       </Menu.Item>
@@ -68,6 +68,7 @@ export default function LayoutHeaderUI(props: any) {
           />
           {accessToken ? (
             <ProfileWrapper>
+              <UserName>{userInfo.name} 님 환영합니다</UserName>
               <UserLogo src="/market/login/대표이미지.png" />
               <Dropdown overlay={menu} trigger={["click"]}>
                 <a

@@ -126,23 +126,24 @@ export const Row = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 180px;
-  border: black 1px solid;
   padding-top: 10px;
   padding-bottom: 10px;
 `;
 export const ColumnImage = styled.img`
-  background-color: gray;
   height: 160px;
   width: 160px;
   border-radius: 16px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 `;
 export const ColumnProductWrapper = styled.div`
-  width: 90%;
+  width: 85%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-left: 20px;
+  padding: 0px 50px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 16px;
 `;
 export const ColumnInfo = styled.div`
   height: 80%;
@@ -180,43 +181,51 @@ export const CreateProductButton = styled.button`
 `;
 
 export const SideWrapper = styled.div`
-  width: 200px;
-  height: 100%;
-  padding-top: 150px;
+  width: 250px;
+  margin-top: 150px;
   padding-bottom: 80px;
   position: sticky;
   top: 50px;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
+  border-radius: 16px;
 `;
 
 export const WatchedTitle = styled.div`
   width: 100%;
-  font-size: 15px;
+  font-size: 20px;
   text-align: center;
-  /* border: 1px solid black; */
 `;
 export const WatchedContents = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border: 1px solid black;
-
-  /* border: 1px solid black; */
-  width: 100%;
-  height: 100%;
+  align-items: flex-end;
+  justify-content: space-around;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 180px;
+  margin-top: 15px;
+  padding-top: 10px;
+  padding-right: 10px;
 `;
-export const WatchedIconWrapper = styled.div``;
+export const WatchedIconWrapper = styled.div`
+  display: flex;
+  padding-bottom: 10px;
+`;
 export const WatchedIcon = styled.img``;
 export const WatcedPicked = styled.div``;
 export const WatchedImage = styled.img`
   width: 100%;
   height: 150px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 10px;
   border-radius: 16px;
+  padding-bottom: 10px;
 `;
-export const WatchedRemark = styled.div``;
-export const WatchedPrice = styled.div``;
+export const WatchedRemark = styled.div`
+  padding-bottom: 10px;
+`;
+export const WatchedPrice = styled.div`
+  padding-bottom: 10px;
+`;
 export const WatchedTags = styled.div``;
