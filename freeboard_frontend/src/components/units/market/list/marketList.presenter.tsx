@@ -58,14 +58,7 @@ export default function MarketListUI(props) {
  
   return (
   <TotalWrapper>
-    <Wrapper>
-      <div>
-        <audio controls autoPlay={true} muted="muted">
-           <source src="/자이언트펭TV_오프닝.mp3" type="audio/mp3"/>
-        </audio>
-      </div>
-     
-      {/* // <video src="/자이언트펭TV_오프닝.mp3" autoPlay={true}></video> */}
+    <Wrapper>            
       <PageTitle>베스트상품</PageTitle>    
       <BestProductWrapper>
         {props.dataBestUsedItems?.fetchUseditemsOfTheBest.map((data) => (
@@ -77,12 +70,12 @@ export default function MarketListUI(props) {
               <Image src={`https://storage.googleapis.com/${data.images.[0]}`} />
               <ContentsWrapper>
                 <ContentsTextWrapper>
-                  <Title>{data.title}</Title>
+                  <Title>{data.name}</Title>
                   <Remarks>{data.remarks}</Remarks>
                   <Price>{data.price}</Price>
                 </ContentsTextWrapper>
                 <ContentsIconWrapper>
-                  <LikeIcon></LikeIcon>
+                  <LikeIcon src="/Picked.jpg"/>
                   <LikeCount>{data.pickedCount}</LikeCount>
                 </ContentsIconWrapper>
               </ContentsWrapper>

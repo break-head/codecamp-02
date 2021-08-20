@@ -4,12 +4,9 @@ import {
   Contents,
   Label,
   ContentsEditor,
-  // ContentsEdit,
-  // ContentsTextArea,
   ErrorMessage,
   Location,
   LocationMap,
-  // Map,
   LocationDetail,
   GPS,
   Geography,
@@ -18,7 +15,6 @@ import {
   Address,
   AddressInput,
   Images,
-  // Image,
   Settings,
   Setting,
   Button,
@@ -110,10 +106,7 @@ export default function MarketWriteUI(props: any) {
                 onClick={() => props.onClickAddressSearch(true)}
                 value={props.address}
               />
-              <AddressInput
-                onClick={() => props.onClickAddressSearch(true)}
-                value={props.detailAddress}
-              />
+              <AddressInput onChange={} />
             </Address>
           </LocationDetail>
         </Location>

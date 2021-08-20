@@ -11,8 +11,9 @@ const CREATE_POINT_TRANSACTION_OF_LOADING = gql`
 `;
 export default function PaymentPage() {
   const [amount, setAmount] = useState(0);
-  const [createPointTransactionOfLoading, setCreatePointTransactionOfLoading] =
-    useMutation(CREATE_POINT_TRANSACTION_OF_LOADING);
+  const [createPointTransactionOfLoading] = useMutation(
+    CREATE_POINT_TRANSACTION_OF_LOADING
+  );
   const router = useRouter();
   function onChangeAmount(event) {
     console.log(event.target.value);

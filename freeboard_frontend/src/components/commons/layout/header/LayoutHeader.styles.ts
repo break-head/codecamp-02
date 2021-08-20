@@ -16,6 +16,7 @@ export const InnerWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   font-size: 18px;
+  padding-right: 30px;
 `;
 
 export const InnerLogo = styled.img`
@@ -37,12 +38,36 @@ export const InnerButton = styled.span`
 `;
 
 export const ProfileWrapper = styled.div`
-  width: 200px;
+  width: 150px;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
 `;
-
+export const UserWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+`;
 export const UserLogo = styled.img`
   width: 70px;
   height: 70px;
+`;
+export const UserInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+export const UserName = styled.div`
+  font-size: 16px;
+`;
+export const UserPoint = styled.div`
+  font-size: 12px;
+`;
+export const LogOut = styled.div`
+  text-align: center;
+`;
+export const Payment = styled.div`
+  text-align: center;
 `;

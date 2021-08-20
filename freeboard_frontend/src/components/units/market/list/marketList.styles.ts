@@ -16,43 +16,40 @@ export const Wrapper = styled.div`
 export const PageTitle = styled.div`
   width: 100%;
   font-size: 36px;
+  font-weight: bold;
   text-align: center;
   min-width: 80%;
+  padding: 50px 50px;
 `;
 export const BestProductWrapper = styled.div`
-  height: 391px;
   display: flex;
   flex-direction: row;
-  border: red 1px solid;
-  min-width: 80%;
+  justify-content: space-around;
+  min-width: 100%;
 `;
 export const Column = styled.div`
-  width: 25%;
-  height: 100%;
+  width: 280px;
   display: flex;
   flex-direction: column;
-  border: blue 1px solid;
-  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 16px;
 `;
 export const Image = styled.img`
-  width: 100%;
-  height: 66%;
+  width: 280px;
+  height: 220px;
   border: solid 1px black;
-  background-image: url("");
+  border-radius: 16px;
 `;
 export const ContentsWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   width: 100%;
-  height: 34%;
-  padding-top: 20px;
+  padding: 10px 10px;
 `;
 export const ContentsTextWrapper = styled.div`
   width: 70%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
 `;
 export const ContentsIconWrapper = styled.div`
   width: 30%;
@@ -66,10 +63,8 @@ export const Title = styled.div`
 `;
 export const Remarks = styled.div`
   font-size: 12px;
-  margin-bottom: 20px;
 `;
-export const LikeIcon = styled.div`
-  border: black 1px solid;
+export const LikeIcon = styled.img`
   height: 20px;
   width: 20px;
 `;
@@ -78,7 +73,6 @@ export const Price = styled.div`
 `;
 export const LikeCount = styled.div`
   font-size: 16px;
-  padding-bottom: 5px;
 `;
 export const Body = styled.div`
   min-width: 100%;
@@ -140,6 +134,7 @@ export const ColumnImage = styled.img`
   background-color: gray;
   height: 160px;
   width: 160px;
+  border-radius: 16px;
 `;
 export const ColumnProductWrapper = styled.div`
   width: 90%;
@@ -187,8 +182,8 @@ export const CreateProductButton = styled.button`
 export const SideWrapper = styled.div`
   width: 200px;
   height: 100%;
-  margin-top: 100px;
-  margin-bottom: 80px;
+  padding-top: 150px;
+  padding-bottom: 80px;
   position: sticky;
   top: 50px;
   display: flex;
@@ -220,6 +215,7 @@ export const WatchedImage = styled.img`
   height: 150px;
   padding-left: 5px;
   padding-right: 5px;
+  border-radius: 16px;
 `;
 export const WatchedRemark = styled.div``;
 export const WatchedPrice = styled.div``;

@@ -21,13 +21,14 @@ export default function MarketWrite() {
   const [address, setAddress] = useState("");
   const [detailAddress, setDetailAddress] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+
   function onChangeFiles(file: File, index: number) {
     const newFiles = [...files];
     newFiles[index] = file;
     setFiles(newFiles);
   }
   function onClickAddressSearch(bool) {
-    console.log(bool);
+    // console.log(bool);
     setIsOpen(bool);
   }
 
@@ -36,7 +37,7 @@ export default function MarketWrite() {
     setDetailAddress(data.detailAddress);
     setIsOpen(false);
   }
-  console.log(address);
+  // console.log(address);
   const onChangeContents = (value) => {
     const isBlank = "<p><br></p>";
     setValue("contents", value === isBlank ? "" : value);
@@ -69,7 +70,7 @@ export default function MarketWrite() {
           },
         },
       });
-      console.log(result.data?.createUseditem);
+      // console.log(result.data?.createUseditem);
       Modal.info({ content: "게시물등록완료!!" });
     } catch (error) {
       Modal.error({ content: error.message });
