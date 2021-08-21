@@ -52,7 +52,7 @@ import {
 
 
 } from "./marketList.styles";
-
+import InfiniteScroll from "react-infinite-scroller";
 export default function MarketListUI(props) {
  
   return (
@@ -81,7 +81,7 @@ export default function MarketListUI(props) {
             </Column>
         ))}
       </BestProductWrapper>
-      <Body>
+      <Body >
         <SettingWrapper>
           <SettingTextWrapper>
             <SellingProductButton>판매중상품</SellingProductButton>
@@ -92,38 +92,39 @@ export default function MarketListUI(props) {
             <SearchDate>2020.12.12~2020.12.13</SearchDate>
             <SearchButton>검색</SearchButton>
           </SettingButtonWrapper>
-        </SettingWrapper>
-        {props.data?.fetchUseditems.map((data)=>(
+        </SettingWrapper>   
+        <div style={{width: "100%", height:"1000px", overflow:"auto"}}>         
+        <InfiniteScroll pageStart={0} loadMore={props.onLoadMore} hasMore={props.hasMore}  useWindow={false}>    
+        {props.data?.fetchUseditems.map((data)=>(         
         <Row
-          onClick={props.onClickMoveDetail(data)}>
-                     
+          onClick={props.onClickMoveDetail(data)} >                     
            {data.images?.[0] ?
            <ColumnImage src={`https://storage.googleapis.com/${data.images?.[0]}`}/> :<ColumnImage src="/market/login/102750939.1.jpg"/>            
            }                     
           <ColumnProductWrapper>
             <ColumnInfo>
-              <ColumnTitle>{data.title}</ColumnTitle>
+              <ColumnTitle>{data.name}</ColumnTitle>
               <ColumnRemark>{data.remarks}</ColumnRemark>
               <ColumnTags>{data.tags}</ColumnTags>
               <ColumnSellerInfo>
-                <ColumnSellerIcon></ColumnSellerIcon>
+                <ColumnSellerIcon src="/market/login/대표이미지.png"/>
                 <ColumnSellerName>{data.seller.name}</ColumnSellerName>
-                <ColumnLikeIcon></ColumnLikeIcon>
+                <ColumnLikeIcon src="/Picked.jpg" />
                 <ColumnLikeCount>{data.pickedCount}</ColumnLikeCount>
               </ColumnSellerInfo>
             </ColumnInfo>
-            <ColumnPrice>{data.price}</ColumnPrice>
+            <ColumnPrice>{data.price} 원</ColumnPrice>
           </ColumnProductWrapper>
         </Row>
-        ))}
-        
+        ))}   
+        </InfiniteScroll>
+        </div>
       </Body>
       <ButtonWrapper>
         <CreateProductButton>상품등록하기</CreateProductButton>
       </ButtonWrapper>
     </Wrapper>
     <SideWrapper>
-      
         <WatchedTitle>오늘본상품</WatchedTitle>
         {props.getLocal.map((data) => (
         <WatchedContents key={data._id}>
@@ -139,9 +140,7 @@ export default function MarketListUI(props) {
         <WatchedPrice>{data.price}</WatchedPrice>
         <WatchedTags>{data.tags}</WatchedTags>
         </WatchedContents>
-      ))}    
-     
-        
+      ))}                 
     </SideWrapper>
   </TotalWrapper>
   );

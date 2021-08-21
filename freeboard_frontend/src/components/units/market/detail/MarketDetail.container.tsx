@@ -1,9 +1,15 @@
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import MarketDetailUI from "./MarketDetail.presenter";
-import { FETCH_USED_ITEM } from "./MarketDetail.queries";
+import {
+  FETCH_USED_ITEM,
+  CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
+} from "./MarketDetail.queries";
 
 export default function MarketDetail() {
+  const [createPointTransactionOfBuyingAndSelling] = useMutation(
+    CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING
+  );
   const router = useRouter();
   const { data } = useQuery(FETCH_USED_ITEM, {
     variables: { useditemId: router.query.marketId },
@@ -15,12 +21,23 @@ export default function MarketDetail() {
   function onClickMoveToEdit() {
     router.push(`/market/${router.query.useditemId}/edit`);
   }
-  // console.log(data?.fetchUseditem.useditemAddress?.lng);
+  async function onClickbuying() {
+    try {
+      await createPointTransactionOfBuyingAndSelling({
+        variables: {
+          useritemId: router.query.marketId,
+        },
+      });
+    } catch (error) {
+      alert(error.message);
+    }
+  }
   return (
     <MarketDetailUI
       data={data}
       onClickMoveToList={onClickMoveToList}
       onClickMoveToEdit={onClickMoveToEdit}
+      onClickbuying={onClickbuying}
     />
   );
 }

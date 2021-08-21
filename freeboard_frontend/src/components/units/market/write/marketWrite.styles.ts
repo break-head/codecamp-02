@@ -40,13 +40,7 @@ export const ContentsEdit = styled.div`
   border: 1px solid;
   border-bottom: none;
 `;
-export const ContentsTextArea = styled.textarea`
-  resize: none;
-  width: 100%;
-  height: 268px;
-  padding: 14px 16px;
-  font-size: 16px;
-`;
+
 export const ErrorMessage = styled.div`
   color: red;
   text-align: center;
@@ -89,6 +83,8 @@ export const LocationOnIcon = styled.img`
 export const Address = styled.div`
   width: 100%;
   padding-top: 40px;
+  display: flex;
+  flex-direction: column;
 `;
 export const AddressInput = styled.input`
   width: 100%;

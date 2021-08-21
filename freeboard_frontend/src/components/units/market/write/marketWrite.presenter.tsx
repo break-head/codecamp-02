@@ -62,7 +62,10 @@ export default function MarketWriteUI(props: any) {
         <Contents>
           <Label>상품설명</Label>
           <ContentsEditor>
-            <ReactQuill onChange={props.onChangeContents} />
+            <ReactQuill
+              onChange={props.onChangeContents}
+              style={{ height: "100%" }}
+            />
             <ErrorMessage>{props.errors.contents?.message}</ErrorMessage>
           </ContentsEditor>
         </Contents>

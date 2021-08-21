@@ -31,8 +31,11 @@ import { getDate } from "../../../../commons/libraries/utils";
 import DOMPurify from "dompurify";
 import KakaoMapRead from "../../../commons/map/mapRead";
 import Picture from "../../../commons/uploadImage";
+import { useContext } from "react";
+import { GlobalContext } from "../../../../../pages/_app";
 
 export default function MarketDetailUI(props: any) {
+  const { userInfo } = useContext(GlobalContext);
   return (
     <Wrapper>
       <Header>
@@ -60,7 +63,7 @@ export default function MarketDetailUI(props: any) {
           <ItemInfoWrapper>
             <SubTitle>{props.data?.fetchUseditem.remarks}</SubTitle>
             <Title>{props.data?.fetchUseditem.name}</Title>
-            <Price>{props.data?.fetchUseditem.price}</Price>
+            <Price>{props.data?.fetchUseditem.price} 원</Price>
           </ItemInfoWrapper>
           <IconWrapper>
             <LikeIcon />
@@ -92,7 +95,11 @@ export default function MarketDetailUI(props: any) {
       </Body>
       <ButtonWrapper>
         <Button onClick={props.onClickMoveToList}>목록으로</Button>
-        <Button>구매하기</Button>
+        {props.data?.fetchUseditem.seller.name === userInfo.name ? (
+          <Button>수정하기 </Button>
+        ) : (
+          <Button onClick={props.onClickbuying}>구매하기 </Button>
+        )}
       </ButtonWrapper>
     </Wrapper>
   );
