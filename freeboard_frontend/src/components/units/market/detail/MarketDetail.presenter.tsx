@@ -66,8 +66,8 @@ export default function MarketDetailUI(props: any) {
             <Price>{props.data?.fetchUseditem.price} 원</Price>
           </ItemInfoWrapper>
           <IconWrapper>
-            <LikeIcon />
-            <LikeCount></LikeCount>
+            <LikeIcon onClick={props.onClickToggle} src="/Picked.jpg" />
+            <LikeCount>{props.data?.fetchUseditem.pickedCount}</LikeCount>
           </IconWrapper>
         </TitleWrapper>
         <PictureWrapper>

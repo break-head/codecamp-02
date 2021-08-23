@@ -1,6 +1,6 @@
 import {
   Wrapper,
-  Wrapper_body,
+  Wrapperbody,
   HeadTitle,
   Title,
   LoginTitle,
@@ -53,7 +53,7 @@ export default function BoardPageUi(props) {
           <DaumPostcode onComplete={props.onCompleteAddressSearch} autoClose />
         </Modal>
       )}
-      <Wrapper_body>
+      <Wrapperbody>
         <HeadTitle>
           <Title>{props.isEdit ? "게시판 수정" : "게시물 등록"}</Title>
         </HeadTitle>
@@ -179,7 +179,7 @@ export default function BoardPageUi(props) {
             {props.isEdit ? "수정하기" : "등록하기"}
           </RegisterButton>
         </Register>
-      </Wrapper_body>
+      </Wrapperbody>
     </Wrapper>
   );
 }

@@ -57,8 +57,9 @@ export const Body = styled.div`
 export const TitleWrapper = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
+  padding-bottom: 30px;
 `;
 export const ItemInfoWrapper = styled.div`
   display: flex;
@@ -75,7 +76,7 @@ export const Price = styled.div`
 `;
 export const IconWrapper = styled.div``;
 export const LikeIcon = styled.img``;
-export const LikeCount = styled.img``;
+export const LikeCount = styled.div``;
 export const PictureWrapper = styled.div`
   width: 100%;
   display: flex;

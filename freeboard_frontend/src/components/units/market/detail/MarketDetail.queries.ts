@@ -11,6 +11,7 @@ export const FETCH_USED_ITEM = gql`
       tags
       images
       createdAt
+
       seller {
         name
         picture
@@ -21,6 +22,7 @@ export const FETCH_USED_ITEM = gql`
         lat
         lng
       }
+      pickedCount
     }
   }
 `;
@@ -30,5 +32,11 @@ export const CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING = gql`
     createPointTransactionOfBuyingAndSelling(useritemId: $useritemId) {
       _id
     }
+  }
+`;
+
+export const TOGGLE_USED_ITEM_PICK = gql`
+  mutation toggleUseditemPick($useditemId: ID!) {
+    toggleUseditemPick(useditemId: $useditemId)
   }
 `;

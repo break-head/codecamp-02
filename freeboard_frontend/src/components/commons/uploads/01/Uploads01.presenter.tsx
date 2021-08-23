@@ -1,4 +1,3 @@
-import Register from "../../../units/register/register.container";
 import {
   UploadButton,
   UploadFileHidden,

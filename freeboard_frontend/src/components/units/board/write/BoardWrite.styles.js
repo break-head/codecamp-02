@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   border: 1px solid black;
 `;
 
-export const Wrapper_body = styled.div`
+export const Wrapperbody = styled.div`
   width: 1200px;
   height: 1847px;
   margin-top: 100px;

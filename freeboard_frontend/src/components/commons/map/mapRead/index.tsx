@@ -4,7 +4,7 @@ declare const window: typeof globalThis & {
   kakao: any;
 };
 
-export default function KakaoMapRead(props) {
+export default function KakaoMapRead(props: any) {
   useEffect(() => {
     if (!(props.lat && props.lng)) return;
     console.log("=====================");

@@ -21,7 +21,11 @@ export default function PaymentPage() {
   }
 
   function onClickPayment() {
+    // @ts-ignore
+    // eslint-disable-next-line no-undef
     IMP.init("imp49910675");
+    // @ts-ignore
+    // eslint-disable-next-line no-undef
     IMP.request_pay(
       {
         pg: "html5_inicis",
@@ -36,7 +40,7 @@ export default function PaymentPage() {
         buyer_postcode: "01181",
         m_redirect_url: "/market",
       },
-      async (rsp) => {
+      async (rsp: any) => {
         console.log(rsp);
         if (rsp.success) {
           await createPointTransactionOfLoading({

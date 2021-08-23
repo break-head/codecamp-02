@@ -3,7 +3,6 @@ import LayoutHeader from "./header/LayoutHeader.container";
 import LayoutNavigation from "./navigation/LayoutNavigation.container";
 import styled from "@emotion/styled";
 import LayoutFooter from "./footer/LayoutFooter.container";
-import router from "next/router";
 
 const Body = styled.div`
   /* width: 100%;
@@ -22,7 +21,7 @@ export default function Layout(props: any) {
       {/* {router.query.mypage ? (
         <MypageSide>
           <Body>{props.children}</Body>
-        </MypageSide>
+        </MypageSide>cd 
       ) : ( */}
       <Body>{props.children}</Body>
       {/* )} */}

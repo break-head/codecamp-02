@@ -12,9 +12,9 @@ const Ul = styled.ul`
   }
 `;
 
-export default function Picture(props) {
+export default function Picture(props: any) {
   const settings = {
-    customPaging: function (i) {
+    customPaging: function (i: any) {
       return (
         <a>
           <img
@@ -30,7 +30,7 @@ export default function Picture(props) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    appendDots: (dots) => <Ul>{dots}</Ul>,
+    appendDots: (dots: any) => <Ul>{dots}</Ul>,
   };
 
   return (
@@ -44,7 +44,7 @@ export default function Picture(props) {
       }}
     >
       <Slider {...settings}>
-        {props.data?.fetchUseditem.images.map((data) => (
+        {props.data?.fetchUseditem.images.map((data: any) => (
           <div key={data} style={{ width: "600px" }}>
             <img
               style={{

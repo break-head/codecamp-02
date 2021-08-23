@@ -2,7 +2,7 @@ import { useQuery } from "@apollo/client";
 import ListPageUi from "./ListPage.presenter";
 import { FETCH_BOARDS, FETCH_BOARDS_COUNT } from "./ListPage.queries";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function ListPage() {
   const { data, refetch } = useQuery(FETCH_BOARDS);

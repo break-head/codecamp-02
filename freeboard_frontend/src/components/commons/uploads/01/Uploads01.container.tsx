@@ -13,6 +13,7 @@ export default function Uploads01(props: IUploads01Props) {
 
   async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
+    // @ts-ignore
     if (!checkValidationFile(file)) return;
 
     if (!file) return;
