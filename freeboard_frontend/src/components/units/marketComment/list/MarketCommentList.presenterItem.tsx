@@ -26,9 +26,7 @@ import {
 import MarketReCommentWrite from "../reWrite/MarketReCommentWrite.container";
 import MarketReCommentList from "../reList/MarketReCommentList.container";
 
-export default function MarketCommentListUIItem(
-  props: IBoardCommentListUIItemProps
-) {
+export default function MarketCommentListUIItem(props: any) {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
   const [openRecomment, setOpenRecomment] = useState(false);

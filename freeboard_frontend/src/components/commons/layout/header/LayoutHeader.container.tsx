@@ -7,7 +7,7 @@ import { LOGOUT_USER } from "./LayoutHeader.query";
 export default function LayoutHeader() {
   const router = useRouter();
   const [logoutUser] = useMutation(LOGOUT_USER);
-  const { setAccessToken } = useContext(GlobalContext);
+  const { setAccessToken, setUserInfo } = useContext(GlobalContext);
   const [isOpen, setIsOpen] = useState(false);
   function onClickLogin() {
     router.push("/market/login");
@@ -20,7 +20,7 @@ export default function LayoutHeader() {
   function onClickBoards() {
     router.push("/boards");
   }
-  function onClickPayment(bool) {
+  function onClickPayment(bool: boolean | ((prevState: boolean) => boolean)) {
     setIsOpen(bool);
   }
   async function onClickLogout() {
@@ -30,7 +30,9 @@ export default function LayoutHeader() {
       alert("로그아웃이 되었습니다.");
 
       localStorage.removeItem("refreshToken");
+      localStorage.removeItem("userInfo");
       setAccessToken("");
+      setUserInfo("");
     } catch (error) {
       alert(error.message);
     }

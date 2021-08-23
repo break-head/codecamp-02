@@ -59,7 +59,6 @@ export default function BoardDetailUi(props) {
           <PictuerWrapper>
             {props.data?.fetchBoard.images?.map((data) => (
               <Picture
-                alt="원래사진있어요"
                 key={data}
                 src={`https://storage.googleapis.com/${data}`}
               />

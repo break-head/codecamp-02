@@ -24,7 +24,8 @@ import {
 } from "./MarketReCommentList.styles";
 import MarketReCommentWriteUI from "../reWrite/MarketReCommentWrite.presenter";
 export default function MarketReCommentListUIItem(
-  props: IBoardCommentListUIItemProps
+  props: any
+  // IBoardCommentListUIItemProps
 ) {
   // const router = useRouter();
   const [reEdit, setReEdit] = useState(false);

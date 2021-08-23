@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import BoardPageUi from "./BoardWrite.presenter";
 import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
 import { Modal } from "antd";
+
 export const INPUTS_INIT = {
   writer: "",
   password: "",
@@ -97,6 +98,7 @@ export default function BoardPage(props) {
             },
           },
         });
+
         Modal.confirm({
           content: "게시물이 성공적으로 수정되었습니다.",
           onOk: () => router.push(`/boards/${result.data.updateBoard._id}`),
@@ -109,7 +111,7 @@ export default function BoardPage(props) {
 
   async function onChangeFile(event) {
     const file = event.target.files?.[0];
-    console.log(event.target.files);
+
     if (!file?.size) {
       alert("파일이 없습니다.");
       return;

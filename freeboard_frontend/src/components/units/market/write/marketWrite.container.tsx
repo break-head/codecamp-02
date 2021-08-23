@@ -5,14 +5,13 @@ import { Modal } from "antd";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { CREATE_USED_ITEM, UPLOAD_FILE } from "./marketWrite.queries";
 import { schema } from "./marketWrite.validations";
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 
 export default function MarketWrite() {
-  const { register, handleSubmit, formState, setValue, trigger, watch } =
-    useForm({
-      mode: "onChange",
-      resolver: yupResolver(schema),
-    });
+  const { register, handleSubmit, formState, setValue, trigger } = useForm({
+    mode: "onChange",
+    resolver: yupResolver(schema),
+  });
   const [createUseditem] = useMutation(CREATE_USED_ITEM);
   const [uploadFile] = useMutation(UPLOAD_FILE);
   const [files, setFiles] = useState<(File | null)[]>([null, null, null]);
@@ -27,18 +26,18 @@ export default function MarketWrite() {
     newFiles[index] = file;
     setFiles(newFiles);
   }
-  function onClickAddressSearch(bool) {
+  function onClickAddressSearch(bool: any) {
     // console.log(bool);
     setIsOpen(bool);
   }
 
-  function onCompleteAddressSearch(data) {
+  function onCompleteAddressSearch(data: any) {
     setAddress(data.address);
     setDetailAddress(data.detailAddress);
     setIsOpen(false);
   }
-  // console.log(address);
-  const onChangeContents = (value) => {
+
+  const onChangeContents = (value: any) => {
     const isBlank = "<p><br></p>";
     setValue("contents", value === isBlank ? "" : value);
     trigger("contents");
@@ -70,7 +69,7 @@ export default function MarketWrite() {
           },
         },
       });
-      // console.log(result.data?.createUseditem);
+      console.log(result);
       Modal.info({ content: "게시물등록완료!!" });
     } catch (error) {
       Modal.error({ content: error.message });

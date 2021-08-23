@@ -10,7 +10,7 @@ const RESTORE_ACCESS_TOKEN = gql`
 `;
 
 // 1. refreshToken으로 새로운 accessToken을 발급 받기
-export const getAccessToken = async (setAccessToken) => {
+export const getAccessToken = async (setAccessToken: any) => {
   try {
     const graphQLClient = new GraphQLClient(
       "https://backend02.codebootcamp.co.kr/graphql",

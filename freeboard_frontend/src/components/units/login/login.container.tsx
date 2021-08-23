@@ -1,7 +1,11 @@
 import { useApolloClient, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useContext, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import { GlobalContext } from "../../../../pages/_app";
+import {
+  IMutation,
+  IMutationLoginUserArgs,
+} from "../../../commons/types/generated/types";
 import LoginUI from "./login.presenter";
 import { FETCH_USER_LOGGED_IN, LOGIN_USER } from "./login.queries";
 
@@ -50,7 +54,6 @@ export default function Login() {
           },
         },
       });
-      console.log(resultUser);
       setAccessToken(result.data?.loginUser.accessToken || "");
       localStorage.setItem("refreshToken", "true");
       setUserInfo(resultUser?.data.fetchUserLoggedIn || "");

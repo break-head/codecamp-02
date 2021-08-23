@@ -30,7 +30,7 @@ export default function MarketList() {
     });
   };
 
-  const onClickMoveDetail = (data) => () => {
+  const onClickMoveDetail = (data: any) => () => {
     onClickBasket(data);
     router.push(`/market/${data._id}`);
   };
@@ -39,10 +39,10 @@ export default function MarketList() {
     router.push("/market/new");
   }
 
-  const onClickBasket = (news) => {
+  const onClickBasket = (news: any) => {
     const newBaskets = [news];
     const baskets = JSON.parse(localStorage.getItem("baskets") || "[]").filter(
-      (el, i) => i < 4 && el._id !== news._id
+      (el: any, i: any) => i < 4 && el._id !== news._id
     );
     localStorage.setItem("baskets", JSON.stringify(newBaskets.concat(baskets)));
   };

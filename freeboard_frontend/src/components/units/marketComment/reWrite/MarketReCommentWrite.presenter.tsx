@@ -7,7 +7,7 @@ import {
   Wrapper,
 } from "./MarketReCommentWrite.styles";
 
-export default function MarketReCommentWriteUI(props) {
+export default function MarketReCommentWriteUI(props: any) {
   return (
     <Wrapper>
       <ContentsWrapper>

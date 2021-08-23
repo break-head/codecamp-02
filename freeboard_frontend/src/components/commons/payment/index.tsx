@@ -15,7 +15,7 @@ export default function PaymentPage() {
     CREATE_POINT_TRANSACTION_OF_LOADING
   );
   const router = useRouter();
-  function onChangeAmount(event) {
+  function onChangeAmount(event: any) {
     console.log(event.target.value);
     setAmount(event.target.value);
   }

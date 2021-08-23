@@ -1,6 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { ChangeEvent, MouseEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import MarketCommentWriteUI from "./MarketCommentWrite.presenter";
 import {
   CREATE_USEDITEM_QUESTION,
@@ -9,7 +9,7 @@ import {
 } from "./MarketCommentWrite.queries";
 // import { IBoardCommentWriteProps } from "./BoardCommentWrite.types";
 
-export default function MarketCommentWrite(props: IBoardCommentWriteProps) {
+export default function MarketCommentWrite(props: any) {
   const COMMENT_INPUT = {
     contents: "",
   };
