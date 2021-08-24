@@ -18,7 +18,7 @@ export default function MarketPage(props: any) {
         <meta property="og:title" content={props.fetchUseditem.name} />
         <meta property="og:description" content={props.fetchUseditem.remarks} />
         <meta
-          property="og:images"
+          property="og:image"
           content={`https://storage.googleapis.com/${props.fetchUseditem.images[0]}`}
         />
       </Head>
