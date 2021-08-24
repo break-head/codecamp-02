@@ -11,7 +11,7 @@ const FETCH_USEDITEM = gql`
   }
 `;
 
-export default function MarketPage(props) {
+export default function MarketPage(props: any) {
   return (
     <>
       <Head>
@@ -30,7 +30,7 @@ export default function MarketPage(props) {
 // props.fetchUseditem.remarks;
 // props.fetchUseditem.images[0];
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async (context: any) => {
   const result = await request(
     "https://backend02.codebootcamp.co.kr/graphql",
     FETCH_USEDITEM,
