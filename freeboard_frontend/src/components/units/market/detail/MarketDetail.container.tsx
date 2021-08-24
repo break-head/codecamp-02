@@ -27,7 +27,7 @@ export default function MarketDetail() {
     try {
       await createPointTransactionOfBuyingAndSelling({
         variables: {
-          useriteeId: router.query.marketId,
+          useritemId: router.query.marketId,
         },
       });
     } catch (error) {

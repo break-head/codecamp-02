@@ -31,7 +31,11 @@ const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export default function MarketWriteUI(props: any) {
   return (
-    <form onSubmit={props.handleSubmit(props.onSubmit)}>
+    <form
+      onSubmit={props.handleSubmit(
+        props.isEdit ? props.onClickUpdate : props.onSubmit
+      )}
+    >
       {props.isOpen && (
         <Modal
           title="주소검색"
@@ -43,7 +47,12 @@ export default function MarketWriteUI(props: any) {
         </Modal>
       )}
       <Wrapper>
-        <Title>상품 등록하기</Title>
+        {props.isEdit ? (
+          <Title>상품 수정하기</Title>
+        ) : (
+          <Title>상품 등록하기</Title>
+        )}
+
         <Input01
           inputName="상품명"
           placeholder="상품명을 작성해주세요"
@@ -64,6 +73,7 @@ export default function MarketWriteUI(props: any) {
           <ContentsEditor>
             <ReactQuill
               onChange={props.onChangeContents}
+              value={props.contents}
               style={{ height: "100%" }}
             />
             <ErrorMessage>{props.errors.contents?.message}</ErrorMessage>
@@ -98,9 +108,9 @@ export default function MarketWriteUI(props: any) {
             <GPS>
               <Label>GPS</Label>
               <Geography>
-                <GeographyInput value={props.lat} readOnly={true} />
+                <GeographyInput value={props.lat} />
                 <LocationOnIcon src="/images/ic_location_on-24px.svg" />
-                <GeographyInput value={props.lng} readOnly={true} />
+                <GeographyInput value={props.lng} />
               </Geography>
             </GPS>
             <Address>
@@ -108,14 +118,16 @@ export default function MarketWriteUI(props: any) {
               <AddressInput
                 onClick={() => props.onClickAddressSearch(true)}
                 value={props.address}
+                defaultValue={
+                  props.data?.fetchUseditem.useditemAddress?.address
+                }
               />
-              {/* <AddressInput onChange={} /> */}
             </Address>
           </LocationDetail>
         </Location>
         <Images>
           <Label>사진 첨부</Label>
-          {new Array(3).fill(1).map((data, index) => (
+          {new Array(4).fill(1).map((data, index) => (
             <Uploads01
               key={`${data}_${index}`}
               index={index}
@@ -130,7 +142,11 @@ export default function MarketWriteUI(props: any) {
             <Label>사진 2</Label>
           </Setting>
         </Settings>
-        <Button type="submit">등록하기</Button>
+        {props.isEdit ? (
+          <Button type="submit">수정하기</Button>
+        ) : (
+          <Button type="submit">등록하기</Button>
+        )}
       </Wrapper>
     </form>
   );

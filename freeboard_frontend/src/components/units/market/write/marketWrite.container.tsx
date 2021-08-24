@@ -3,20 +3,28 @@ import { useForm } from "react-hook-form";
 import MarketWriteUI from "./marketWrite.presenter";
 import { Modal } from "antd";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { CREATE_USED_ITEM, UPLOAD_FILE } from "./marketWrite.queries";
+import {
+  CREATE_USED_ITEM,
+  UPLOAD_FILE,
+  UPDATE_USED_ITEM,
+} from "./marketWrite.queries";
 import { schema } from "./marketWrite.validations";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
-export default function MarketWrite() {
+export default function MarketWrite(props: any) {
   const { register, handleSubmit, formState, setValue, trigger } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
   });
+  const router = useRouter();
   const [createUseditem] = useMutation(CREATE_USED_ITEM);
+  const [updateUseditem] = useMutation(UPDATE_USED_ITEM);
   const [uploadFile] = useMutation(UPLOAD_FILE);
-  const [files, setFiles] = useState<(File | null)[]>([null, null, null]);
+  const [files, setFiles] = useState<(File | null)[]>([null, null, null, null]);
   const [lat, setLat] = useState(33.450701);
   const [lng, setLng] = useState(126.570667);
+  const [contents, setContents] = useState("");
   const [address, setAddress] = useState("");
   const [detailAddress, setDetailAddress] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -27,7 +35,6 @@ export default function MarketWrite() {
     setFiles(newFiles);
   }
   function onClickAddressSearch(bool: any) {
-    // console.log(bool);
     setIsOpen(bool);
   }
 
@@ -39,6 +46,7 @@ export default function MarketWrite() {
 
   const onChangeContents = (value: any) => {
     const isBlank = "<p><br></p>";
+    setContents(value);
     setValue("contents", value === isBlank ? "" : value);
     trigger("contents");
   };
@@ -49,7 +57,6 @@ export default function MarketWrite() {
       .map((data) => uploadFile({ variables: { file: data } }));
     const results = await Promise.all(uploadFiles);
     const images = results.map((data) => data.data.uploadFile.url);
-
     try {
       const result = await createUseditem({
         variables: {
@@ -69,12 +76,59 @@ export default function MarketWrite() {
           },
         },
       });
-      console.log(result);
       Modal.info({ content: "게시물등록완료!!" });
+      router.push(`/market/${result.data.createUseditem._id}`);
     } catch (error) {
       Modal.error({ content: error.message });
     }
   }
+
+  async function onClickUpdate(data: any) {
+    const uploadFiles = files
+      .filter((data) => data)
+      .map((data) => uploadFile({ variables: { file: data } }));
+    const results = await Promise.all(uploadFiles);
+    const images = results.map((data) => data.data.uploadFile.url);
+    try {
+      const result = await updateUseditem({
+        variables: {
+          updateUseditemInput: {
+            name: data.name,
+            remarks: data.remarks,
+            contents: data.contents,
+            price: data.price,
+            tags: data.tags,
+            images: images,
+            useditemAddress: {
+              address: address,
+              addressDetail: detailAddress,
+              lat: lat,
+              lng: lng,
+            },
+          },
+          useditemId: router.query.marketId,
+        },
+      });
+      Modal.info({ content: "게시물수정완료!!" });
+      router.push(`/market/${result.data.updateUseditem._id}`);
+    } catch (error) {
+      Modal.error({ content: error.message });
+    }
+  }
+
+  useEffect(() => {
+    if (props.data) {
+      setValue("name", props.data?.fetchUseditem.name);
+      setValue("remarks", props.data?.fetchUseditem.remarks);
+      setValue("price", props.data?.fetchUseditem.price);
+      setValue("tags", props.data?.fetchUseditem.tags);
+      setContents(props.data?.fetchUseditem.contents);
+      setAddress(props.data?.fetchUseditem.useditemAddress?.address);
+      setDetailAddress(
+        props.data?.fetchUseditem.useditemAddress?.addressDetail
+      );
+    }
+  }, [props.data]);
 
   return (
     <MarketWriteUI
@@ -94,6 +148,10 @@ export default function MarketWrite() {
       onCompleteAddressSearch={onCompleteAddressSearch}
       onClickAddressSearch={onClickAddressSearch}
       isOpen={isOpen}
+      data={props.data}
+      contents={contents}
+      onClickUpdate={onClickUpdate}
+      isEdit={props.isEdit}
     />
   );
 }

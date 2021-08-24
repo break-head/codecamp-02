@@ -25,6 +25,7 @@ export default function DetailPage() {
   function onClickMoveToEdit() {
     router.push(`/boards/${router.query.boardId}/edit`);
   }
+
   async function onClickDelete() {
     try {
       await deleteBoard({
@@ -54,7 +55,6 @@ export default function DetailPage() {
       ],
     });
   }
-  console.log(data);
 
   return (
     <BoardDetailUi
