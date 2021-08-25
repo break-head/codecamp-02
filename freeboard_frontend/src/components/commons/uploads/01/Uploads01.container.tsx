@@ -13,10 +13,19 @@ export default function Uploads01(props: IUploads01Props) {
 
   async function onChangeFile(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
+
+    if (!file) return;
     // @ts-ignore
     if (!checkValidationFile(file)) return;
 
-    if (!file) return;
+    if (props.prevImg[props.index]) {
+      props.setPrevImg((prev: any) => {
+        const temp = [...prev];
+        temp[props.index] = null;
+        return temp;
+      });
+    }
+
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);
     fileReader.onload = (data) => {
@@ -31,6 +40,8 @@ export default function Uploads01(props: IUploads01Props) {
       fileUrl={fileUrl}
       onClickUpload={onClickUpload}
       onChangeFile={onChangeFile}
+      prevImg={props.prevImg}
+      index={props.index}
     />
   );
 }

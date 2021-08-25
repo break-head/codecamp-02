@@ -127,11 +127,14 @@ export default function MarketWriteUI(props: any) {
         </Location>
         <Images>
           <Label>사진 첨부</Label>
+
           {new Array(4).fill(1).map((data, index) => (
             <Uploads01
+              prevImg={props.prevImg}
               key={`${data}_${index}`}
               index={index}
               onChangeFiles={props.onChangeFiles}
+              setPrevImg={props.setPrevImg}
             ></Uploads01>
           ))}
         </Images>

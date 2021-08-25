@@ -106,7 +106,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             src="//dapi.kakao.com/v2/maps/sdk.js?appkey=46a088defe4208f8cfd94b08223db61a"
           ></script>
         </Head> */}
-        <Layout aaa={true}>
+        <Layout>
           {/* <Global styles={globalStyles} /> */}
           <Component {...pageProps} />
         </Layout>

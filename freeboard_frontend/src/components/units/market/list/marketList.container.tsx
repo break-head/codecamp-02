@@ -35,10 +35,9 @@ export default function MarketList() {
     router.push(`/market/${data._id}`);
   };
 
-  function onClickMoveNew() {
+  function onClickMovetoCreate() {
     router.push("/market/new");
   }
-
   const onClickBasket = (news: any) => {
     const newBaskets = [news];
     const baskets = JSON.parse(localStorage.getItem("baskets") || "[]").filter(
@@ -57,7 +56,7 @@ export default function MarketList() {
       data={data}
       dataBestUsedItems={dataBestUsedItems}
       onClickMoveDetail={onClickMoveDetail}
-      onClickMoveNew={onClickMoveNew}
+      onClickMovetoCreate={onClickMovetoCreate}
       onClickBasket={onClickBasket}
       getLocal={getLocal}
       hasMore={hasMore}

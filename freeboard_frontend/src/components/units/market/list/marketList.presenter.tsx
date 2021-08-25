@@ -129,7 +129,7 @@ export default function MarketListUI(props: any) {
           </div>
         </Body>
         <ButtonWrapper>
-          <CreateProductButton>상품등록하기</CreateProductButton>
+          <CreateProductButton onClick={props.onClickMovetoCreate}>상품등록하기</CreateProductButton>
         </ButtonWrapper>
       </Wrapper>
       <SideWrapper>

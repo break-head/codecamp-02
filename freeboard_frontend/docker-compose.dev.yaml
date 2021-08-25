@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  freeboard_frontend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.dev
+    # volumes:
+    # - ./pages:/freeboard_frontend/pages
+    # - ./src:/freeboard_frontend/src
+    # - ./public:/freeboard_frontend/public
+    ports:
+      - 3000:3000

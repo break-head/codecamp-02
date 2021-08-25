@@ -28,6 +28,22 @@ export default function MarketWrite(props: any) {
   const [address, setAddress] = useState("");
   const [detailAddress, setDetailAddress] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [prevImg, setPrevImg] = useState([]);
+
+  useEffect(() => {
+    if (props.data) {
+      setValue("name", props.data?.fetchUseditem.name);
+      setValue("remarks", props.data?.fetchUseditem.remarks);
+      setValue("price", props.data?.fetchUseditem.price);
+      setValue("tags", props.data?.fetchUseditem.tags);
+      setContents(props.data?.fetchUseditem.contents);
+      setAddress(props.data?.fetchUseditem.useditemAddress?.address);
+      setDetailAddress(
+        props.data?.fetchUseditem.useditemAddress?.addressDetail
+      );
+      setPrevImg(props.data?.fetchUseditem.images);
+    }
+  }, [props.data]);
 
   function onChangeFiles(file: File, index: number) {
     const newFiles = [...files];
@@ -84,11 +100,14 @@ export default function MarketWrite(props: any) {
   }
 
   async function onClickUpdate(data: any) {
+    
+    const filterPrevImg = prevImg.filter((data) => data);
     const uploadFiles = files
       .filter((data) => data)
       .map((data) => uploadFile({ variables: { file: data } }));
     const results = await Promise.all(uploadFiles);
     const images = results.map((data) => data.data.uploadFile.url);
+
     try {
       const result = await updateUseditem({
         variables: {
@@ -98,7 +117,7 @@ export default function MarketWrite(props: any) {
             contents: data.contents,
             price: data.price,
             tags: data.tags,
-            images: images,
+            images: [...filterPrevImg, ...images],
             useditemAddress: {
               address: address,
               addressDetail: detailAddress,
@@ -109,26 +128,13 @@ export default function MarketWrite(props: any) {
           useditemId: router.query.marketId,
         },
       });
+      console.log(result);
       Modal.info({ content: "게시물수정완료!!" });
-      router.push(`/market/${result.data.updateUseditem._id}`);
+      router.push(`/market/${result.data?.updateUseditem._id}`);
     } catch (error) {
       Modal.error({ content: error.message });
     }
   }
-
-  useEffect(() => {
-    if (props.data) {
-      setValue("name", props.data?.fetchUseditem.name);
-      setValue("remarks", props.data?.fetchUseditem.remarks);
-      setValue("price", props.data?.fetchUseditem.price);
-      setValue("tags", props.data?.fetchUseditem.tags);
-      setContents(props.data?.fetchUseditem.contents);
-      setAddress(props.data?.fetchUseditem.useditemAddress?.address);
-      setDetailAddress(
-        props.data?.fetchUseditem.useditemAddress?.addressDetail
-      );
-    }
-  }, [props.data]);
 
   return (
     <MarketWriteUI
@@ -152,6 +158,8 @@ export default function MarketWrite(props: any) {
       contents={contents}
       onClickUpdate={onClickUpdate}
       isEdit={props.isEdit}
+      prevImg={prevImg}
+      setPrevImg={setPrevImg}
     />
   );
 }
