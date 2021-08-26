@@ -13,7 +13,7 @@ export default function LayoutNavigation(props: any) {
     router.push("/market");
   }
   function onClickMoveMypage() {
-    router.push("/mypage/:mypage/mypoint");
+    router.push("/mypage/mymarket");
   }
   return (
     <LayoutNavigationUI

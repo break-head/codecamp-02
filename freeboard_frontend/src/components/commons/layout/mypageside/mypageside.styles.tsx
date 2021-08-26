@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100px;
+  padding-top: 100px;
 `;
 export const Title = styled.div`
   font-size: 24px;

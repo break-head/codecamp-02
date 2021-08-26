@@ -18,15 +18,15 @@ export default function MyPageSideUI(props: any) {
       <Name>{props.userInfo.name}</Name>
       <MypageListPointWrapper>
         <ListIcon src="/pigicon.png" />
-        <IconName>{props.userInfo.userPoint.amount}</IconName>
+        <IconName>{props.userInfo.userPoint?.amount}</IconName>
       </MypageListPointWrapper>
       <MyPageListWrapper>
         <ListIcon src="/carticon.png" />
-        <IconName>내 장터</IconName>
+        <IconName onClick={props.onClickMoveMymarket}>내 장터</IconName>
       </MyPageListWrapper>
       <MyPageListWrapper>
         <ListIcon src="/greypig.png" />
-        <IconName>내 포인트</IconName>
+        <IconName onClick={props.onClickMoveMypoint}>내 포인트</IconName>
       </MyPageListWrapper>
       <MyPageListWrapper>
         <ListIcon src="/miniuser.png " />
