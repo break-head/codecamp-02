@@ -1,6 +1,6 @@
 import { useQuery } from "@apollo/client";
 // import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MypageUI from "./Mypage.presenter";
 import {
   FETCH_USED_ITEMS_ISOLD,
@@ -68,11 +68,13 @@ export default function Mypage(props) {
     setIndex(4);
     setData(buyingData.fetchPointTransactionsOfBuying);
   };
-  // console.log(iPickedData.fetchUseditemsIPicked);
+
   const onClickSellingTransaction = () => {
     setIndex(5);
     setData(sellingData.fetchPointTransactionsOfSelling);
   };
+
+  console.log(buyingData?.fetchPointTransactionsOfBuying);
   return (
     <MypageUI
       isMypage={props.isMypage}

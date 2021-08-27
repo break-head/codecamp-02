@@ -5,6 +5,7 @@ export const MenuWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   padding-bottom: 10px;
+  padding-top: 100px;
 `;
 export const MenuTitle = styled.div`
   font-size: 16px;

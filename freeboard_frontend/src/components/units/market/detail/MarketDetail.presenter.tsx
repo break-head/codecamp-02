@@ -100,6 +100,11 @@ export default function MarketDetailUI(props: any) {
         ) : (
           <Button onClick={props.onClickbuying}>구매하기 </Button>
         )}
+        {props.data?.fetchUseditem.seller.name === userInfo.name ? (
+          <Button onClick={props.onClickMoveToDelete}>삭제하기</Button>
+        ) : (
+          <div></div>
+        )}
       </ButtonWrapper>
     </Wrapper>
   );

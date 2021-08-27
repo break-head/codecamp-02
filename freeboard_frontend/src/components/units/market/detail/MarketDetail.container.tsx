@@ -5,6 +5,7 @@ import {
   FETCH_USED_ITEM,
   CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
   TOGGLE_USED_ITEM_PICK,
+  DELETE_USED_ITEM,
 } from "./MarketDetail.queries";
 
 export default function MarketDetail() {
@@ -12,6 +13,7 @@ export default function MarketDetail() {
     CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING
   );
   const [toggleUseditemPick] = useMutation(TOGGLE_USED_ITEM_PICK);
+  const [deleteUseditem] = useMutation(DELETE_USED_ITEM);
   const router = useRouter();
   const { data } = useQuery(FETCH_USED_ITEM, {
     variables: { useditemId: router.query.marketId },
@@ -23,6 +25,18 @@ export default function MarketDetail() {
   function onClickMoveToEdit() {
     router.push(`/market/${router.query.useditemId}/edit`);
   }
+  async function onClickMoveToDelete() {
+    try {
+      await deleteUseditem({
+        variables: {
+          useditemId: router.query.marketId,
+        },
+      });
+      router.push("/market");
+    } catch (error) {
+      alert(error.message);
+    }
+  }
   async function onClickbuying() {
     try {
       await createPointTransactionOfBuyingAndSelling({
@@ -30,6 +44,7 @@ export default function MarketDetail() {
           useritemId: router.query.marketId,
         },
       });
+      router.push("/market");
     } catch (error) {
       alert(error.message);
     }
@@ -42,6 +57,7 @@ export default function MarketDetail() {
           useditemId: router.query.marketId,
         },
       });
+      router.push("/market");
     } catch (error) {
       alert(error.message);
     }
@@ -54,6 +70,7 @@ export default function MarketDetail() {
       onClickMoveToEdit={onClickMoveToEdit}
       onClickbuying={onClickbuying}
       onClickToggle={onClickToggle}
+      onClickMoveToDelete={onClickMoveToDelete}
     />
   );
 }

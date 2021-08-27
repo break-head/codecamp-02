@@ -1,5 +1,5 @@
-// import Mypage from "../../../src/components/units/myPage/Mypage.container";
+import Mypage from "../../../src/components/units/myPage/Mypage.container";
 
-// export default function MyProfilePage() {
-//   return <Mypage />;
-// }
+export default function MyProfilePage() {
+  return <Mypage />;
+}
