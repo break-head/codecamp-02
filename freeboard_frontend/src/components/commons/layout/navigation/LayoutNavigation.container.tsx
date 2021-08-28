@@ -1,5 +1,5 @@
-import { useRouter } from "next/dist/client/router";
-import LayoutNavigationUI from "./LayoutNavigation.present";
+import { useRouter } from "next/router";
+import LayoutNavigationUI from "./LayoutNavigation.presenter";
 
 export default function LayoutNavigation(props: any) {
   const router = useRouter();
@@ -13,7 +13,7 @@ export default function LayoutNavigation(props: any) {
     router.push("/market");
   }
   function onClickMoveMypage() {
-    router.push("/mypage/mymarket");
+    router.push("/mypage/mypick");
   }
   return (
     <LayoutNavigationUI

@@ -8,33 +8,34 @@ export default function MypageUI(props) {
       {props.isMypage && (
         <div>
           <MenuWrapper>
-            <MenuTitle onClick={props.onClickMymarket}>나의상품</MenuTitle>|
-            <MenuTitle onClick={props.onClickMyPicked}>마이찜 </MenuTitle>
+            <MenuTitle onClick={props.onClickMovePage("myproduct")}>
+              나의상품
+            </MenuTitle>
+            |
+            <MenuTitle onClick={props.onClickMovePage("mypick")}>
+              마이찜
+            </MenuTitle>
           </MenuWrapper>
-          <List01
-            rowTitle={props.rowTitle}
-            data={props.data}
-            index={props.index}
-          />
+          <List01 rowTitle={props.rowTitle} data={props.data} />
         </div>
       )}
 
       {props.isMypoint && (
         <div>
           <MenuWrapper>
-            <MenuTitle onClick={props.onClickTotalTransaction}>
+            <MenuTitle onClick={props.onClickMovePage("myproduct")}>
               전체내역
             </MenuTitle>
             |
-            <MenuTitle onClick={props.onClickLoadingTransaction}>
+            <MenuTitle onClick={props.onClickMovePage("myproduct")}>
               충전내역
             </MenuTitle>
             |
-            <MenuTitle onClick={props.onClickBuyingTransaction}>
+            <MenuTitle onClick={props.onClickMovePage("myproduct")}>
               구매내역
             </MenuTitle>
             |
-            <MenuTitle onClick={props.onClickSellingTransaction}>
+            <MenuTitle onClick={props.onClickMovePage("myproduct")}>
               판매내역
             </MenuTitle>
           </MenuWrapper>

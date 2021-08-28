@@ -8,7 +8,7 @@ export default function MyPageSide() {
   const router = useRouter();
 
   const onClickMoveMymarket = () => {
-    router.push("/mypage/mymarket");
+    router.push("/mypage/myproduct");
   };
   const onClickMoveMypoint = () => {
     router.push("/mypage/mypoint");
