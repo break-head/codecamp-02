@@ -7,11 +7,11 @@ declare const window: typeof globalThis & {
 export default function KakaoMapRead(props: any) {
   useEffect(() => {
     if (!(props.lat && props.lng)) return;
-    console.log("=====================");
-    console.log("props.lat", props.lat);
-    console.log("props.lng", props.lng);
-    console.log("실행!!!");
-    console.log("=====================");
+    // console.log("=====================");
+    // console.log("props.lat", props.lat);
+    // console.log("props.lng", props.lng);
+    // console.log("실행!!!");
+    // console.log("=====================");
 
     const script = document.createElement("script");
     script.src =
@@ -42,7 +42,7 @@ export default function KakaoMapRead(props: any) {
         marker.setMap(map);
       });
     };
-  }, [props.lat, props.lng]);
+  }, [props.lat]);
   return (
     <>
       <div

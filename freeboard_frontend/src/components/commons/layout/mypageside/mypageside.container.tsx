@@ -11,7 +11,7 @@ export default function MyPageSide() {
     router.push("/mypage/myproduct");
   };
   const onClickMoveMypoint = () => {
-    router.push("/mypage/mypoint");
+    router.push("/mypage/totallist");
   };
   return (
     <MyPageSideUI

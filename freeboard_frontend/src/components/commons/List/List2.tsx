@@ -27,10 +27,11 @@ const Column = styled.div`
 `;
 
 export default function List02(props) {
+  console.log(props.rowTitle);
   return (
     <>
       <Row>
-        {props.rowTitle[props.index].map((el, index) => (
+        {props.rowTitle?.map((el, index) => (
           <TitleColumn key={uuidv4()}>{el[index + 1]}</TitleColumn>
         ))}
       </Row>

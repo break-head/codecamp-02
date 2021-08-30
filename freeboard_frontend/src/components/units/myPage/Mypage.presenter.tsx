@@ -23,27 +23,23 @@ export default function MypageUI(props) {
       {props.isMypoint && (
         <div>
           <MenuWrapper>
-            <MenuTitle onClick={props.onClickMovePage("myproduct")}>
+            <MenuTitle onClick={props.onClickMovePage("totallist")}>
               전체내역
             </MenuTitle>
             |
-            <MenuTitle onClick={props.onClickMovePage("myproduct")}>
+            <MenuTitle onClick={props.onClickMovePage("loadinglist")}>
               충전내역
             </MenuTitle>
             |
-            <MenuTitle onClick={props.onClickMovePage("myproduct")}>
+            <MenuTitle onClick={props.onClickMovePage("buyinglist")}>
               구매내역
             </MenuTitle>
             |
-            <MenuTitle onClick={props.onClickMovePage("myproduct")}>
+            <MenuTitle onClick={props.onClickMovePage("sellinglist")}>
               판매내역
             </MenuTitle>
           </MenuWrapper>
-          <List02
-            rowTitle={props.rowTitle}
-            data={props.data}
-            index={props.index}
-          />
+          <List02 rowTitle={props.rowTitle} data={props.data} />
         </div>
       )}
     </>
