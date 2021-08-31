@@ -90,7 +90,7 @@ export const SettingWrapper = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
 `;
 export const SettingTextWrapper = styled.div`
   display: flex;
@@ -115,18 +115,26 @@ export const SearchBox = styled.input`
   width: 400px;
   height: 40px;
   border-radius: 16px;
+  text-align: center;
+  font-weight: bold;
+  background-color: #fbdf14;
 `;
 export const SearchDate = styled.div`
   border: black 1px solid;
+  font-weight: bold;
   border-radius: 16px;
   height: 40px;
   width: 200px;
   text-align: center;
+  line-height: 40px;
+  background-color: #fbdf14;
 `;
 export const SearchButton = styled.button`
   height: 40px;
   width: 100px;
   border-radius: 16px;
+  background-color: #fbdf14;
+  margin-right: 20px;
 `;
 export const Row = styled.div`
   display: flex;
@@ -226,15 +234,17 @@ export const WatchedTitle = styled.div`
 export const WatchedContents = styled.div`
   display: flex;
   width: 150px;
+  height: 160px;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   border-radius: 16px;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
   margin-top: 15px;
 `;
 export const WatchedIconWrapper = styled.div`
   display: flex;
+  margin-top: 15px;
 `;
 export const WatchedIcon = styled.img``;
 export const WatcedPicked = styled.div``;
@@ -245,4 +255,6 @@ export const WatchedImage = styled.img`
 `;
 export const WatchedRemark = styled.div``;
 export const WatchedPrice = styled.div``;
-export const WatchedTags = styled.div``;
+export const WatchedTags = styled.div`
+  margin-bottom: 5px;
+`;

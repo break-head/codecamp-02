@@ -12,9 +12,9 @@ export const Title = styled.div`
   padding-bottom: 48px;
 `;
 export const ProfileImage = styled.img`
-  height: 80px;
+  height: 110px;
   width: 80px;
-  padding-bottom: 28px;
+  padding-bottom: 10px;
 `;
 export const Name = styled.div`
   font-size: 24px;

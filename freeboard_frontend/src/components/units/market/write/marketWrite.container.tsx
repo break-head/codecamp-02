@@ -50,6 +50,7 @@ export default function MarketWrite(props: any) {
     newFiles[index] = file;
     setFiles(newFiles);
   }
+  console.log(files);
   function onClickAddressSearch(bool: any) {
     setIsOpen(bool);
   }
@@ -100,7 +101,6 @@ export default function MarketWrite(props: any) {
   }
 
   async function onClickUpdate(data: any) {
-    
     const filterPrevImg = prevImg.filter((data) => data);
     const uploadFiles = files
       .filter((data) => data)

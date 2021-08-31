@@ -16,7 +16,7 @@ const Row = styled.div`
   line-height: 52px;
   display: flex;
   justify-content: space-around;
-  border-bottom: 1px solid #bdbd;
+  border-bottom: 1px solid #bdbdbd;
 `;
 
 const Column = styled.div`
@@ -40,7 +40,7 @@ export default function List01(props) {
           <Column>{index + 1}</Column>
           <Column>{data.name}</Column>
           {data.buyer?.name ? (
-            <Column style={{ color: "yellow" }}>판매완료</Column>
+            <Column style={{ color: "ffa000" }}>판매완료</Column>
           ) : (
             <Column></Column>
           )}

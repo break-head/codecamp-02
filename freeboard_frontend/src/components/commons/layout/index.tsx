@@ -17,6 +17,7 @@ const MypageWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  padding-bottom: 100px;
 `;
 
 export default function Layout(props: any) {

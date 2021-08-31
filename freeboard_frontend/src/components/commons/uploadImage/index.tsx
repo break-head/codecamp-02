@@ -32,7 +32,7 @@ export default function Picture(props: any) {
     slidesToScroll: 1,
     appendDots: (dots: any) => <Ul>{dots}</Ul>,
   };
-
+  console.log(props.data?.fetchUseditem.images);
   return (
     <div
       style={{

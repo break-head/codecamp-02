@@ -1,5 +1,3 @@
-// import { useState } from "react";
-// import { useEffect } from "react";
 import {
   TotalWrapper,
   Wrapper,
@@ -83,8 +81,12 @@ export default function MarketListUI(props: any) {
         <Body>
           <SettingWrapper>
             <SettingTextWrapper>
-              <SellingProductButton>판매중상품</SellingProductButton>
-              <SelledProductButton>판매된상품</SelledProductButton>
+              <SellingProductButton onClick={props.onClickSwitch(false)}>
+                판매중상품
+              </SellingProductButton>
+              <SelledProductButton onClick={props.onClickSwitch(true)}>
+                판매된상품
+              </SelledProductButton>
             </SettingTextWrapper>
             <SettingButtonWrapper>
               <SearchBox placeholder="제품을 검색해주세요"></SearchBox>
@@ -129,29 +131,35 @@ export default function MarketListUI(props: any) {
           </div>
         </Body>
         <ButtonWrapper>
-          <CreateProductButton onClick={props.onClickMovetoCreate}>상품등록하기</CreateProductButton>
+          <CreateProductButton onClick={props.onClickMovetoCreate}>
+            상품등록하기
+          </CreateProductButton>
         </ButtonWrapper>
       </Wrapper>
       <SideWrapper>
         <WatchedTitle>오늘본상품</WatchedTitle>
-        {props.getLocal.map((data: any) => (
-          <WatchedContents key={data._id}>
-            <WatchedIconWrapper>
-              <WatchedIcon src="/Picked.jpg" />
-              <WatcedPicked>{data.pickedCount}</WatcedPicked>
-            </WatchedIconWrapper>
-            {data.images?.[0] ? (
-              <WatchedImage
-                src={`https://storage.googleapis.com/${data.images?.[0]}`}
-              />
-            ) : (
-              <WatchedImage src="/market/login/102750939.1.jpg" />
-            )}
-            <WatchedRemark>{data.remarks}</WatchedRemark>
-            <WatchedPrice>{data.price}</WatchedPrice>
-            <WatchedTags>{data.tags}</WatchedTags>
-          </WatchedContents>
-        ))}
+        {props.accessToken ? (
+          props.getLocal.map((data: any) => (
+            <WatchedContents key={data._id}>
+              <WatchedIconWrapper>
+                <WatchedIcon src="/Picked.jpg" />
+                <WatcedPicked>{data.pickedCount}</WatcedPicked>
+              </WatchedIconWrapper>
+              {data.images?.[0] ? (
+                <WatchedImage
+                  src={`https://storage.googleapis.com/${data.images?.[0]}`}
+                />
+              ) : (
+                <WatchedImage src="/market/login/102750939.1.jpg" />
+              )}
+              <WatchedRemark>{data.remarks}</WatchedRemark>
+              <WatchedPrice>{data.price}</WatchedPrice>
+              <WatchedTags>{data.tags}</WatchedTags>
+            </WatchedContents>
+          ))
+        ) : (
+          <></>
+        )}
       </SideWrapper>
     </TotalWrapper>
   );

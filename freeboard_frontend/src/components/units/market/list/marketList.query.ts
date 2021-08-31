@@ -15,8 +15,8 @@ export const FETCH_USED_ITEMS_OF_THE_BEST = gql`
 `;
 
 export const FETCH_USED_ITEMS = gql`
-  query fetchUseditems($search: String, $page: Int) {
-    fetchUseditems(search: $search, page: $page) {
+  query fetchUseditems($search: String, $page: Int, $isSoldout: Boolean) {
+    fetchUseditems(search: $search, page: $page, isSoldout: $isSoldout) {
       _id
       name
       remarks

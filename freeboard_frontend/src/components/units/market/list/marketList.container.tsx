@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { GlobalContext } from "../../../../../pages/_app";
 import MarketListUI from "./marketList.presenter";
 import {
   FETCH_USED_ITEMS,
@@ -8,12 +9,11 @@ import {
 } from "./marketList.query";
 
 export default function MarketList() {
-  const { data, fetchMore } = useQuery(FETCH_USED_ITEMS);
+  // const [soldout, setSoldout] = useState(false);
+  const { data, fetchMore, refetch } = useQuery(FETCH_USED_ITEMS, {
+    variables: { isSoldout: false },
+  });
   const [hasMore, setHasMore] = useState(true);
-  const { data: dataBestUsedItems } = useQuery(FETCH_USED_ITEMS_OF_THE_BEST);
-  const [getLocal, setGetLocal] = useState([" "]);
-  const router = useRouter();
-
   const onLoadMore = () => {
     if (!data) return;
     fetchMore({
@@ -29,6 +29,14 @@ export default function MarketList() {
       },
     });
   };
+  const { data: dataBestUsedItems } = useQuery(FETCH_USED_ITEMS_OF_THE_BEST);
+  const [getLocal, setGetLocal] = useState([" "]);
+  const router = useRouter();
+  const { accessToken } = useContext(GlobalContext);
+  useEffect(() => {
+    const newBaskets = JSON.parse(localStorage.getItem("baskets") || "[]");
+    setGetLocal(newBaskets);
+  }, []);
 
   const onClickMoveDetail = (data: any) => () => {
     onClickBasket(data);
@@ -45,12 +53,10 @@ export default function MarketList() {
     );
     localStorage.setItem("baskets", JSON.stringify(newBaskets.concat(baskets)));
   };
-
-  useEffect(() => {
-    const newBaskets = JSON.parse(localStorage.getItem("baskets") || "[]");
-    setGetLocal(newBaskets);
-  }, []);
-
+  const onClickSwitch = (boolean) => () => {
+    // setSoldout(boolean);
+    refetch({ isSoldout: boolean });
+  };
   return (
     <MarketListUI
       data={data}
@@ -61,6 +67,8 @@ export default function MarketList() {
       getLocal={getLocal}
       hasMore={hasMore}
       onLoadMore={onLoadMore}
+      accessToken={accessToken}
+      onClickSwitch={onClickSwitch}
     />
   );
 }

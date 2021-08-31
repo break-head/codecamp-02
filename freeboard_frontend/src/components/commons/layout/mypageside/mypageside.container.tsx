@@ -4,7 +4,7 @@ import { GlobalContext } from "../../../../../pages/_app";
 import MyPageSideUI from "./mypageside.presenter";
 
 export default function MyPageSide() {
-  const { userInfo } = useContext(GlobalContext);
+  const { userInfo, accessToken } = useContext(GlobalContext);
   const router = useRouter();
 
   const onClickMoveMymarket = () => {
@@ -18,6 +18,7 @@ export default function MyPageSide() {
       userInfo={userInfo}
       onClickMoveMymarket={onClickMoveMymarket}
       onClickMoveMypoint={onClickMoveMypoint}
+      accessToken={accessToken}
     />
   );
 }
