@@ -1,12 +1,15 @@
-import { useMutation, useQuery } from "@apollo/client";
+import { useApolloClient, useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import MarketDetailUI from "./MarketDetail.presenter";
+import { GlobalContext } from "../../../../../pages/_app";
 import {
   FETCH_USED_ITEM,
   CREATE_POINT_TRANSACTION_OF_BUYING_AND_SELLING,
   TOGGLE_USED_ITEM_PICK,
   DELETE_USED_ITEM,
 } from "./MarketDetail.queries";
+import { FETCH_USER_LOGGED_IN } from "../../login/login.queries";
+import { useContext } from "react";
 
 export default function MarketDetail() {
   const [createPointTransactionOfBuyingAndSelling] = useMutation(
@@ -18,7 +21,8 @@ export default function MarketDetail() {
   const { data } = useQuery(FETCH_USED_ITEM, {
     variables: { useditemId: router.query.marketId },
   });
-
+  const { setUserInfo, accessToken } = useContext(GlobalContext);
+  const client = useApolloClient();
   function onClickMoveToList() {
     router.push("/market");
   }
@@ -44,6 +48,19 @@ export default function MarketDetail() {
           useritemId: router.query.marketId,
         },
       });
+      const resultUser = await client.query({
+        query: FETCH_USER_LOGGED_IN,
+        context: {
+          headers: {
+            authorization: `Bearer ${accessToken}`,
+          },
+        },
+      });
+      setUserInfo(resultUser?.data.fetchUserLoggedIn || "");
+      localStorage.setItem(
+        "userInfo",
+        JSON.stringify(resultUser.data.fetchUserLoggedIn)
+      );
       router.push("/market");
     } catch (error) {
       alert(error.message);

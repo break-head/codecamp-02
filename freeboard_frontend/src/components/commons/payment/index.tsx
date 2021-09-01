@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Head from "next/head";
-import { gql, useMutation } from "@apollo/client";
+import { gql, useApolloClient, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
+import { GlobalContext } from "../../../../pages/_app";
+import { FETCH_USER_LOGGED_IN } from "../../units/login/login.queries";
 const CREATE_POINT_TRANSACTION_OF_LOADING = gql`
   mutation createPoinTransactionOfLoading($impUid: ID!) {
     createPointTransactionOfLoading(impUid: $impUid) {
@@ -14,9 +16,10 @@ export default function PaymentPage() {
   const [createPointTransactionOfLoading] = useMutation(
     CREATE_POINT_TRANSACTION_OF_LOADING
   );
+  const client = useApolloClient();
   const router = useRouter();
+  const { setUserInfo, accessToken } = useContext(GlobalContext);
   function onChangeAmount(event: any) {
-    console.log(event.target.value);
     setAmount(event.target.value);
   }
 
@@ -50,6 +53,19 @@ export default function PaymentPage() {
           });
           // 결제 성공 시 로직,
           alert("결제에 성공하셨습니다.");
+          const resultUser = await client.query({
+            query: FETCH_USER_LOGGED_IN,
+            context: {
+              headers: {
+                authorization: `Bearer ${accessToken}`,
+              },
+            },
+          });
+          setUserInfo(resultUser?.data.fetchUserLoggedIn || "");
+          localStorage.setItem(
+            "userInfo",
+            JSON.stringify(resultUser.data.fetchUserLoggedIn)
+          );
           router.push("/market");
         } else {
           // 결제 실패 시 로직,
