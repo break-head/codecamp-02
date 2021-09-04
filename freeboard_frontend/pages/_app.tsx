@@ -13,7 +13,6 @@ import Layout from "../src/components/commons/layout";
 // import { Global } from "@emotion/react";
 // import { globalStyles } from "../src/commons/styles/globalStyles";
 import { createUploadLink } from "apollo-upload-client";
-
 import firebase from "firebase/app";
 import "firebase/firestore";
 import {
