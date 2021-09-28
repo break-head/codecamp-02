@@ -41,7 +41,6 @@ export default function MarketCommentListUIItem(props: any) {
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
     setInputs({ ...inputs, [event.target.name]: event.target.value });
-    // console.log(inputs.contents);
   }
   function onClickMoveEdit() {
     setIsEdit((prev) => !prev);

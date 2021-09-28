@@ -26,19 +26,17 @@ export default function ListPageUi(props) {
           <TitleColumn>작성자</TitleColumn>
           <TitleColumn>작성일</TitleColumn>
         </Row>
-        {props.data?.fetchBoards.map((data, index) => (
-          <>
-            <Row
-              key={data._id}
-              id={data._id}
-              onClick={props.onClickMoveDetail(data._id)}
-            >
-              <Column>{10 - index}</Column>
-              <Column>{data.title}</Column>
-              <Column>{data.writer}</Column>
-              <Column>{getDate(data.createdAt)}</Column>
-            </Row>
-          </>
+        {props.data?.fetchBoards.map((data, index: number) => (
+          <Row
+            key={data._id}
+            id={data._id}
+            onClick={props.onClickMoveDetail(data._id)}
+          >
+            <Column>{10 - index}</Column>
+            <Column>{data.title}</Column>
+            <Column>{data.writer}</Column>
+            <Column>{getDate(data.createdAt)}</Column>
+          </Row>
         ))}
         <Footer>
           <Paginations01

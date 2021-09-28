@@ -1,6 +1,5 @@
 import { useMutation } from "@apollo/client";
 import { Modal } from "antd";
-// import { useRouter } from "next/router";
 import { ChangeEvent, useState } from "react";
 import { getDate } from "../../../../commons/libraries/utils";
 import { DELETE_USEDITEM_QUESTION_ANSWER } from "./MarketReCommentList.queries";
@@ -27,7 +26,6 @@ export default function MarketReCommentListUIItem(
   props: any
   // IBoardCommentListUIItemProps
 ) {
-  // const router = useRouter();
   const [reEdit, setReEdit] = useState(false);
   const [deleteUseditemQuestionAnswer] = useMutation(
     DELETE_USEDITEM_QUESTION_ANSWER
@@ -45,7 +43,6 @@ export default function MarketReCommentListUIItem(
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
     setInputs({ ...inputs, [event.target.name]: event.target.value });
-    // console.log(inps.contents);
   }
   function onClickMoveEdit() {
     setReEdit((prev) => !prev);
