@@ -118,7 +118,7 @@ export default function MarketListUI(props: any) {
                       <ColumnTags>{data.tags}</ColumnTags>
                       <ColumnSellerInfo>
                         <ColumnSellerIcon src="/market/login/대표이미지.png" />
-                        <ColumnSellerName>{data.seller.name}</ColumnSellerName>
+                        <ColumnSellerName>{data.seller?.name}</ColumnSellerName>
                         <ColumnLikeIcon src="/Picked.jpg" />
                         <ColumnLikeCount>{data.pickedCount}</ColumnLikeCount>
                       </ColumnSellerInfo>

@@ -12,7 +12,7 @@ import {
 } from "./ListPage.styles";
 import { getDate } from "../../../../commons/libraries/utils";
 
-export default function ListPageUi(props) {
+export default function ListPageUi(props: any) {
   return (
     <Wrapper>
       <WrapperBody>
@@ -26,7 +26,7 @@ export default function ListPageUi(props) {
           <TitleColumn>작성자</TitleColumn>
           <TitleColumn>작성일</TitleColumn>
         </Row>
-        {props.data?.fetchBoards.map((data, index: number) => (
+        {props.data?.fetchBoards.map((data: any, index: number) => (
           <Row
             key={data._id}
             id={data._id}

@@ -26,16 +26,16 @@ const Column = styled.div`
   width: 150px;
 `;
 
-export default function List01(props) {
+export default function List01(props: any) {
   console.log(props.data);
   return (
     <>
       <Row>
-        {props.rowTitle.map((el, index) => (
+        {props.rowTitle.map((el: any, index: any) => (
           <TitleColumn key={uuidv4()}>{el[index + 1]}</TitleColumn>
         ))}
       </Row>
-      {props.data?.map((data, index) => (
+      {props.data?.map((data: any, index: any) => (
         <Row key={data._id} id={data._id}>
           <Column>{index + 1}</Column>
           <Column>{data.name}</Column>

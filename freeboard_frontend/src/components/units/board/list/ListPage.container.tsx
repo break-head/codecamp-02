@@ -14,10 +14,10 @@ export default function ListPage() {
   function onClickMove() {
     router.push("/boards/new");
   }
-  const onClickMoveDetail = (id) => () => {
+  const onClickMoveDetail = (id: any) => () => {
     router.push(`/boards/${id}`);
   };
-  function onChangeKeyword(value) {
+  function onChangeKeyword(value: any) {
     setKeyword(value);
   }
 

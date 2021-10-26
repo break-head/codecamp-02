@@ -2,7 +2,7 @@ import { MenuWrapper, MenuTitle } from "./Mypage.styles";
 import List01 from "../../commons/List/List1";
 import List02 from "../../commons/List/List2";
 
-export default function MypageUI(props) {
+export default function MypageUI(props: any) {
   return (
     <>
       {props.isMypage && (

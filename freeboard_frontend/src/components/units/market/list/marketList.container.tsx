@@ -19,10 +19,13 @@ export default function MarketList() {
     fetchMore({
       variables: { page: Math.floor(data?.fetchUseditems.length / 10 + 1) },
       updateQuery: (prev, { fetchMoreResult }) => {
+        // @ts-ignore
         if (!fetchMoreResult.fetchUseditems.length) setHasMore(false);
         return {
           fetchUseditems: [
+            // @ts-ignore
             ...prev.fetchUseditems,
+            // @ts-ignore
             ...fetchMoreResult.fetchUseditems,
           ],
         };
@@ -53,7 +56,7 @@ export default function MarketList() {
     );
     localStorage.setItem("baskets", JSON.stringify(newBaskets.concat(baskets)));
   };
-  const onClickSwitch = (boolean) => () => {
+  const onClickSwitch = (boolean: any) => () => {
     // setSoldout(boolean);
     refetch({ isSoldout: boolean });
   };

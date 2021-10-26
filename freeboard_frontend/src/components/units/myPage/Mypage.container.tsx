@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import MypageUI from "./Mypage.presenter";
 
-export default function Mypage(props) {
+export default function Mypage(props: any) {
   const router = useRouter();
 
   const onClickMovePage = (data: any) => () => {
