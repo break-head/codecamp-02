@@ -1,10 +1,8 @@
 {
-  "../src/components/units/market/write/marketWrite.presenter.tsx -> react-quill": {
-    "id": 71167,
+  "../node_modules/next/dist/client/next-dev.js -> ./dev/noop": {
+    "id": "./node_modules/next/dist/client/dev/noop.js",
     "files": [
-      "static/chunks/framework-b5f3c897a40b4b93d7e6.js",
-      "static/chunks/eabe11fc.a074d6c9d59e160ccde4.js",
-      "static/chunks/127.5336572d0e0603b62fc1.js"
+      "static/chunks/node_modules_next_dist_client_dev_noop_js.js"
     ]
   }
 }
