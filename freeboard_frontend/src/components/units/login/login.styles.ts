@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   /* object-fit: cover; */
-  background-image: url("../market/login/img.jpeg");
+  background-image: url(".market/login/img.jpg");
   background-size: cover;
 `;
 export const SubWrapper = styled.div`

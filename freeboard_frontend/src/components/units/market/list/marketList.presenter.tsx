@@ -58,7 +58,7 @@ export default function MarketListUI(props: any) {
           {props.dataBestUsedItems?.fetchUseditemsOfTheBest.map((data: any) => (
             <Column
               key={data._id}
-              // id={data._id}
+              id={data._id}
               onClick={props.onClickMoveDetail(data)}
             >
               <Image

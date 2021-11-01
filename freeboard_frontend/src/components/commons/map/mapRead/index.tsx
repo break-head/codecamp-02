@@ -15,7 +15,7 @@ export default function KakaoMapRead(props: any) {
 
     const script = document.createElement("script");
     script.src =
-      "//dapi.kakao.com/v2/maps/sdk.js?appkey=46a088defe4208f8cfd94b08223db61a&autoload=false";
+      "//dapi.kakao.com/v2/maps/sdk.js?appkey=46a088defe4208f8cfd94b08223db61a&autoload=false&libraries=services";
     document.head.appendChild(script);
     script.onload = () => {
       window.kakao.maps.load(() => {

@@ -9,7 +9,6 @@ export default function MarkeEditPage() {
     variables: { useditemId: router.query.marketId },
   });
   const isEdit = true;
-  console.log(router.query.marketId);
 
   return <MarketWrite data={data} isEdit={isEdit} />;
 }
